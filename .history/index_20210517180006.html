@@ -7,22 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
     <style>
-        .navbar {
+        .navbar *{
             padding-left:1%;
             padding-right:1%;
             padding-top: 0%;
             padding-bottom:0%;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        }
-
-        .navbar-nav > li{
-            padding-left:32px;
-            padding-right:32px;
-        }
-
-        .navbar-right > a {
-            padding-left:32px;
-            padding-right:32px;
         }
     </style>
 </head>
@@ -45,9 +34,13 @@
                 </li>
             </ul>
         </div>
-        <div class="navbar-right">
-            <a href="#login" class="btn btn-primary">Log In</a>
-            <a href="#register" class="btn btn-outline-primary">Register</a>
+        <div class="header-right">
+            <a href="#login">
+                <button type="button" class="btn btn-primary">Log In</button>
+            </a>
+            <a href="#register">
+                <button type="button" class="btn btn-outline-primary">Register</button>
+            </a>  
         </div>
     </div>
 
