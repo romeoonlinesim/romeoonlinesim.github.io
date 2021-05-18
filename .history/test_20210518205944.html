@@ -43,7 +43,7 @@
             grid-row-gap: 0%;
         }
 
-        h3 {
+        h3, h4 {
             font-weight: bold;
         }
 
@@ -67,6 +67,20 @@
 
         .no-padding {
             padding-bottom: 1%;
+        }
+
+        .right {
+            text-align: right;
+            float: right;
+        }
+
+        .grey {
+            background: #F5F5F5;
+        }
+
+        .container-fluid {
+            max-width: 75%;
+            margin-top: 0%;
         }
 
         .footer {
@@ -115,20 +129,6 @@
             color: rgba(255, 255, 255, 0.8);
         }
 
-
-        .right {
-            text-align: right;
-            float: right;
-        }
-
-        .grey {
-            background: #F5F5F5;
-        }
-
-        .container-fluid {
-            max-width: 75%;
-            margin-top: 2%;
-        }
     </style>
 </head>
 
@@ -160,33 +160,68 @@
     </div>
 
     <div class="container-fluid">
-        <div class="row">
-            <img class="background-img" src="img/background.jpg">
-        </div>
-        <div class="row">
-            <img class="img col-lg-6" src="img/robocup-1.png">
-            <div class="text col-lg-6 ">
-                <h3 class="grid-item">RoboCup</h3>
-                <p class="grid-item">The RoboCup server Simulator is a research and educational tool for multiagent systems and artificial intelligence. The aim of the RoboCup is to present a new standard problem for AI and robotics. There are two teams of eleven simulated autonomous robotic players playing soccer on the platform. These players (Also called agents) can play the game with one or some different strategies. </p>
-            </div>
-        </div>
-        <div class="row grey">
-            <div class="row"></div>
-            <div class="col-lg-6">
-                <p class="para">Wanna inspect your own league?</p>
-                <p class="para">Login to start tournament</p>
-            </div>
-                
-            <div class="col-lg-6 row">
-                <!--a href="#Contact" class="btn btn-outline-primary" role="button">Contact Us</a>
-                <a href="#Join" class="btn btn-primary" role="button">Join Today</a-->
-                <div class="row"></div>
-                <div class="col-lg-3"></div>
-                <button type="button" class="btn btn-primary col-lg-3">Join Today</button>
-                <div class="col-lg-1"></div>
-                <button type="button" class="btn btn-outline-primary col-lg-3">Contact Us</button>
-            </div>
-        </div>
+        <table>
+            <tr>
+                <td>
+                    <div>
+                        <h3>Romeo</h3>
+                        <p class="description">Romeo is a team that is created in our own project. Since this team is a new team, it hasn't participated in any official competitions. It is developed based on Agent2D which can allow agents to perform different actions and the team to play soccer through different strategies. However, we did some changes in the algorithm which is after referencing, testing, and comparing the existing algorithms in order to optimize our team. </p>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <h3>Agent2D</h3>
+                        <p class="description">Agent2d is a sample team which utilizes librcsc and contains a data set of the simulated soccer team that can run as a simple but competitive team. Each player can intercept, dribble, pass and shoot by judging the different situations. In agent2d, the formation framework and online multiagent planning framework have been implemented which enable users to change the characteristics of the team behaviour by modifying the team formation and the evaluation function.</p>
+                    </div>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <h4>Romeo's Package</h4>
+                        <div>
+                            <a href="#">romeo.tar.gz</a>
+                        </div>
+                        <div>
+                            <a href="#">librcsc.tar.gz</a>
+                        </div>
+                        
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <h4>Agent2D's Package</h4>
+                        <div>
+                            <a href="#">agent2d.tar.gz</a>
+                        </div>
+                        <div>
+                            <a href="#">librcsc.tar.gz</a>
+                        </div>
+                    <div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <h3>OpuCI</h3>
+                        <p class="description">Team OpuCI_2D started in 2009. CI in opuCI_2D means computational intelligence, which is the main scientific focus of the team. This team is based on agent2d-2.1.0. Although the good strategy has been implemented in agent 2d, the opuCI_2D have modified some source code and the team behaves totally differently from the original agent2d. It adds a ball blocking to the player agent. In addition, the team formation is changed to 5-2-3 to increase the number of defenders. The behaviour of the five defenders is designed to block through-passes, which is not implemented in agent-2d.</p>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <h3>Axiom</h3>
+                        <p class="description">Axiom is a team consisting of undergraduate and graduate students of Iran University of Science and Technology (IUST). This team has participated in many competitions such as Robocup 2012(Mexico City). The team is developed based on Agent2D. The difference is that it contains a new offensive strategy which uses reinforcement learning method. Additionally, Axiom implemented pass algorithm from scratch and they added a new safety checker based on Artificial Neural Network (ANN) in order to achieving more reliable passes.</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+
+            </tr>
+            <tr>
+
+            </tr>
+        </table>
     </div>
 
     <div class="footer">
