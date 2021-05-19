@@ -36,11 +36,6 @@
             height: auto;
         }
 
-        #logo {
-            max-height: 3rem;
-            width:auto;
-        }
-
 
         .text {
             align-items: center;
@@ -136,13 +131,13 @@
 
         .watermark {
             position: absolute;
-
-            right: 1%;
-            top: 10%;
+            left: 7.26%;
+            right: 9.88%;
+            top: 30%;
 
             font-family: Montserrat;
-            font-style: italic;
-            font-weight: bold;
+            font-style: normal;
+            font-weight: normal;
             font-size: 56px;
             line-height: 80px;
             /* identical to box height, or 143% */
@@ -156,7 +151,8 @@
 <body>
     <div class="navbar navbar-expand-lg navbar-light bg-light">
         <a href="#default" class = "navbar-brand">
-            <img id="logo" src="img/logo-romeo-header.png">
+            <p class="watermark">Welcome to robot soccer online simulator</p>
+            <img src="img/logo.png">
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -176,14 +172,13 @@
         </div>
         <div class="navbar-right">
             <a href="#login" class="btn btn-primary">Log In</a>
-            <a href="register.html" class="btn btn-outline-primary">Register</a>
+            <a href="#register" class="btn btn-outline-primary">Register</a>
         </div>
     </div>
 
     <div class="container-fluid">
         <div class="row">
             <img class="background-img" src="img/background.jpg">
-            <p class="watermark">Welcome to <br> Robot Soccer Online Simulator</p>
         </div>
         <div class="row">
             <img class="img col-lg-6" src="img/robocup-1.png">
