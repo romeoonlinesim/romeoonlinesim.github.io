@@ -283,18 +283,9 @@
                 content += "<a class='dropdown-item' href='#'>Profile</a>";
                 content += "<a class='dropdown-item' href='#'>Help and Support</a>";
                 content += "<div class='dropdown-divider'></div>";
-                content += "<a id='logoutButton' class='dropdown-item' href='#'>Log Out</a></div></div>"; 
+                content += "<a id='logout' class='dropdown-item' href='#'>Log Out</a></div></div>"; 
 
                 temp.innerHTML += content;
-
-                document.getElementById("logoutButton").addEventListener("click", logout);
-
-                function logout() {
-                    if (typeof(Storage) !== "undefined") {
-                        sessionStorage.removeItem("username")
-                        location.replace("index.html")
-                    }
-                }
             }
         }
     </script>

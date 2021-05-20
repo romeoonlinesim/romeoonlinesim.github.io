@@ -278,23 +278,14 @@
                 document.getElementById("register").style.display="none";
                 let temp = document.getElementById("navbar-right");
                 content = "";
-                content += "<div class='dropdown'><a id='navbarDropdown' class='welcome dropdown-toggle' href='#' role='button'  data-toggle='dropdown' aria-haspopup='true' area-expanded='false'>Welcome, " + sessionStorage.username + "</a>";
-                content += "<div class='dropdown-menu' aria-labelledby='navbarDropdown'>";
+                content += "<div class='welcome dropdown'><a id='navbarDropdown' class='dropdown-toggle' href='#' role='button'  data-toggle='dropdown' aria-haspopup='true' area-expanded='false'>Welcome, " + sessionStorage.username + "</a>";
+                content += "<div id='usernameDropdown' class='dropdown-menu' aria-labelledby='navbarDropdown'>";
                 content += "<a class='dropdown-item' href='#'>Profile</a>";
                 content += "<a class='dropdown-item' href='#'>Help and Support</a>";
                 content += "<div class='dropdown-divider'></div>";
-                content += "<a id='logoutButton' class='dropdown-item' href='#'>Log Out</a></div></div>"; 
+                content += "<a id='logout' class='dropdown-item' href='#'>Log Out</a></div></div>"; 
 
                 temp.innerHTML += content;
-
-                document.getElementById("logoutButton").addEventListener("click", logout);
-
-                function logout() {
-                    if (typeof(Storage) !== "undefined") {
-                        sessionStorage.removeItem("username")
-                        location.replace("index.html")
-                    }
-                }
             }
         }
     </script>

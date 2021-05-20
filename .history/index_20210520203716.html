@@ -288,13 +288,7 @@
                 temp.innerHTML += content;
 
                 document.getElementById("logoutButton").addEventListener("click", logout);
-
-                function logout() {
-                    if (typeof(Storage) !== "undefined") {
-                        sessionStorage.removeItem("username")
-                        location.replace("index.html")
-                    }
-                }
+                
             }
         }
     </script>

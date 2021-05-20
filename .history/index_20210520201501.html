@@ -10,11 +10,7 @@
 
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Comfortaa">
-          
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        
+
 
     <style>
         .navbar {
@@ -277,24 +273,12 @@
                 document.getElementById("login").style.display="none";
                 document.getElementById("register").style.display="none";
                 let temp = document.getElementById("navbar-right");
-                content = "";
-                content += "<div class='dropdown'><a id='navbarDropdown' class='welcome dropdown-toggle' href='#' role='button'  data-toggle='dropdown' aria-haspopup='true' area-expanded='false'>Welcome, " + sessionStorage.username + "</a>";
-                content += "<div class='dropdown-menu' aria-labelledby='navbarDropdown'>";
-                content += "<a class='dropdown-item' href='#'>Profile</a>";
-                content += "<a class='dropdown-item' href='#'>Help and Support</a>";
-                content += "<div class='dropdown-divider'></div>";
-                content += "<a id='logoutButton' class='dropdown-item' href='#'>Log Out</a></div></div>"; 
-
-                temp.innerHTML += content;
-
-                document.getElementById("logoutButton").addEventListener("click", logout);
-
-                function logout() {
-                    if (typeof(Storage) !== "undefined") {
-                        sessionStorage.removeItem("username")
-                        location.replace("index.html")
-                    }
-                }
+                temp.innerHTML += "<div class='welcome dropdown'><a class='dropdown-toggle' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' area-expanded='false'>Welcome, " + sessionStorage.username + "</a>";
+                temp.innerHTML += "<div class='dropdown-menu' aria-labelledby='navbarDropdown'>";
+                temp.innerHTML += "<a class='dropdown-item' href='#'>Profile</a>";
+                temp.innerHTML += "<a class='dropdown-item' href='#'>Help and Support</a>";
+                temp.innerHTML += "<div class='dropdown-divider'></div>";
+                temp.innerHTML += "<a id='logout' class='dropdown-item' href='#'>Log Out</a></div></div>"; 
             }
         }
     </script>
