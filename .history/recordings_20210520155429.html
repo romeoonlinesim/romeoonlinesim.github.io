@@ -10,6 +10,8 @@
 
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Comfortaa">
+          
+    <script src="https://kit.fontawesome.com/edc684b1b0.js" crossorigin="anonymous"></script>
 
 
     <style>
@@ -31,14 +33,14 @@
             padding-right:32px;
         }
 
-        .background-img {
-            max-width: 100%;
-            height: auto;
-        }
-
         #logo {
             max-height: 3rem;
             width:auto;
+        }
+
+        .background-img {
+            max-width: 100%;
+            height: auto;
         }
 
 
@@ -48,7 +50,7 @@
             grid-row-gap: 0%;
         }
 
-        h3 {
+        h3, h4 {
             font-weight: bold;
         }
 
@@ -64,8 +66,6 @@
             letter-spacing: -0.015em;
 
             color: rgba(0, 0, 0, 0.8);
-            
-            text-indent: 3%;
         }
 
         .row {
@@ -84,65 +84,6 @@
             padding-bottom: 2%;
         }
 
-        .footer {
-            background: #555555;
-            max-height: min-content;
-        }
-
-        .support-text {
-            font-family: Comfortaa;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 28.4444px;
-            line-height: 32px;
-            align-items: center;
-            text-align: center;
-            letter-spacing: -0.015em;
-
-            color: #FFFFFF;
-        }
-
-        .support-email {
-            font-family: Comfortaa;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            text-align: right;
-            letter-spacing: -0.015em;
-
-            color: #FFFFFF;
-            padding-right: 0%;
-            padding-left: 0%;
-        }
-        
-        .github-text {
-            font-family: Comfortaa;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            text-align: left;
-            letter-spacing: -0.015em;
-
-            color: #FFFFFF;
-            padding-right: 0%;
-            padding-left: 0%;
-        }
-
-        .line {
-            height: 1px;
-            border-width: 1px;
-            border-style: solid;
-            border-color: rgba(0, 0, 0, 0.25);
-            padding-bottom: 0px;
-        }
-
-
         .right {
             text-align: right;
             float: right;
@@ -153,24 +94,77 @@
         }
 
         .container-fluid {
-            max-width: 75%;
+            max-width: 80%;
+            margin-top: 3%;
         }
 
-        .watermark {
+        .footer {
+            background: #555555;
+            max-height: min-content;
             position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
 
-            right: 1%;
-            top: 10%;
+        .support-text {
 
+            font-family: Comfortaa;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 32px;
+
+            align-items: center;
+            text-align: center;
+            letter-spacing: -0.015em;
+
+            color: #FFFFFF;
+            padding-bottom: 0%;
+            margin-bottom: 0%;
+        }
+
+        .support-email {
+            font-family: Comfortaa;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            align-items: center;
+            text-align: right;
+            letter-spacing: -0.015em;
+
+            color: #FFFFFF;
+        }
+        
+        .github-text {
             font-family: Montserrat;
-            font-style: italic;
-            font-weight: bold;
-            font-size: 56px;
-            line-height: 80px;
-            /* identical to box height, or 143% */
+            font-style: normal;
+            font-weight: normal;
+            font-size: 26px;
 
             text-align: center;
             letter-spacing: -0.015em;
+
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        table {
+            table-layout:fixed;
+            
+            width: 100%;
+        }
+
+        td {
+            width: 50%;
+            padding-right:2%;
+            padding-bottom:2%;
+        }
+
+        .links {
+            display:block;
+        }
+
+        .description {
+            text-align: justify;
         }
     </style>
 </head>
@@ -183,7 +177,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.html">Home</a>
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="competition.html">Live Competition</a>
@@ -192,48 +186,65 @@
                     <a class="nav-link" href="recordings.html">Past Recordings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="teams.html">Support Teams</a>
+                    <a class="nav-link active" href="teams.html">Support Teams</a>
                 </li>
             </ul>
         </div>
         <div class="navbar-right">
-            <a href="login.html" class="btn btn-primary">Log In</a>
+            <a href="#login" class="btn btn-primary">Log In</a>
             <a href="register.html" class="btn btn-outline-primary">Register</a>
         </div>
     </div>
 
     <div class="container-fluid">
-        <div class="row">
-            <img class="background-img" src="img/background.jpg">
-            <p class="watermark">Welcome to <br> Robot Soccer Online Simulator</p>
-        </div>
-        <div class="row">
-            <img class="img col-lg-6" src="img/robocup-1.png">
-            <div class="text col-lg-6 ">
-                <h3 class="grid-item">RoboCup</h3>
-                <p class="grid-item">The RoboCup server Simulator is a research and educational tool for multiagent systems and artificial intelligence. The aim of the RoboCup is to present a new standard problem for AI and robotics. There are two teams of eleven simulated autonomous robotic players playing soccer on the platform. These players (Also called agents) can play the game with one or some different strategies. </p>
-            </div>
-        </div>
-        <div class="row grey">
-            <div class="row"></div>
-            <div class="col-lg-6">
-                <p class="para">Wanna inspect your own league?</p>
-                <p class="para">Login to start tournament!</p>
-            </div>
-                
-            <div class="col-lg-6 row">
-                <!--a href="#Contact" class="btn btn-outline-primary" role="button">Contact Us</a>
-                <a href="#Join" class="btn btn-primary" role="button">Join Today</a-->
-                <div class="row"></div>
-                <div class="col-lg-3"></div>
-                <button type="button" class="btn btn-primary col-lg-3">Join Today</button>
-                <div class="col-lg-1"></div>
-                <button type="button" class="btn btn-outline-primary col-lg-3">Contact Us</button>
-            </div>
-        </div>
+        <table>
+            <tr>
+                <td>
+                    <div>
+                        <h3>Competition Recordings</h3>                        
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <b>Match id: 202104122629, Romeo-vs-Agent2d</b> 
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <button type="button" class="btn btn-primary">Download</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <b>Match id: 202104123539, opuCI_2D-vs-Axiom</b> 
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <button type="button" class="btn btn-primary">Download</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        <b>Match id: 202104124352, opuCI_2D-vs-Romeo</b> 
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <button type="button" class="btn btn-primary">Download</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
 
-    <!--div class="footer">
+    <div class="footer">
         <div class="container-fluid">
             <div class="row"></div>
             <div class="no-padding row">
@@ -242,19 +253,6 @@
                 <hr>
                 <p class="github-text">Published with Github Pages</p>
             </div>
-        </div>
-    </div-->
-
-    <div class="footer">
-        <div class="container-fluid">
-            <div class="padding-2 row"></div>
-            <div class="no-padding row">
-                <div class="col-lg-3 github-text d-flex">Published with Github Pages</div>
-                <div class="col-lg-6 support-text">Maintained by <a href="#">RomeoOnlineSimulator</a> Team</div>
-                <div class="col-lg-3 support-email">Support: mh487@uowmail.edu.au</div>
-            </div>
-            <div class="row line"></div>
-            <div class="padding-1 row"></div>
         </div>
     </div>
 </body>

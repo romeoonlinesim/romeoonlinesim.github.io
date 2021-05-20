@@ -73,7 +73,15 @@
         }
 
         .no-padding {
+            padding-bottom: 0.25%;
+        }
+
+        .padding-1 {
             padding-bottom: 1%;
+        }
+
+        .padding-2 {
+            padding-bottom: 2%;
         }
 
         .right {
@@ -85,9 +93,13 @@
             background: #F5F5F5;
         }
 
-        .container-fluid {
+        .container {
             max-width: 80%;
             margin-top: 3%;
+        }
+
+        .container-fluid {
+            max-width: 75%;
         }
 
         .footer {
@@ -99,20 +111,16 @@
         }
 
         .support-text {
-
             font-family: Comfortaa;
             font-style: normal;
             font-weight: normal;
-            font-size: 24px;
+            font-size: 28.4444px;
             line-height: 32px;
-
             align-items: center;
             text-align: center;
             letter-spacing: -0.015em;
 
             color: #FFFFFF;
-            padding-bottom: 0%;
-            margin-bottom: 0%;
         }
 
         .support-email {
@@ -120,23 +128,39 @@
             font-style: normal;
             font-weight: normal;
             font-size: 16px;
-            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
             text-align: right;
             letter-spacing: -0.015em;
 
             color: #FFFFFF;
+            padding-right: 0%;
+            padding-left: 0%;
         }
-        
+
         .github-text {
-            font-family: Montserrat;
+            font-family: Comfortaa;
             font-style: normal;
             font-weight: normal;
-            font-size: 26px;
-
-            text-align: center;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: left;
             letter-spacing: -0.015em;
 
-            color: rgba(255, 255, 255, 0.8);
+            color: #FFFFFF;
+            padding-right: 0%;
+            padding-left: 0%;
+        }
+
+        .line {
+            height: 1px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.25);
+            padding-bottom: 0px;
         }
 
         table {
@@ -163,7 +187,7 @@
 
 <body>
     <div class="navbar navbar-expand-lg navbar-light bg-light">
-        <a href="#default" class = "navbar-brand">
+        <a href="index.html" class = "navbar-brand">
             <img id="logo" src="img/logo-romeo-header.png">
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -175,7 +199,7 @@
                     <a class="nav-link" href="competition.html">Live Competition</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#recording">Past Recordings</a>
+                    <a class="nav-link" href="recordings.html">Past Recordings</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="teams.html">Support Teams</a>
@@ -188,7 +212,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container">
         <table>
             <tr>
                 <td>
@@ -238,13 +262,14 @@
 
     <div class="footer">
         <div class="container-fluid">
-            <div class="row"></div>
+            <div class="padding-2 row"></div>
             <div class="no-padding row">
-                <p class="support-text">Maintained by <a href="#">RomeoOnlineSimulator</a> Team</p>
-                <p class="support-email ml-auto">Support: mh487@uowmail.edu.au </p>
-                <hr>
-                <p class="github-text">Published with Github Pages</p>
+                <div class="col-lg-3 github-text d-flex">Published with Github Pages</div>
+                <div class="col-lg-6 support-text">Maintained by <a href="#">RomeoOnlineSimulator</a> Team</div>
+                <div class="col-lg-3 support-email">Support: mh487@uowmail.edu.au</div>
             </div>
+            <div class="row line"></div>
+            <div class="padding-1 row"></div>
         </div>
     </div>
 </body>

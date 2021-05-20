@@ -64,8 +64,6 @@
             letter-spacing: -0.015em;
 
             color: rgba(0, 0, 0, 0.8);
-            
-            text-indent: 3%;
         }
 
         .row {
@@ -78,10 +76,6 @@
 
         .padding-1 {
             padding-bottom: 1%;
-        }
-
-        .padding-2 {
-            padding-bottom: 2%;
         }
 
         .footer {
@@ -100,6 +94,8 @@
             letter-spacing: -0.015em;
 
             color: #FFFFFF;
+            padding-bottom: 0%;
+            margin-bottom: 0%;
         }
 
         .support-email {
@@ -107,15 +103,13 @@
             font-style: normal;
             font-weight: normal;
             font-size: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
+            align-items: center;
             text-align: right;
             letter-spacing: -0.015em;
 
             color: #FFFFFF;
-            padding-right: 0%;
-            padding-left: 0%;
+            padding-bottom: 0%;
+            margin-bottom: 0%;
         }
         
         .github-text {
@@ -123,15 +117,12 @@
             font-style: normal;
             font-weight: normal;
             font-size: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
+            line-height: 18px;
+            align-items: center;
             text-align: left;
             letter-spacing: -0.015em;
 
             color: #FFFFFF;
-            padding-right: 0%;
-            padding-left: 0%;
         }
 
         .line {
@@ -216,7 +207,7 @@
         </div>
         <div class="row grey">
             <div class="row"></div>
-            <div class="col-lg-6">
+            <div class="col-lg-6" id = "col-lg-6-left">
                 <p class="para">Wanna inspect your own league?</p>
                 <p class="para">Login to start tournament!</p>
             </div>
@@ -247,11 +238,11 @@
 
     <div class="footer">
         <div class="container-fluid">
-            <div class="padding-2 row"></div>
+            <div class="row"></div>
             <div class="no-padding row">
-                <div class="col-lg-3 github-text d-flex">Published with Github Pages</div>
-                <div class="col-lg-6 support-text">Maintained by <a href="#">RomeoOnlineSimulator</a> Team</div>
-                <div class="col-lg-3 support-email">Support: mh487@uowmail.edu.au</div>
+                <div class="col-lg-3 text-left github-text">Published with Github Pages</div>
+                <div class="col-lg-6 text-center support-text">Maintained by <a href="#">RomeoOnlineSimulator</a> Team</div>
+                <div class="col-lg-3 text-right support-email d-flex">Support: mh487@uowmail.edu.au</div>
             </div>
             <div class="row line"></div>
             <div class="padding-1 row"></div>
