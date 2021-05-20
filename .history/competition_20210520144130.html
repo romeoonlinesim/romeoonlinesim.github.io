@@ -56,7 +56,7 @@
                     brackets.push({
                         lastGames:	round==1 ? null : [last[0].game,last[1].game],
                         nextGame:	nextInc+i>base-1?null:nextInc+i,
-                        teamnames:	round==1 ? [exampleTeams[teamMark],exampleTeams[teamMark+1]] : [last[0].teams[0],last[1].teams[0]],
+                        teamnames:	round==1 ? [exampleTeams[teamMark],exampleTeams[teamMark+1]] : [last[0].teams[0],last[1].teams[1]],
                         bracketNo:	i,
                         roundNo:	round,
                         bye:		isBye
@@ -90,11 +90,11 @@
                         if(gg.bye)
                             round.append('<div></div>');
                         else
-                            round.append('<div><div class="bracketbox"><span class="teama">' + gg.teamnames[0] + '  <b>2</b>' +'</span><span class="teamb">' + gg.teamnames[1] + '  <b>1</b>' + '</span></div></div>');
+                            round.append('<div><div class="bracketbox"><span class="info">'+gg.bracketNo+'</span><span class="teama">'+gg.teamnames[0]+'</span><span class="teamb">'+gg.teamnames[1]+'</span></div></div>');
                     });
                     group.append(round);
                 }
-                group.append('<div class="r'+(groupCount+1)+'"><div class="final"><div class="bracketbox champion"><span class="teamc">'+_.last(struct).teamnames[0]+'</span></div></div></div>');
+                group.append('<div class="r'+(groupCount+1)+'"><div class="final"><div class="bracketbox"><span class="teamc">'+_.last(struct).teamnames[0]+'</span></div></div></div>');
                 $('#brackets').append(group);
                 
                 bracketCount++;
@@ -401,11 +401,6 @@
         }
         .brackets > div > div > div:last-of-type {
             margin-bottom: 0px;
-        }
-
-        .champion {
-            border-bottom: 0px !important; 
-            bottom: -7px;
         }
     </style>
 </head>

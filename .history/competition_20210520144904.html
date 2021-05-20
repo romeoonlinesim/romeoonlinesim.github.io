@@ -94,7 +94,7 @@
                     });
                     group.append(round);
                 }
-                group.append('<div class="r'+(groupCount+1)+'"><div class="final"><div class="bracketbox champion"><span class="teamc">'+_.last(struct).teamnames[0]+'</span></div></div></div>');
+                group.append('<div class="r'+(groupCount+1)+'"><div class="final"><div class="bracketbox"><span class="teamc">'+_.last(struct).teamnames[0]+'</span></div></div></div>');
                 $('#brackets').append(group);
                 
                 bracketCount++;
@@ -404,8 +404,7 @@
         }
 
         .champion {
-            border-bottom: 0px !important; 
-            bottom: -7px;
+            border-bottom: 0p;
         }
     </style>
 </head>
