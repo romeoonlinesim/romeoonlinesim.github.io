@@ -277,7 +277,7 @@
                 </li>
             </ul>
         </div>
-        <div id="navbar-right" class="navbar-right">
+        <div class="navbar-right">
             <a id="login" href="login.html" class="btn btn-primary">Log In</a>
             <a id="register" href="register.html" class="btn btn-outline-primary">Register</a>
         </div>
@@ -327,10 +327,10 @@
 
         function logIn() {
             if (typeof(Storage) !== "undefined") {
-                if (sessionStorage.username !== "undefined")
-                    sessionStorage.setItem("username", document.getElementById("email").value);
-                location.replace("index.html")
+                sessionStorage.setItem("username", document.getElementById("email").value);
             }
+
+            console.log(document.getElementById("email").value);
         }
 
         /*if (typeof(Storage) !== "undefined") {

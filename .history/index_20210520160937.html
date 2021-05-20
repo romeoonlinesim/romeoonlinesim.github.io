@@ -31,15 +31,6 @@
             padding-right:32px;
         }
 
-        .welcome {
-            font-family: Comfortaa;
-            font-style: italic;
-            font-weight: bold;
-            color: #18A0FB;
-            font-size: 20px;
-            letter-spacing: -0.015em;
-        }
-
         .background-img {
             max-width: 100%;
             height: auto;
@@ -205,7 +196,7 @@
                 </li>
             </ul>
         </div>
-        <div id="navbar-right" class="navbar-right">
+        <div class="navbar-right">
             <a id="login" href="login.html" class="btn btn-primary">Log In</a>
             <a id="register" href="register.html" class="btn btn-outline-primary">Register</a>
         </div>
@@ -266,16 +257,5 @@
             <div class="padding-1 row"></div>
         </div>
     </div>
-
-    <script>
-        if (typeof(Storage) !== "undefined") {
-            if (sessionStorage.username !== undefined) {
-                document.getElementById("login").style.display="none";
-                document.getElementById("register").style.display="none";
-                let temp = document.getElementById("navbar-right");
-                temp.innerHTML += "<div class='welcome'>Welcome, " + sessionStorage.username + "<div>"; 
-            }
-        }
-    </script>
 </body>
 </html>

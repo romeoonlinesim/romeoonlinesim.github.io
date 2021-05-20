@@ -33,6 +33,15 @@
             padding-right:32px;
         }
 
+        .welcome {
+            font-family: Comfortaa;
+            font-style: italic;
+            font-weight: bold;
+            color: #18A0FB;
+            font-size: 20px;
+            letter-spacing: -0.015em;
+        }
+
         #logo {
             max-height: 3rem;
             width:auto;
@@ -199,16 +208,16 @@
                     <a class="nav-link" href="competition.html">Live Competition</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="recordings.html">Past Recordings</a>
+                    <a class="nav-link active" href="recordings.html">Past Recordings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="teams.html">Support Teams</a>
+                    <a class="nav-link" href="teams.html">Support Teams</a>
                 </li>
             </ul>
         </div>
-        <div class="navbar-right">
-            <a href="#login" class="btn btn-primary">Log In</a>
-            <a href="register.html" class="btn btn-outline-primary">Register</a>
+        <div id="navbar-right" class="navbar-right">
+            <a id="login" href="#login" class="btn btn-primary">Log In</a>
+            <a id="register" href="register.html" class="btn btn-outline-primary">Register</a>
         </div>
     </div>
 
@@ -272,5 +281,16 @@
             <div class="padding-1 row"></div>
         </div>
     </div>
+
+    <script>
+        if (typeof(Storage) !== "undefined") {
+            if (sessionStorage.username !== undefined) {
+                document.getElementById("login").style.display="none";
+                document.getElementById("register").style.display="none";
+                let temp = document.getElementById("navbar-right");
+                temp.innerHTML += "<div class='welcome'>Welcome, " + sessionStorage.username + "<div>"; 
+            }
+        }
+    </script>
 </body>
 </html>

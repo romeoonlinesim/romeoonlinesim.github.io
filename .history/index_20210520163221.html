@@ -31,15 +31,6 @@
             padding-right:32px;
         }
 
-        .welcome {
-            font-family: Comfortaa;
-            font-style: italic;
-            font-weight: bold;
-            color: #18A0FB;
-            font-size: 20px;
-            letter-spacing: -0.015em;
-        }
-
         .background-img {
             max-width: 100%;
             height: auto;
@@ -269,13 +260,14 @@
 
     <script>
         if (typeof(Storage) !== "undefined") {
-            if (sessionStorage.username !== undefined) {
-                document.getElementById("login").style.display="none";
-                document.getElementById("register").style.display="none";
+                if (sessionStorage.username !== "undefined") {
+                    document.getElementById("login").style.display="none";
+                    document.getElementById("register").style.display="none";
+                }
+
                 let temp = document.getElementById("navbar-right");
-                temp.innerHTML += "<div class='welcome'>Welcome, " + sessionStorage.username + "<div>"; 
+                temp.innerHTML += "<div>Welcome, " + sessionStorage.username + "<div>"; 
             }
-        }
     </script>
 </body>
 </html>

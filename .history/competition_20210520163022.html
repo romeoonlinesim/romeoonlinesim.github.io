@@ -136,15 +136,6 @@
             padding-right:32px;
         }
 
-        .welcome {
-            font-family: Comfortaa;
-            font-style: italic;
-            font-weight: bold;
-            color: #18A0FB;
-            font-size: 20px;
-            letter-spacing: -0.015em;
-        }
-
         .background-img {
             width: 100%;
             height: auto;
@@ -451,10 +442,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link active" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="competition.html">Live Competition</a>
+                    <a class="nav-link" href="competition.html">Live Competition</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="recordings.html">Past Recordings</a>
@@ -519,16 +510,5 @@
             <div class="padding-1 row"></div>
         </div>
     </div>
-
-    <script>
-        if (typeof(Storage) !== "undefined") {
-            if (sessionStorage.username !== undefined) {
-                document.getElementById("login").style.display="none";
-                document.getElementById("register").style.display="none";
-                let temp = document.getElementById("navbar-right");
-                temp.innerHTML += "<div class='welcome'>Welcome, " + sessionStorage.username + "<div>"; 
-            }
-        }
-    </script>
 </body>
 </html>
