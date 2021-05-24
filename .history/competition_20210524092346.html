@@ -26,8 +26,6 @@
                 exampleTeams  = ["Romeo", "Agent2D", "opuCI", "Axiom"], // because a bracket needs some teams!
                 
                 bracketCount = 0;
-
-                matchId = [202104122629, 202104123539, 202104124352];
             
             /*
             * Build our bracket "model"
@@ -62,7 +60,7 @@
                         lastGames:	round==1 ? null : [last[0].game,last[1].game],
                         nextGame:	nextInc+i>base-1?null:nextInc+i,
                         teamnames:	round==1 ? [exampleTeams[teamMark],exampleTeams[teamMark+1]] : [last[0].teams[0],last[1].teams[0]],
-                        bracketNo:	matchId[i-1],
+                        bracketNo:	i,
                         roundNo:	round,
                         bye:		isBye
                     });
@@ -95,7 +93,7 @@
                         if(gg.bye)
                             round.append('<div></div>');
                         else
-                        round.append('<div><div class="bracketbox"><span class="info"><a href="recordings.html">Match ID: '+gg.bracketNo+'</a></span><span class="teama">'+gg.teamnames[0]+'</span><span class="teamb">'+gg.teamnames[1]+'</span></div></div>');
+                            round.append('<div><div class="bracketbox"><span class="teama">' + gg.teamnames[0] + '  <b>2</b>' +'</span><span class="teamb">' + gg.teamnames[1] + '  <b>1</b>' + '</span></div></div>');
                     });
                     group.append(round);
                 }
