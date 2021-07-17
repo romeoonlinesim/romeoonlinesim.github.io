@@ -1,0 +1,37 @@
+.passwordInput {
+	margin-top: 5%;
+	text-align: center;
+}
+.no-display {
+	display: none;
+}
+.container {
+	border-style: solid;
+	border-width: 1px;
+	margin-top: 10%;
+}
+#box {
+	width: 600px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.box {
+	justify-content: space-between;
+}
+input {
+	height: 2.5rem;
+}
+.input-name {
+	width: 45%;
+	text-indent: 10px;
+}
+.input-others {
+	width: 100%;
+	text-indent: 10px;
+}
+.already {
+	display: table;
+	flex-grow: 1;
+}

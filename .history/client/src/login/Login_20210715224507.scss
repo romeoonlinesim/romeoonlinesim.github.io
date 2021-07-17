@@ -1,0 +1,83 @@
+.passwordInput {
+	margin-top: 5%;
+	text-align: center;
+}
+.no-display {
+	display: none;
+}
+.container {
+	border-style: solid;
+	border-width: 1px;
+	margin-top: 10%;
+}
+#box {
+	width: 600px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.box {
+	justify-content: space-between;
+}
+input {
+	height: 2.5rem;
+}
+.input-name {
+	width: 45%;
+	text-indent: 10px;
+}
+.input-others {
+	width: 100%;
+	text-indent: 10px;
+}
+.already {
+	display: table;
+	flex-grow: 1;
+}
+meter {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin: 0 auto 1em;
+	width: 100%;
+	height: .5em;
+	background: none;
+	background-color: rgba(0,0,0,0.1);
+	&::-webkit-meter-bar {
+		background: none;
+		background-color: rgba(0,0,0,0.1);
+	}
+}
+meter[value="1"] {
+	&::-webkit-meter-optimum-value {
+		background: red;
+	}
+	&::-moz-meter-bar {
+		background: red;
+	}
+}
+meter[value="2"] {
+	&::-webkit-meter-optimum-value {
+		background: yellow;
+	}
+	&::-moz-meter-bar {
+		background: yellow;
+	}
+}
+meter[value="3"] {
+	&::-webkit-meter-optimum-value {
+		background: orange;
+	}
+	&::-moz-meter-bar {
+		background: orange;
+	}
+}
+meter[value="4"] {
+	&::-webkit-meter-optimum-value {
+		background: green;
+	}
+	&::-moz-meter-bar {
+		background: green;
+	}
+}
