@@ -7,11 +7,15 @@ import Teams from "../teams/Teams";
 import Login from "../login/Login";
 import Register from "../register/Register";
 
-function Main() {
+function Main(props) {
+    console.log(props);
+    const {authenticated} = props;
+    const {user} = props;
+    console.log({user});
     return (
         <Switch>
             <Route exact path="/" component={Home}></Route>
-            <Route exact path="/competition" component={Competition}></Route>
+            <Route exact path="/competition" render={() => (<Competition authenticated={authenticated} user={user} />)}></Route>
             <Route exact path="/recordings" component={Recordings}></Route>
             <Route exact path="/teams" component={Teams}></Route>
             <Route exact path="/login" component={Login}></Route>
@@ -20,4 +24,5 @@ function Main() {
     );
 }
 
+//<Route exact path="/competition" render={(props) => (<Competition {...props})} ={Competition}></Route>
 export default Main;

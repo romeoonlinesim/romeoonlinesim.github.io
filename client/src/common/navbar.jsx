@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {NavLink} from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import "./navbar.scss";
 import logo from "../img/logo-romeo-header.png";
@@ -44,7 +43,7 @@ class Navbar extends React.Component {
     
     LogOutDiv = (obj, show) => {
         return (<div className="dropdown">
-            <a id="navbarDropdown" className="welcome dropdown-toggle" onClick={this.toggleMenu}>
+            <a href="#" id="navbarDropdown" className="welcome dropdown-toggle" onClick={this.toggleMenu}>
                 Welcome,  {obj.user.username}
             </a>
             <div className={"dropdown-menu dropdown-menu-right " + show}>

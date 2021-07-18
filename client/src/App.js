@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import socketIOClient from "socket.io-client";
-
 
 import Navbar from "./common/navbar";
 import Footer from "./common/footer";
 import Main from "./router/Main"
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "./App.scss";
 
@@ -17,7 +16,7 @@ class App extends React.Component {
     super();
     this.state = {
       authenticated: false,
-      user: {}
+      user: undefined
     }
     this.checkLoginStatus = this.checkLoginStatus.bind(this);
     this.handleLogout = this.handleLogout.bind(this);

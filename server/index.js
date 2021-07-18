@@ -41,37 +41,14 @@ app.use(passport.session());
 app.use(bodyParse.urlencoded({extended:true}));
 app.use(bodyParse.json({extended:true}));
 
-
-
-
-
 app.use(flash());
 
-//set up routes
-app.use("/verifyLogin", require("./routes/login"));
-app.use("/verifyRegister", require("./routes/register"));
-app.use("/logout", require("./routes/logout"));
-
-/*app.get("/logout", (req, res) => {
-    req.logout();
-    res.send({
-        authenticated: req.isAuthenticated(),
-        user: req.user
-    });
-    res.redirect(CLIENT_HOME_PAGE_URL);
-})*/
-
-app.get("/authenticate", (req, res) => {
-    res.send({
-        authenticated: req.isAuthenticated(),
-        user: req.user
-    });
-})
-
-
-/*const socketIo = require("socket.io")(server, {
+//socket.io
+const socketIo = require("socket.io")(server, {
     cors: {
-        origin: "*"
+        origin: "http://localhost:3001",
+        methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
+        credentials: true
     }
 });
 
@@ -87,7 +64,21 @@ socketIo.on("connection", (socket) => {
     socket.on("disconnect", () => {
         console.log("Client disconnected");
     })
-})*/
+})
+
+//set up routes
+app.use("/verifyLogin", require("./routes/login"));
+app.use("/verifyRegister", require("./routes/register"));
+app.use("/logout", require("./routes/logout"));
+
+app.get("/authenticate", (req, res) => {
+    res.send({
+        authenticated: req.isAuthenticated(),
+        user: req.user
+    });
+})
+
+
 
 server.listen(3000, () => {
     console.log("Server listening port 3000");
