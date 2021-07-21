@@ -10,6 +10,8 @@ const fileStore = require("session-file-store");
 const config = require("./config/keys");
 const app = express();
 const server = http.createServer(app);
+global.cycle = 0;
+global.status = false;
 
 const CLIENT_HOME_PAGE_URL = "http://localhost:3001";
 
@@ -70,13 +72,16 @@ socketIo.on("connection", (socket) => {
 app.use("/verifyLogin", require("./routes/login"));
 app.use("/verifyRegister", require("./routes/register"));
 app.use("/logout", require("./routes/logout"));
+app.use("/competition", require("./routes/competition"));
 
 app.get("/authenticate", (req, res) => {
     res.send({
         authenticated: req.isAuthenticated(),
         user: req.user
     });
-})
+});
+
+let currentMatch = 
 
 
 

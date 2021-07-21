@@ -1,11 +1,11 @@
 import React, {useState, useEffect, useRef} from "react";
 import socketIOClient from "socket.io-client";
-import TextareaAutosize from "react-textarea-autosize";
 
 import "./Competition.scss";
 
 function Chat(props) {
     const BACKEND_URL = "http://localhost:3000";
+    const {authenticated} = props;
 
     const initialMess = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 
@@ -36,6 +36,7 @@ function Chat(props) {
       }, []);
       
     const sendMessage = () => {
+        if (props.user === undefined) return;
         if (message !== null && message !== "") {
             if (mess[0] === "")
                 mess.shift(); 
@@ -92,6 +93,7 @@ function Chat(props) {
             <div className="row chat-input pt-3 pb-3">
                 <div className="col-lg-1" />
                 <input type="textarea" className="col-lg-10 chat-text"
+                    disabled={!{authenticated}.authenticated}
                     value={message}
                     onKeyDown={onEnterPress}
                     onChange={handleChange}

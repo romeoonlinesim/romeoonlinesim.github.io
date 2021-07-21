@@ -8,10 +8,9 @@ import Login from "../login/Login";
 import Register from "../register/Register";
 
 function Main(props) {
-    console.log(props);
     const {authenticated} = props;
     const {user} = props;
-    console.log({user});
+    
     return (
         <Switch>
             <Route exact path="/" component={Home}></Route>

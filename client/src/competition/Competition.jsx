@@ -1,16 +1,10 @@
 import React from "react";
 
 import Chat from "./Chat";
+import Field from "./Field";
 import "./Competition.scss";
 
-import field from "../img/field-picture-1.png";
-
 class Competition extends React.Component {
-    constructor(props) {
-        super(props);
-        console.log(this.props);
-    }
-
     render() {
         const {authenticated} = this.props;
         const {user} = this.props;
@@ -19,7 +13,7 @@ class Competition extends React.Component {
             <div className="competition container">
                 <div className="row">
                     <div className="col-lg-8">
-                        <img className="canvas-img" src={field} />
+                        <Field />
                     </div>
                     <div className="col-lg-1" />
                     <Chat authenticated={authenticated} user={user}/>

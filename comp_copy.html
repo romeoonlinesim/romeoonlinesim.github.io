@@ -1,0 +1,781 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Robocup</title>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Montserrat">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Comfortaa">
+
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="https://underscorejs.org/underscore-min.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).on('ready', function() {
+            
+            var knownBrackets = [2,4,8,16,32], // brackets with "perfect" proportions (full fields, no byes)
+            
+                exampleTeams  = ["Romeo", "Agent2D", "opuCI", "Axiom"], // because a bracket needs some teams!
+                
+                bracketCount = 0;
+
+                matchId = [202104122629, 202104123539, 202104124352];
+            
+            /*
+            * Build our bracket "model"
+            */
+            function getBracket(base) {
+            
+                var closest 		= _.find(knownBrackets, function(k) { return k>=base; }),
+                    byes 			= closest-base;  //always = 0
+                    
+                if(byes>0)	base = closest;
+            
+                var brackets 	= [],
+                    round 		= 1,
+                    baseT 		= base/2,
+                    baseC 		= base/2,
+                    teamMark	= 0,
+                    nextInc		= base/2;
+                    
+                for(i=1;i<=(base-1);i++) {
+                    var	baseR = i/baseT,
+                        isBye = false;
+                        
+                    //not happen    
+                    if(byes>0 && (i%2!=0 || byes>=(baseT-i))) {
+                        isBye = true;
+                        byes--;
+                    }
+                    
+                    var last = _.map(_.filter(brackets, function(b) { return b.nextGame == i; }), function(b) { return {game:b.bracketNo,teams:b.teamnames}; });
+                    
+                    brackets.push({
+                        lastGames:	round==1 ? null : [last[0].game,last[1].game],
+                        nextGame:	nextInc+i>base-1?null:nextInc+i,
+                        teamnames:	round==1 ? [exampleTeams[teamMark],exampleTeams[teamMark+1]] : [last[0].teams[0],last[1].teams[0]],
+                        bracketNo:	matchId[i-1],
+                        roundNo:	round,
+                        bye:		isBye
+                    });
+
+                    teamMark+=2;
+                    if(i%2!=0)	nextInc--;
+                    while(baseR>=1) {
+                        round++;
+                        baseC/= 2;
+                        baseT = baseT + baseC;
+                        baseR = i/baseT;
+                    }
+                }
+                
+                renderBrackets(brackets);
+            }
+            
+            /*
+            * Inject our brackets
+            */
+            function renderBrackets(struct) {
+                var groupCount	= _.uniq(_.map(struct, function(s) { return s.roundNo; })).length;
+                
+                var group	= $('<div class="group'+(groupCount+1)+'" id="b'+bracketCount+'"></div>'),
+                    grouped = _.groupBy(struct, function(s) { return s.roundNo; });
+
+                for(g=1;g<=groupCount;g++) {
+                    var round = $('<div class="r'+g+'"></div>');
+                    _.each(grouped[g], function(gg) {
+                        if(gg.bye)
+                            round.append('<div></div>');
+                        else
+                        round.append('<div><div class="bracketbox"><span class="info"><a href="recordings.html">Match ID: '+gg.bracketNo+'</a></span><span class="teama">'+gg.teamnames[0]+' <b>2</b></span><span class="teamb">'+gg.teamnames[1]+' <b>1</b></span></div></div>');
+                    });
+                    group.append(round);
+                }
+                group.append('<div class="r'+(groupCount+1)+'"><div class="final"><div class="bracketbox champion"><span class="teamc">'+_.last(struct).teamnames[0]+'</span></div></div></div>');
+                $('#brackets').append(group);
+                
+                bracketCount++;
+                $('html,body').animate({
+                    scrollTop: $("#b"+(bracketCount-1)).offset().top
+                });
+            }
+            
+            /*$('#add').on('click', function() {
+                var opts = parseInt(prompt('Bracket size (number of teams):',32));
+                
+                if(!_.isNaN(opts) && opts <= _.last(knownBrackets))
+                    getBracket(opts);
+                else
+                    alert('The bracket size you specified is not currently supported.');
+            });*/
+
+            getBracket(4);
+        });
+    </script>      
+
+
+    <style>
+        #canvas {
+            border: solid 20px #060;
+        }
+        .navbar {
+            padding-left:1%;
+            padding-right:1%;
+            padding-top: 0%;
+            padding-bottom:0%;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .navbar-nav > li{
+            padding-left:16px;
+            padding-right:16px;
+        }
+
+        .navbar-right > a {
+            padding-left:32px;
+            padding-right:32px;
+        }
+
+        .welcome {
+            font-family: Comfortaa;
+            font-style: italic;
+            font-weight: bold;
+            color: #18A0FB;
+            font-size: 20px;
+            letter-spacing: -0.015em;
+        }
+
+        .background-img {
+            width: 100%;
+            height: auto;
+        }
+
+        #logo {
+            max-height: 3rem;
+            width:auto;
+        }
+
+
+        .text {
+            align-items: center;
+            display:grid;
+            grid-row-gap: 0%;
+        }
+
+        /*h3 {
+            font-weight: bold;
+        }*/
+
+        .para {
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 32px;
+            line-height: 50px;
+            margin-bottom: 0%;
+            /* or 139% */
+
+            letter-spacing: -0.015em;
+
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .row {
+            padding-bottom: 3%;
+        }
+
+        .no-padding {
+            padding-bottom: 0.25%;
+        }
+
+        .padding-1 {
+            padding-bottom: 1%;
+        }
+
+        .padding-2 {
+            padding-bottom: 2%;
+        }
+
+        .footer {
+            background: #555555;
+            max-height: min-content;
+        }
+
+        .support-text {
+            font-family: Comfortaa;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 28.4444px;
+            line-height: 32px;
+            align-items: center;
+            text-align: center;
+            letter-spacing: -0.015em;
+
+            color: #FFFFFF;
+        }
+
+        .support-email {
+            font-family: Comfortaa;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: right;
+            letter-spacing: -0.015em;
+
+            color: #FFFFFF;
+            padding-right: 0%;
+            padding-left: 0%;
+        }
+
+        .github-text {
+            font-family: Comfortaa;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: left;
+            letter-spacing: -0.015em;
+
+            color: #FFFFFF;
+            padding-right: 0%;
+            padding-left: 0%;
+        }
+
+        .line {
+            height: 1px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.25);
+            padding-bottom: 0px;
+        }
+
+
+        .right {
+            text-align: right;
+            float: right;
+        }
+
+        .grey {
+            background: #F5F5F5;
+        }
+
+        .container {
+            max-width: 90%;
+            margin-top: 3%;
+        }
+
+        .container-fluid {
+            max-width: 75%;
+        }
+
+        .watermark {
+            position: absolute;
+
+            right: 1%;
+            top: 10%;
+
+            font-family: Montserrat;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 56px;
+            line-height: 80px;
+            /* identical to box height, or 143% */
+
+            text-align: center;
+            letter-spacing: -0.015em;
+        }
+
+        .chat-box {
+            border: 1px solid #e5e5e5ad;
+        }
+
+        .chat-header {
+            text-indent: 3%;
+            height: 5%;
+            border-bottom: 1px solid #e5e5e5ad;
+        }
+
+        .chat {
+            background: #faf9f9;
+            height: 80%;
+            text-indent: 3%;
+            display: block;
+            border-bottom: 1px solid #e5e5e5ad;
+            overflow-y: scroll;
+        }
+
+        .chat-input {
+            text-indent: 3%;
+        }
+
+        .chat-text {
+            border-width: 0 0 2px;
+        }
+
+        .already {
+            display: table;
+            flex-grow: 1;
+        }
+
+
+
+        .metroBtn {
+            background-color: #2E7BCC;
+            color: #fff;
+            font-size: 1.1em;
+            padding: 10px;
+            display: inline-block;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+        .brackets > div {
+            vertical-align: top;
+            clear: both;
+        }
+        .brackets > div > div {
+            float: left;
+            height: 100%;
+        }
+        .brackets > div > div > div {
+            margin: 50px 0;
+        }
+        .brackets div.bracketbox {
+            position: relative;
+            width: 100%; height: 100%;
+            border-top: 3px solid #555;
+            border-right: 1px solid #555;
+            border-bottom: 1px solid #555;
+        }
+        .brackets div.bracketbox > span.info {
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            font-size: 0.8em;
+            color: #BBB;
+        }
+        .brackets div.bracketbox > span {
+            position: absolute;
+            left: 5px;
+            font-size: 0.85em;
+        }
+        .brackets div.bracketbox > span.teama {
+            top: -20px;
+        }
+        .brackets div.bracketbox > span.teamb {
+            bottom: -20px;
+        }
+        .brackets div.bracketbox > span.teamc {
+            bottom: 1px;
+        }
+        .brackets > .group2 {
+            height: 260px;
+        }
+        .brackets > .group2 > div {
+            width: 49%;
+        }
+        .brackets > .group3 {
+            height: 320px;
+        }
+        .brackets > .group3 > div {
+            width: 32.7%;
+        }
+        .brackets > .group4 > div {
+            width: 24.5%;
+        }
+        .brackets > .group5 > div {
+            width: 19.6%;
+        }
+        .brackets > .group6 {
+            height: 2000px;
+        }
+        .brackets > .group6 > div {
+            width: 16.3%;
+        }
+        .brackets > div > .r1 > div {
+            height: 60px;
+        }
+        .brackets > div > .r2 > div {
+            margin: 80px 0 110px 0;
+            height: 110px;
+        }
+        .brackets > div > .r3 > div {
+            margin: 135px 0 220px 0;
+            height: 220px;
+        }
+        .brackets > div > .r4 > div {
+            margin: 250px 0 445px 0;
+            height: 445px;
+        }
+        .brackets > div > .r5 > div {
+            margin: 460px 0 0 0;
+            height: 900px;
+        }
+        .brackets > div > .r6 > div {
+            margin: 900px 0 0 0;
+        }
+        .brackets div.final > div.bracketbox {
+            border-top: 0px;
+            border-right: 0px;
+            height: 0px;
+        }
+        .brackets > div > .r4 > div.drop {
+            height: 180px;
+            margin-bottom: 0px;
+        }
+        .brackets > div > .r5 > div.final.drop {
+            margin-top: 345px;
+            margin-bottom: 0px;
+            height: 1px;
+        }
+        .brackets > div > div > div:last-of-type {
+            margin-bottom: 0px;
+        }
+
+        .champion {
+            border-bottom: 0px !important; 
+            bottom: -7px;
+        }
+
+        #canvas {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="index.html" class = "navbar-brand">
+            <img id="logo" src="img/logo-romeo-header.png">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="competition.html">Live Competition</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="recordings.html">Past Recordings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="teams.html">Support Teams</a>
+                </li>
+            </ul>
+        </div>
+        <div id="navbar-right" class="navbar-right">
+            <a id="login" href="login.html" class="btn btn-primary">Log In</a>
+            <a id="register" href="register.html" class="btn btn-outline-primary">Register</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div id = "board" ></div>
+                <canvas id="canvas" width="640" height="458" ></canvas>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 chat-box">
+                <div class="row chat-header">
+                    <h4 class="pt-1">Live Chat</h4>
+                </div>
+                <div class="row chat">
+                    <div class="pb-2 pt-1">
+                        <label>User1:</label>
+                        Chat 1
+                    </div>
+                    <div class="pb-2">
+                        <label>User2:</label>
+                        Chat 2
+                    </div>
+                </div>
+                <div class="row chat-input pt-3 pb-3">
+                    <div class="col-lg-1"></div>
+                    <input class="col-lg-10 chat-text" type="textarea" name="chat" placeholder="Type something"/>
+                    <div class="col-lg-1"></div>
+                </div>
+                <div class="row d-flex">
+                    <div class="col-lg-8"></div>
+                    <input type="button" class="btn btn-primary col-lg-3" value="Send" />
+                    <div class="col-lg-1"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="brackets" id="brackets"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container-fluid">
+            <div class="padding-2 row"></div>
+            <div class="no-padding row">
+                <div class="col-lg-3 github-text d-flex">Published with Github Pages</div>
+                <div class="col-lg-6 support-text">Maintained by <a href="#">RomeoOnlineSimulator</a> Team</div>
+                <div class="col-lg-3 support-email">Support: mh487@uowmail.edu.au</div>
+            </div>
+            <div class="row line"></div>
+            <div class="padding-1 row"></div>
+        </div>
+    </div>
+<script>
+    
+
+
+function draw(pool){
+    var count = 0;
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+  
+
+        // Outer lines
+      ctx.beginPath();
+      ctx.rect(0,0, canvas.width, canvas.height);
+      ctx.fillStyle = "#060";
+      ctx.fill();
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = "#FFF";
+      ctx.stroke();
+      ctx.closePath();
+      // Mid line
+      ctx.beginPath();
+      ctx.moveTo(canvas.width / 2, 0);
+      ctx.lineTo(canvas.width / 2, canvas.height);
+      ctx.stroke();
+      ctx.closePath();
+      
+      //Mid circle
+      ctx.beginPath()
+      ctx.arc(canvas.width / 2, canvas.height / 2, 73, 0, 2*Math.PI, false);
+      ctx.stroke();
+      ctx.closePath();
+      //Mid point
+      ctx.beginPath()
+      ctx.arc(canvas.width / 2, canvas.height / 2, 2, 0, 2*Math.PI, false);
+      ctx.fill();
+      ctx.closePath();
+      
+      //Home penalty box
+      ctx.beginPath();
+      ctx.rect(0, (canvas.height - 322) / 2, 132, 322);
+      ctx.stroke();
+      ctx.closePath();
+      //Home goal box
+      ctx.beginPath();
+      ctx.rect(0, (canvas.height - 146) / 2, 44, 146);
+      ctx.stroke();
+      ctx.closePath();
+      //Home goal 
+      ctx.beginPath();
+      ctx.moveTo(1, (canvas.height / 2) - 40);
+      ctx.lineTo(1, (canvas.height / 2) + 40);
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      
+      ctx.closePath();
+
+      ctx.lineWidth = 1;
+
+      //Home penalty point
+      ctx.beginPath()
+      ctx.arc(88, canvas.height / 2, 1, 0, 2*Math.PI, true);
+      ctx.fill();
+      ctx.closePath();
+      //Home half circle
+      ctx.beginPath()
+      ctx.arc(88, canvas.height / 2, 73, 0.29*Math.PI, 1.71*Math.PI, true);
+      ctx.stroke();
+      ctx.closePath();
+      
+      //Away penalty box
+      ctx.beginPath();
+      ctx.rect(canvas.width-132, (canvas.height - 322) / 2, 132, 322);
+      ctx.stroke();
+      ctx.closePath();
+      //Away goal box
+      ctx.beginPath();
+      ctx.rect(canvas.width-44, (canvas.height - 146) / 2, 44, 146);
+      ctx.stroke();
+      ctx.closePath();      
+      //Away goal 
+      ctx.beginPath();
+      ctx.moveTo(canvas.width-1, (canvas.height / 2) - 40);
+      ctx.lineTo(canvas.width-1, (canvas.height / 2) + 40);
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.closePath();
+      ctx.lineWidth = 1;
+      //Away penalty point
+      ctx.beginPath()
+      ctx.arc(canvas.width-88, canvas.height / 2, 1, 0, 2*Math.PI, true);
+      ctx.fill();
+      ctx.closePath();
+      //Away half circle
+      ctx.beginPath()
+      ctx.arc(canvas.width-88, canvas.height / 2, 73, 0.71*Math.PI, 1.29*Math.PI, false);
+      ctx.stroke();
+      ctx.closePath();
+            
+      //Home L corner
+      ctx.beginPath()
+      ctx.arc(0, 0, 8, 0, 0.5*Math.PI, false);
+      ctx.stroke();
+      ctx.closePath();
+      //Home R corner
+      ctx.beginPath()
+      ctx.arc(0, canvas.height, 8, 0, 2*Math.PI, true);
+      ctx.stroke();
+      ctx.closePath();
+      //Away R corner
+      ctx.beginPath()
+      ctx.arc(canvas.width, 0, 8, 0.5*Math.PI, 1*Math.PI, false);
+      ctx.stroke();
+      ctx.closePath();
+      //Away L corner
+      ctx.beginPath()
+      ctx.arc(canvas.width, canvas.height, 8, 1*Math.PI, 1.5*Math.PI, false);
+      ctx.stroke();
+      ctx.closePath();
+    
+      //drawing
+      pool.forEach(element => {
+        var pos = element.split(",");
+       
+        var a = parseFloat(pos[0])*320/52.5+320;
+        var b = parseFloat(pos[1])*229/34+229;
+        console.log(a + "   " + b + " " );
+   
+        if(count == 0){ 
+            ctx.beginPath();   
+            ctx.strokeStyle ="#ffffff";
+            ctx.arc(a,b,8,0,2*Math.PI);
+            ctx.fill();
+            ctx.stroke();
+            ctx.beginPath();  
+            ctx.fillStyle ="#ffffff";
+            ctx.arc(a,b,2,0,2*Math.PI);
+            ctx.fill();
+            ctx.stroke();         
+        }else{
+            if(count == 1){ //left goalie
+            ctx.fillStyle = "#1DF008";
+        }else if(count == 12){ //right goalie
+            ctx.fillStyle = "#F008DB";
+        }
+        else if(count <= 11){
+            ctx.fillStyle = "#E6D71A";
+        } else{//player
+            ctx.fillStyle = "#1A39E6";
+        }
+        ctx.beginPath();   
+        ctx.strokeStyle ="#000000";       
+        ctx.arc(a,b,8,0,2*Math.PI);
+        ctx.fill();
+        ctx.stroke(); 
+        ctx.beginPath(); 
+        ctx.arc(a,b,3,0,2*Math.PI);
+        ctx.fill();
+        ctx.stroke();         
+        ctx.fillStyle ="#ffffff";
+        ctx.font = "bold 15px Arial";
+        if (count <= 11) 
+			ctx.fillText(count, a+6, b);
+		else
+			ctx.fillText(count-11, a+6, b);
+        } 
+           
+        // ctx.arc(a,b,4,0,2*Math.PI);
+        // ctx.fill();
+        // ctx.stroke(); 
+    
+       
+        count ++; 
+   }); 
+}
+
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+				console.log(rawFile.responseText);
+                var allText = rawFile.responseText.split("\r\n");
+
+                var index = 0;
+                var print = setInterval(function() {
+                    
+                    var e2 = allText[index].split(" ");
+                    if(e2.length < 22){
+                        
+                        var team1 = e2[0];
+                        var team2 = e2[1];
+                        var goal1 = e2[2];
+                        var goal2 = e2[3];
+                        var dis = document.getElementById('board');
+                        dis.innerHTML = team1+team2+goal1+goal2;
+                    } 
+                    console.log(e2);
+                    draw(e2);
+                    index++;
+                    if (index == allText.length) 
+                        clearInterval(print);
+                }, 100);
+                
+            }
+        }
+    }
+    rawFile.send(null);
+    
+}
+
+readTextFile("./out.txt");
+</script>
+    <script>
+        if (typeof(Storage) !== "undefined") {
+            if (sessionStorage.username !== undefined) {
+                document.getElementById("login").style.display="none";
+                document.getElementById("register").style.display="none";
+                let temp = document.getElementById("navbar-right");
+                content = "";
+                content += "<div class='dropdown'><a id='navbarDropdown' class='welcome dropdown-toggle' href='#' role='button'  data-toggle='dropdown' aria-haspopup='true' area-expanded='false'>Welcome, " + sessionStorage.username + "</a>";
+                content += "<div class='dropdown-menu' aria-labelledby='navbarDropdown'>";
+                content += "<a class='dropdown-item' href='#'>Profile</a>";
+                content += "<a class='dropdown-item' href='#'>Help and Support</a>";
+                content += "<div class='dropdown-divider'></div>";
+                content += "<a id='logoutButton' class='dropdown-item' href='#'>Log Out</a></div></div>"; 
+
+                temp.innerHTML += content;
+
+                document.getElementById("logoutButton").addEventListener("click", logout);
+
+                function logout() {
+                    if (typeof(Storage) !== "undefined") {
+                        sessionStorage.removeItem("username")
+                        location.replace("index.html")
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
