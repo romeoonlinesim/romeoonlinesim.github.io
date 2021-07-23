@@ -181,20 +181,23 @@ function Field() {
        }); 
     }
 
-    const displayErrorMessage = () => {
-        console.log("There is currently no ongoing match");
+    const displayErrorMessage = (message) => {
+        console.log(message);
     }
 
     const start = () => {
-        fetch(`${BACKEND_URL}/competition/live`, {credentials: "include"}).
-        then(res => res.json())
-        .then(resBody => {
-            if (resBody.ongoing) {
-                displayErrorMessage(resBody.message);
-            } else {
-                readTextFile(resBody.cycle);
-            }
-        });
+        
+            fetch(`${BACKEND_URL}/competition/live`, {credentials: "include"}).
+            then(res => res.json())
+            .then(resBody => {
+                if (resBody.ongoing === false) {
+                    displayErrorMessage(resBody.message);
+                } else {
+                    console.log(resBody.cycle);
+                    readTextFile(resBody.cycle);
+                }
+            });
+        
     }
     
     const readTextFile = (index) => {
@@ -203,7 +206,8 @@ function Field() {
         rawFile.onreadystatechange = function () {
             if(rawFile.readyState === 4) {
                 if(rawFile.status === 200 || rawFile.status === 0) {
-                    var allText = rawFile.responseText.split("\r\n");
+                    var allText = rawFile.responseText.split("\n");
+                    console.log(allText.length);
                     if (index >= allText.length) {
                         console.log("This match has finished. Please wait for next match.");
                     } else {
@@ -232,13 +236,15 @@ function Field() {
             }
         }
         rawFile.send(null);
+        //try to get new match after finishing the current one
     }
     
     useEffect(() => {
-        start();
-        //readTextFile(0);
-        //this.handleDownload();
-    });
+        if (canvasRef.current) {
+            start()
+            console.log("do nothing");
+        }
+    }, []);
     
 
     return(

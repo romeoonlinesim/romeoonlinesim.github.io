@@ -4,68 +4,76 @@ const Recording = require("../schema/recordingSchema");
 module.exports = async function(competitionNumber, leftTeam, rightTeam, matchNumber) {
     //const path = "/Github Repo/romeoonlinesim.github.io/scripts/main.cpp";
     const path = "/home/nh16";
+    console.log("process record");
 
     getLastFile = () => {
         return new Promise((resolve, reject) => {
-            exec(`ls ${path} -Art | grep '.rcg' | tail -n 1`, (err, stdout, stderr) => {
-                if (err) {
-                    console.log(`error: ${err.message}`);
-                    return ;
-                }
-                if (stderr) {
-                    console.log(`stderr: ${stderr}`);
-                    return; 
-                }
-                if (stdout) {
-                    const tempFileName = stdout.split(".")[0];
-                    const temp = tempFileName.split("-");
-                    const leftMatches = temp[0].match(/\d+$/);
-                    const rightMatches = temp[2].match(/\d+$/);
-                    const leftResult = leftMatches[0];
-                    const rightResult = rightMatches[0];
-                    
-                    if (leftResult > rightResult) {
-                        winner = leftResult;
-                        loser = rightResult;
-                    } else {
-                        winner = rightResult;
-                        loser = leftResult;
+            setTimeout(function() {
+                exec(`ls ${path} -Art | grep '.rcg' | tail -n 1`, (err, stdout, stderr) => {
+                    if (err) {
+                        console.log(`error: ${err.message}`);
+                        return ;
                     }
-
-                    //rename to out.rcg file
-                    exec(`mv ${path}/${stdout} out.rcg`, (err, stdout, stderr) => {
-                        return;
-                    });
-
-                    return resolve({
-                        winner: winner,
-                        loser: loser
-                    });
-                }
-                
-            });
+                    if (stderr) {
+                        console.log(`stderr: ${stderr}`);
+                        return; 
+                    }
+                    if (stdout) {
+                        const tempFileName = stdout.split(".")[0];
+                        const temp = tempFileName.split("-");
+                        const leftMatches = temp[0].match(/\d+$/);
+                        const rightMatches = temp[2].match(/\d+$/);
+                        const leftResult = leftMatches[0];
+                        const rightResult = rightMatches[0];
+                        
+                        if (leftResult > rightResult) {
+                            winner = leftTeam;
+                            loser = rightTeam;
+                        } else {
+                            winner = rightTeam;
+                            loser = leftTeam;
+                        }
+    
+                        //rename to out.rcg file
+                        console.log("mv " + path + "/" + stdout + " " + path + "/out.rcg");
+                        exec("mv " + path + "/" + stdout.split("\n")[0] + " " + path + "/out.rcg", (err, stdout, stderr) => {
+                            if (err) {
+                                console.log(`error rename file: ${err.message}`);
+                                return;
+                            }
+                            if (stderr) {
+                                console.log(`stderr rename file: ${stderr}`);
+                                return; 
+                            }
+                            console.log(`stdout rename file: ${stdout}`);
+                        });
+    
+                        //add new record to database
+                        Recording.create({
+                            competitionNumber: competitionNumber,
+                            matchNumber: matchNumber,
+                            leftTeamNumber: leftTeam,
+                            rightTeamNumber: rightTeam,
+                            winTeamNumber: winner
+                        }, (err, instance) => {
+                            if (err) return handleError(err);
+                        });
+    
+                        return resolve({
+                            winner: winner,
+                            loser: loser
+                        });
+                    }
+                    
+                });
+            }, 2000);
         });   
     }
 
     //remove match's rcl file
     removeRclFile = () => {
-        exec(`rm ${path}/*.rcl`, (err, stdout, stderr) => {
-            if (err) {
-                console.log(`error: ${err.message}`);
-                return;
-            }
-            if (stderr) {
-                console.log(`stderr: ${stderr}`);
-                return; 
-            }
-            console.log(`stdout: ${stdout}`);
-        });
-    }
-
-    //processing cpp script
-    processScript = () => {
         setTimeout(function() {
-            exec(`${path}/main`, (err, stdout, stderr) => {
+                exec(`rm ${path}/*.rcl`, (err, stdout, stderr) => {
                 if (err) {
                     console.log(`error: ${err.message}`);
                     return;
@@ -76,7 +84,24 @@ module.exports = async function(competitionNumber, leftTeam, rightTeam, matchNum
                 }
                 console.log(`stdout: ${stdout}`);
             });
-        }, 2000);
+        }, 1000);
+    }
+
+    //processing cpp script
+    processScript = () => {
+        setTimeout(function() {
+            exec(`${path}/main`, {maxBuffer: 1024*200000}, (err, stdout, stderr) => {
+                if (err) {
+                    console.log(`error: run main`);
+                    return;
+                }
+                if (stderr) {
+                    console.log(`stderr: run main`);
+                    return; 
+                }
+                console.log(`stdout: run main`);
+            });
+        }, 3000);
     }
 
     //rename file
@@ -85,16 +110,16 @@ module.exports = async function(competitionNumber, leftTeam, rightTeam, matchNum
         setTimeout(function() {
             exec(`mv ${path}/out.txt ${path}/${fileName}`, (err, stdout, stderr) => {
                 if (err) {
-                    console.log(`error: ${err.message}`);
+                    console.log(`error: rename file`);
                     return;
                 }
                 if (stderr) {
-                    console.log(`stderr: ${stderr}`);
+                    console.log(`stderr: rename file`);
                     return; 
                 }
-                console.log(`stdout: ${stdout}`);
+                console.log(`stdout: rename file`);
             });
-        }, 4000);
+        }, 4500);
     }
 
     //if folder not exists then create
@@ -103,14 +128,14 @@ module.exports = async function(competitionNumber, leftTeam, rightTeam, matchNum
             exec(`mkdir ${path}/comp${competitionNumber}`, (err, stdout, stderr) => {
                 //if folder not exist
                 if (err) {
-                    console.log(`error: ${err.message}`);
+                    console.log(`error: make folder`);
                     return;
                 }
                 if (stderr) {
-                    console.log(`stderr: ${stderr}`);
+                    console.log(`stderr: make folder`);
                     return; 
                 }
-                console.log(`stdout: ${stdout}`);
+                console.log(`stdout: make folder`);
             });
         }, 5000);
     }
@@ -120,39 +145,40 @@ module.exports = async function(competitionNumber, leftTeam, rightTeam, matchNum
         setTimeout(function() {
             exec(`mv ${path}/${fileName} ${path}/comp${competitionNumber}`, (err, stdout, stderr) => {
                 if (err) {
-                    console.log(`error: ${err.message}`);
+                    console.log(`error: move file`);
                     return;
                 }
                 if (stderr) {
-                    console.log(`stderr: ${stderr}`);
+                    console.log(`stderr: move file`);
                     return; 
                 }
-                console.log(`stdout: ${stdout}`);
+                console.log(`stdout: move file`);
             });
         }, 6000);
     }
 
     removeRcgFile = () => {
-        setTimeout(function() {
-            exec(`rm ${path}/out.rcg`, (err, stdout, stderr) => {
-                return;
-            })
-        }, 7000)
+        return new Promise((resolve, reject) => {
+            setTimeout(function() {
+                exec(`rm ${path}/out.rcg`, (err, stdout, stderr) => {
+                    if (err) {
+                        resolve(console.log(`error: remove rcg file`));
+                        return;
+                    }
+                    if (stderr) {
+                        resolve(console.log(`stderr: remove rcg file`));
+                        return resolve(stderr); 
+                    }
+                    return resolve(console.log(`stdout: remove rcg file`));
+                })
+            }, 7000);
+        })
+        
     }
 
-    //add new record to database
-    addRecord = () => {
-            Recording.create({
-            competitionNum: competitionNumber,
-            matchNumber: matchNumber,
-            leftTeamNumber: leftTeam,
-            rightTeamNumber: rightTeam,
-            winTeamNumber: winner
-        }, (err, instance) => {
-            if (err) return handleError(err);
-        });
-    }
+    
 
-    const result = await Promise.all([getLastFile(), removeRclFile(), processScript(), renameFile(), makeFolder(), moveFile(), addRecord()]);
+    const result = await Promise.all([getLastFile(), removeRclFile(), processScript(), renameFile(), makeFolder(), moveFile(), removeRcgFile()]);
+    console.log("process record done");
     return result[0];
 }

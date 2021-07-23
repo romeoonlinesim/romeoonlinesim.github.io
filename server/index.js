@@ -10,14 +10,20 @@ const fileStore = require("session-file-store");
 const config = require("./config/keys");
 const app = express();
 const server = http.createServer(app);
+const addTeam = require("./start/addTeam");
 global.cycle = 0;
 global.status = false;
+global.match = "";
+global.matchCount = 1;
 
 const CLIENT_HOME_PAGE_URL = "http://localhost:3001";
 
 //connect to mongodb
 const MONGO_URI = "mongodb://127.0.0.1/romeo";
 mongoose.connect(MONGO_URI, {useNewUrlParser: true});
+
+//set up teams if needed
+addTeam();
 
 //set up session
 app.use(session({
@@ -45,6 +51,7 @@ app.use(bodyParse.json({extended:true}));
 
 app.use(flash());
 
+
 //socket.io
 const socketIo = require("socket.io")(server, {
     cors: {
@@ -66,7 +73,7 @@ socketIo.on("connection", (socket) => {
     socket.on("disconnect", () => {
         console.log("Client disconnected");
     })
-})
+});
 
 //set up routes
 app.use("/verifyLogin", require("./routes/login"));
@@ -81,7 +88,7 @@ app.get("/authenticate", (req, res) => {
     });
 });
 
-let currentMatch = 
+
 
 
 
