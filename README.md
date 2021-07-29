@@ -1,50 +1,30 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/hmywudi/romeoOnline.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
+### This application runs best on Ubuntu 18.04 because of its dependency, "Robocup Soccer Server". Therefore, if there are any problems of running this on other OS, please try to run this on Ubuntu 18.04.
 
 ### How to install and run
+First, you need to install Soccerserver by following the README.md file from this repository:
+
+https://github.com/rcsoccersim/rcssserver
+
+Then, you need to install MongoDB on your computer or server. For Linux system, it can be installed by following this guide:
+
+https://docs.mongodb.com/manual/administration/install-on-linux/
+
+The port that MongoDB uses should be kept by default, which is 27017.
+
+
 To start nodejs:
 Go to terminal from the root of this folder, then run:
+```
 npm install
 npm start
+```
 
 To start reactjs:
 Go to terminal from the root of this folder, then run:
+```
 cd client
 npm install
 npm start
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/hmywudi/romeoOnline.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+If you do the above commands without any errors, the frontend interface could be accessed at http://localhost:5000 from your computer.
