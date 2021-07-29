@@ -1,0 +1,11 @@
+import React from "react";
+
+import "./Teams.scss";
+
+class Teams extends React.Component {
+    render() {
+        return <div></div>;
+    }
+}
+
+export default Teams;

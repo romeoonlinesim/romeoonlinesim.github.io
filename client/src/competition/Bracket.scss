@@ -1,0 +1,32 @@
+.bracket-table {
+    border: none;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    height: auto;
+}
+
+td {
+    height: 4rem;
+}
+
+.score {
+    padding-left: 10px;
+    font-size: 1.5rem;
+}
+
+.bracket-team {
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.bracket-line {
+    border-right: 1px solid black;
+}
+
+.bracket-between {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
