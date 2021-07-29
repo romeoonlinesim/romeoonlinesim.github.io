@@ -6,6 +6,7 @@ import Recordings from "../recordings/Recordings";
 import Teams from "../teams/Teams";
 import Login from "../login/Login";
 import Register from "../register/Register";
+import Playback from "../competition/Playback";
 
 function Main(props) {
     const {authenticated} = props;
@@ -19,6 +20,7 @@ function Main(props) {
             <Route exact path="/teams" component={Teams}></Route>
             <Route exact path="/login" component={Login}></Route>
             <Route exact path="/register" component={Register}></Route>
+            <Route path="/playback/:folderName/:fileName" component={Playback}></Route>
         </Switch>
     );
 }

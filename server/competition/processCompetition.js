@@ -69,21 +69,6 @@ module.exports = async function(teams) {
     .then(async function(currentComp) {
         //if not existed, create new
         if (currentComp.initialized === false) {
-            //shuffle brackets
-            var currentIndex = teams.length, randomIndex;
-    
-            // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
-    
-                // Pick a remaining element...
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex--;
-    
-                // And swap it with the current element.
-                [teams[currentIndex], teams[randomIndex]] = [
-                teams[randomIndex], teams[currentIndex]];
-            }
-
             //start new competition
             await Competition.create({
                 index: currentComp.compNumber,
@@ -94,6 +79,9 @@ module.exports = async function(teams) {
                 firstRound: teams,
                 secondRound: [],
                 thirdRound: [],
+                firstRoundResult: new Array(),
+                secondRoundResult: new Array(),
+                thirdRoundResult: new Array(),
                 ongoing: true,
                 ongoingMatch: 0
             }, (err, instance ) => {
@@ -108,11 +96,13 @@ module.exports = async function(teams) {
             Competition.findOne({index: currentComp.compNumber})
             .then(async function(currentCompetition) {
                 var remainingMatches  = [];
+                var currentRound = 0;
                 var ongoingMatch = 1;
 
                 while (ongoingMatch < currentCompetition.numberOfTeams) {
                     if (remainingMatches.length === 0) {
                         remainingMatches = currentCompetition.remainingTeams.slice();
+                        currentRound++;
                     }
                     currentCompetition.ongoingMatch = ongoingMatch;
 
@@ -122,7 +112,7 @@ module.exports = async function(teams) {
                     console.log("prcessCompatition teams: " + leftTeam + " " + rightTeam);
 
                     //wait for the match to finish
-                    const tmp = await Promise.all([processMatch(currentCompetition, leftTeam, rightTeam, ongoingMatch)]);
+                    const tmp = await Promise.all([processMatch(currentCompetition, leftTeam, rightTeam, ongoingMatch, currentRound)]);
                     const matchLoser = tmp[0].loser;
 
                     //start counting cycles if match available and no cycle is being counted
@@ -159,6 +149,8 @@ module.exports = async function(teams) {
                         currentCompetition.secondRound = remainingTeams;
                     } else if (remainingTeams.length === teams.length/4) {
                         currentCompetition.thirdRound = remainingTeams;
+                    } else if (remainingTeams.length === 1) {
+                        currentCompetition.thirdRoundResult = results;
                     }
 
                     //if last match, save the winner

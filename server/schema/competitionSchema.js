@@ -11,6 +11,9 @@ const competitionSchema = new Schema({
     firstRound: Array,
     secondRound: Array,
     thirdRound: Array,
+    firstRoundResult: Array,
+    secondRoundResult: Array,
+    thirdRoundResult: Array,
     ongoing: Boolean,
     ongoingMatch: Number
 });

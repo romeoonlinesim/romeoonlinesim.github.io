@@ -1,5 +1,6 @@
 import React from "react";
 import { Parallax } from "react-parallax";
+import { NavLink } from "react-router-dom";
 
 import "./Home.scss";
 
@@ -52,7 +53,9 @@ class Home extends React.Component {
                 <div className="col-lg-6 row">
                     <div className="row" />
                     <div className="col-lg-3" />
-                    <button onClick={this.startCompetition} id="join_today" type="button" className="btn btn-primary col-lg-3">Join Today</button>
+                    <NavLink exact to="/register" className="col-lg-3">
+                        <button id="join_today" type="button" className="btn btn-primary col-lg-12">Join Today</button>
+                    </NavLink>
                     <div className="col-lg-1" />
                     <button type="button" className="btn btn-outline-primary col-lg-3">Contact Us</button>
                 </div>

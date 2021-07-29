@@ -17,7 +17,8 @@ class Teams extends React.Component {
 
     render() {
         return (
-            <div className="row row-team">
+            <div className="row-team">
+            <div className="row">
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card"><a href="#"><img className="img-fluid card-img-top" src={img1} /></a>
                         <div className="card-body">
@@ -56,6 +57,7 @@ class Teams extends React.Component {
                         <div className="card-footer text-center"><small><a href="#"><i className="fa fa-download pe-1" />Axiom.tar.gz<br /></a></small></div>
                     </div>
                 </div>
+            </div>
             </div>
         );
     }

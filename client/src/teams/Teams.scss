@@ -5,8 +5,11 @@
 }
 
 .row-team {
-    padding-left: 10%;
-    padding-right: 10%;
+    max-width: 80%;
+    padding-right: var(--bs-gutter-x,.75rem);
+    padding-left: var(--bs-gutter-x,.75rem);
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .card-cover {

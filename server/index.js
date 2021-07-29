@@ -16,7 +16,7 @@ global.status = false;
 global.match = "";
 global.matchCount = 1;
 
-const CLIENT_HOME_PAGE_URL = "http://localhost:3001";
+const CLIENT_HOME_PAGE_URL = "http://localhost:5000";
 
 //connect to mongodb
 const MONGO_URI = "mongodb://127.0.0.1/romeo";
@@ -36,7 +36,7 @@ app.use(session({
 //set up cors to allow to accept requests from client
 app.use(
     cors({
-        origin: "http://localhost:3001",
+        origin: "http://localhost:5000",
         methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
         credentials: true
     })
@@ -46,8 +46,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(bodyParse.urlencoded({extended:true}));
-app.use(bodyParse.json({extended:true}));
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 app.use(flash());
 
@@ -55,7 +55,7 @@ app.use(flash());
 //socket.io
 const socketIo = require("socket.io")(server, {
     cors: {
-        origin: "http://localhost:3001",
+        origin: "http://localhost:5000",
         methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
         credentials: true
     }
@@ -80,6 +80,7 @@ app.use("/verifyLogin", require("./routes/login"));
 app.use("/verifyRegister", require("./routes/register"));
 app.use("/logout", require("./routes/logout"));
 app.use("/competition", require("./routes/competition"));
+app.use("/recordings", require("./routes/recordings"));
 
 app.get("/authenticate", (req, res) => {
     res.send({
@@ -87,10 +88,6 @@ app.get("/authenticate", (req, res) => {
         user: req.user
     });
 });
-
-
-
-
 
 server.listen(3000, () => {
     console.log("Server listening port 3000");

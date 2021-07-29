@@ -3,10 +3,21 @@
     margin-top: 3% !important;
 }
 
-.canvas-img {
+.field-container {
+    position: relative;
+}
+
+.canvas-field {
     width: 100%;
     height: auto;
     border: solid 20px #060;
+}
+
+.score-display {
+    color: white;
+    position: absolute;
+    left: 40%;
+    right: 30%;
 }
 
 .chat-box {

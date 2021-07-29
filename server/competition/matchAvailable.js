@@ -11,9 +11,7 @@ module.exports = async function(ongoingMatch) {
     if (competition.ongoing === false ) {
         return false;
     }
-    
-    console.log("matchAvailable competition" + competition.index + " " + competition.ongoingMatch + " " + ongoingMatch);
-    var recording
+
     if (ongoingMatch !== 0) {
         recording = await Recording.findOne({
             competitionNumber: competition.index,

@@ -1,7 +1,7 @@
 const {exec} = require("child_process");
 const Recording = require("../schema/recordingSchema");
 
-module.exports = async function(competitionNumber, leftTeam, rightTeam, matchNumber) {
+module.exports = async function(competition, leftTeam, rightTeam, matchNumber, currentRound) {
     //const path = "/Github Repo/romeoonlinesim.github.io/scripts/main.cpp";
     const path = "/home/nh16";
     console.log("process record");
@@ -25,6 +25,8 @@ module.exports = async function(competitionNumber, leftTeam, rightTeam, matchNum
                         const rightMatches = temp[2].match(/\d+$/);
                         const leftResult = leftMatches[0];
                         const rightResult = rightMatches[0];
+                        const leftPenaltyCheck = leftMatches[1];
+                        const rightPenaltyCheck = rightMatches[1];
                         
                         if (leftResult > rightResult) {
                             winner = leftTeam;
@@ -33,6 +35,32 @@ module.exports = async function(competitionNumber, leftTeam, rightTeam, matchNum
                             winner = rightTeam;
                             loser = leftTeam;
                         }
+
+                        //add to result
+                        if (leftPenaltyCheck === rightPenaltyCheck && leftPenaltyCheck !== undefined && rightPenaltyCheck !== undefined) {
+                            if (currentRound === 1) {
+                                competition.firstRoundResult.push(leftPenaltyCheck + " (" + leftResult + ")");
+                                competition.firstRoundResult.push(rightPenaltyCheck + " (" + rightResult + ")");
+                            } else if (currentRound === 2) {
+                                competition.secondRoundResult.push(leftPenaltyCheck + " (" + leftResult + ")");
+                                competition.secondRoundResult.push(rightPenaltyCheck + " (" + rightResult + ")");
+                            } else if (currentRound === 3) {
+                                competition.thirdRoundResult.push(leftPenaltyCheck + " (" + leftResult + ")");
+                                competition.thirdRoundResult.push(rightPenaltyCheck + " (" + rightResult + ")");
+                            }
+                        } else {
+                            if (currentRound === 1) {
+                                competition.firstRoundResult.push(leftResult);
+                                competition.firstRoundResult.push(rightResult);
+                            } else if (currentRound === 2) {
+                                competition.secondRoundResult.push(leftResult);
+                                competition.secondRoundResult.push(rightResult);
+                            } else if (currentRound === 3) {
+                                competition.thirdRoundResult.push(leftResult);
+                                competition.thirdRoundResult.push(rightResult);
+                            }
+                        }
+                        competition.save();
     
                         //rename to out.rcg file
                         console.log("mv " + path + "/" + stdout + " " + path + "/out.rcg");
@@ -50,7 +78,7 @@ module.exports = async function(competitionNumber, leftTeam, rightTeam, matchNum
     
                         //add new record to database
                         Recording.create({
-                            competitionNumber: competitionNumber,
+                            competitionNumber: competition.index,
                             matchNumber: matchNumber,
                             leftTeamNumber: leftTeam,
                             rightTeamNumber: rightTeam,
@@ -59,6 +87,8 @@ module.exports = async function(competitionNumber, leftTeam, rightTeam, matchNum
                             if (err) return handleError(err);
                         });
     
+                        
+
                         return resolve({
                             winner: winner,
                             loser: loser
@@ -105,7 +135,7 @@ module.exports = async function(competitionNumber, leftTeam, rightTeam, matchNum
     }
 
     //rename file
-    const fileName = "comp" + competitionNumber + "-team" + leftTeam + "-team" + rightTeam + ".txt";
+    const fileName = "comp" + competition.index + "-team" + leftTeam + "-team" + rightTeam + ".txt";
     renameFile = () => {
         setTimeout(function() {
             exec(`mv ${path}/out.txt ${path}/${fileName}`, (err, stdout, stderr) => {
@@ -125,7 +155,7 @@ module.exports = async function(competitionNumber, leftTeam, rightTeam, matchNum
     //if folder not exists then create
     makeFolder = () => {
         setTimeout(function() {
-            exec(`mkdir ${path}/comp${competitionNumber}`, (err, stdout, stderr) => {
+            exec(`mkdir ${path}/comp${competition.index}`, (err, stdout, stderr) => {
                 //if folder not exist
                 if (err) {
                     console.log(`error: make folder`);
@@ -143,7 +173,7 @@ module.exports = async function(competitionNumber, leftTeam, rightTeam, matchNum
     //move file into folder
     moveFile = () => {
         setTimeout(function() {
-            exec(`mv ${path}/${fileName} ${path}/comp${competitionNumber}`, (err, stdout, stderr) => {
+            exec(`mv ${path}/${fileName} ${path}/comp${competition.index}`, (err, stdout, stderr) => {
                 if (err) {
                     console.log(`error: move file`);
                     return;

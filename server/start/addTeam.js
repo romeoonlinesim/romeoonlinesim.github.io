@@ -17,7 +17,7 @@ module.exports = function() {
     
             Team.create({
                 index: 2,
-                name: "OPUCI_2D_2010",
+                name: "OPUCI_2D",
                 path: "/home/nh16/Downloads/opuci_2d-robocup2010/opuci_2d-robocup2010/src/start.sh"
             }, (err, instance ) => {
                 if (err) return handleError(err);
@@ -33,7 +33,7 @@ module.exports = function() {
     
             Team.create({
                 index: 4,
-                name: "OPUCI_2D_",
+                name: "Axiom",
                 path: "/home/nh16/Downloads/Axiom_SS2D_RC2012_SRC/Axiom_SourceCode_Release2012/src/start.sh"
             }, (err, instance ) => {
                 if (err) return handleError(err);

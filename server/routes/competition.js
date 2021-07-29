@@ -4,10 +4,8 @@ const Competition = require("../schema/competitionSchema");
 const processCompetition = require("../competition/processCompetition");
 const matchAvailable = require("../competition/matchAvailable");
 
-const sp = require("synchronized-promise");
-
-router.get("/start", (req, res) => {
-    //processCompetition([1,2,3,4]);
+router.post("/start", (req, res) => {
+    console.log(req.body);
     Competition.findOne().sort({_id: -1})
     .then((currentCompetition) => {
         if (currentCompetition !== null && currentCompetition.ongoing === true) {
@@ -17,12 +15,12 @@ router.get("/start", (req, res) => {
             });
         } else {
             //if no ongoing competition, start one
-            processCompetition([1,2,3,4]);
+            processCompetition(req.body.teams);
             res.send({
                 success: true
             });
         }
-    })
+    });
     
 });
 
@@ -39,6 +37,7 @@ router.get("/live", function(req, res) {
                 res.send({
                     cycle: global.cycle,
                     ongoing: false,
+                    competitionStart: false,
                     message: "There is no ongoing competition. If you want, you can start a new one."
                 });
             } //else if (currentCompetition.ongoing === true && match === false) {
@@ -46,12 +45,14 @@ router.get("/live", function(req, res) {
                 res.send({
                     cycle: global.cycle,
                     ongoing: false,
+                    competitionStart: true,
                     message: "The current match may need some time to process. You can try to refresh the page."
                 });
             } else {
                 res.send({
                     cycle: global.cycle,
                     ongoing: true,
+                    competitionStart: true,
                     message: "success"
                 });
             }
@@ -63,22 +64,10 @@ router.get("/live", function(req, res) {
     })
 });
 
-router.get("/liveMatch",async function(req, res) {
+router.get("/liveMatch", function(req, res) {
     try {
         console.log("success");
-        res.sendFile(global.match);
-        /*const temp = await Promise.all([matchAvailable(0)]);
-        const path = temp[0];
-        if (path !== false) {
-            console.log("success");
-            res.sendFile(path);
-        } else {
-            res.send({
-                ongoing: false,
-                message: "Something wrong"
-            });
-        }*/
-        
+        res.sendFile(global.match);        
     }
     catch (err) {
         console.log(err);

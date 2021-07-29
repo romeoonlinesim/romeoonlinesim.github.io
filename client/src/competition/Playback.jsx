@@ -1,9 +1,12 @@
 import React, {useEffect, useRef, useState} from "react";
+import {useParams} from "react-router-dom";
 
 import "./Competition.scss";
 
-function Field() {
-
+function Playback() {
+    const {folderName} = useParams();
+    const {fileName} = useParams();
+    const parameter = "/" + folderName + "/" + fileName;
     const BACKEND_URL = "http://localhost:3000";
     const canvasOriginalWidth = 640;
 
@@ -14,6 +17,28 @@ function Field() {
     const canvasRef = useRef();
     const scoreRef = useRef();
 
+    const displayErrorMessage = (message) => {
+        var canvas = canvasRef.current;
+        var ctx = canvas.getContext('2d');
+        var scale = (window.innerWidth)/(canvasOriginalWidth);
+        ctx.canvas.width = window.innerWidth;
+        ctx.canvas.height = ctx.canvas.width/640*480;
+    
+        // Outer lines
+        ctx.beginPath();
+        ctx.rect(0,0, canvas.width, canvas.height);
+        ctx.fillStyle = "#060";
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.fillStyle = "#ffffff";
+        let fontsize = 15*scale;
+        ctx.font = fontsize + "px Arial";
+        const textWidth = ctx.measureText(message).width;
+        ctx.fillText(message, (canvas.width/2) - (textWidth/2), 100);
+        console.log(message);
+    }
+
     const draw = (pool, time) => {
         if (canvasRef.current === null) {
             setCanvasState(false);
@@ -21,7 +46,6 @@ function Field() {
         }
         var count = 0;
         var canvas = canvasRef.current;
-        
         var ctx = canvas.getContext('2d');
         var scale = (window.innerWidth)/(canvasOriginalWidth);
         ctx.canvas.width = window.innerWidth;
@@ -190,46 +214,10 @@ function Field() {
             count ++; 
        }); 
     }
-
-    const displayErrorMessage = (message) => {
-        var canvas = canvasRef.current;
-        var ctx = canvas.getContext('2d');
-        var scale = (window.innerWidth)/(canvasOriginalWidth);
-        ctx.canvas.width = window.innerWidth;
-        ctx.canvas.height = ctx.canvas.width/640*480;
-    
-        // Outer lines
-        ctx.beginPath();
-        ctx.rect(0,0, canvas.width, canvas.height);
-        ctx.fillStyle = "#060";
-        ctx.fill();
-        ctx.closePath();
-
-        ctx.fillStyle = "#ffffff";
-        let fontsize = 15*scale;
-        ctx.font = fontsize + "px Arial";
-        const textWidth = ctx.measureText(message).width;
-        ctx.fillText(message, (canvas.width/2) - (textWidth/2), 100);
-        console.log(message);
-    }
-
-    const start = () => {
-            fetch(`${BACKEND_URL}/competition/live`, {credentials: "include"}).
-            then(res => res.json())
-            .then(resBody => {
-                if (resBody.ongoing === false) {
-                    displayErrorMessage(resBody.message);
-                } else {
-                    console.log(resBody.cycle);
-                    readTextFile(resBody.cycle);
-                }
-            });
-        
-    }
     
     const readTextFile = (index) => {
         var rawFile = new XMLHttpRequest();
-        rawFile.open("GET", BACKEND_URL + "/competition/liveMatch", false);
+        rawFile.open("GET", BACKEND_URL + "/recordings/playback" +parameter, false);
         rawFile.onreadystatechange = function () {
             if(rawFile.readyState === 4) {
                 if(rawFile.status === 200 || rawFile.status === 0) {
@@ -298,6 +286,7 @@ function Field() {
                             if (canvasState === false) {
                                 clearInterval(print);
                             }
+                            
                             if (index === allText.length) 
                                 clearInterval(print);
                         }, 100);
@@ -311,33 +300,40 @@ function Field() {
     }
     
     useEffect(() => {
-        if (canvasRef.current) {
-            start();
+        if (parameter !== undefined) {
+            readTextFile(0);
+        } else {
+            displayErrorMessage("There is something wrong.");
         }
-
+        
         return function cleanup() {
             setCanvasState(false);
         }
     }, []);
 
     useEffect(() => {
-
     }, [score]);
     
 
     return(
-        <div className="col-lg-8 field-container">
-            <div className="score-display"
-                ref={scoreRef}>
-                    {score}
+        <div className="container">
+            <div className="row">
+                <div className="col-lg-1"></div>
+                <div className="col-lg-10 field-container pt-4">
+                    <div className="score-display"
+                        ref={scoreRef}>
+                            {score}
+                    </div>
+                    <canvas className="canvas-field" 
+                        ref={canvasRef}
+                        width="640"
+                        />
+                </div>
+                <div className="col-lg-1"></div>
             </div>
-            <canvas className="canvas-field" 
-                ref={canvasRef}
-                width="640"
-                />
         </div>
     );
 
 }
 
-export default Field;
+export default Playback;

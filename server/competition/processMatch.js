@@ -4,7 +4,7 @@ const processRecord = require("../recordings/processRecord");
 
 
 
-module.exports = async function(competition, leftTeam, rightTeam, matchNumber) {
+module.exports = async function(competition, leftTeam, rightTeam, matchNumber, currentRound) {
     const left = await Team.findOne({index: leftTeam});
     const right = await Team.findOne({index: rightTeam});
     const leftTeamPath = left.path;
@@ -26,7 +26,7 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber) {
                     if (stderr) {
                         console.log(`stderr: ${stderr}`);
                         //when finish the match process record
-                        return resolve(processRecord(competition.index, leftTeam, rightTeam, matchNumber));
+                        return resolve(processRecord(competition, leftTeam, rightTeam, matchNumber, currentRound));
                     }
                     //console.log(`stdout: ${stdout}`);
                 });
