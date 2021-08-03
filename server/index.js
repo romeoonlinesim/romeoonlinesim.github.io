@@ -82,7 +82,7 @@ app.use("/api/logout", require("./routes/logout"));
 app.use("/api/competition", require("./routes/competition"));
 app.use("/api/recordings", require("./routes/recordings"));
 
-app.get("/authenticate", (req, res) => {
+app.get("/api/authenticate", (req, res) => {
     res.send({
         authenticated: req.isAuthenticated(),
         user: req.user
