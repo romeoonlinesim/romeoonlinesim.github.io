@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import React from "react";
 
 import Navbar from "./common/navbar";
 import Footer from "./common/footer";
@@ -33,6 +32,7 @@ class App extends React.Component {
         });
       },
       (error) => {
+        console.log(error);
         console.log("error fetching");
       }
     );

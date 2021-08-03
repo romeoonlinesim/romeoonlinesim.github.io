@@ -1,5 +1,5 @@
 const express = require("express");
-const session = require("cookie-session");
+const session = require("express-session");
 const http = require("http");
 const mongoose = require("mongoose");
 const passport = require("./auth/passport");
@@ -11,6 +11,7 @@ const config = require("./config/keys");
 const app = express();
 const server = http.createServer(app);
 const addTeam = require("./start/addTeam");
+require('dotenv').config();
 global.cycle = 0;
 global.status = false;
 global.match = "";
@@ -36,7 +37,9 @@ app.use(session({
 //set up cors to allow to accept requests from client
 app.use(
     cors({
-        origin: "*",
+        origin: process.env.NODE_ENV === "production" 
+                ? process.env.CLIENT_HOMEPAGE
+                : "http://localhost:5000",
         methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
         credentials: true
     })
@@ -55,7 +58,9 @@ app.use(flash());
 //socket.io
 const socketIo = require("socket.io")(server, {
     cors: {
-        origin: "*",
+        origin: process.env.NODE_ENV === "production" 
+                ? process.env.CLIENT_HOMEPAGE
+                : "http://localhost:5000",
         methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
         credentials: true
     }
