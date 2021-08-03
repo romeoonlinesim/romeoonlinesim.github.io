@@ -76,11 +76,11 @@ socketIo.on("connection", (socket) => {
 });
 
 //set up routes
-app.use("/verifyLogin", require("./routes/login"));
-app.use("/verifyRegister", require("./routes/register"));
-app.use("/logout", require("./routes/logout"));
-app.use("/competition", require("./routes/competition"));
-app.use("/recordings", require("./routes/recordings"));
+app.use("/api/verifyLogin", require("./routes/login"));
+app.use("/api/verifyRegister", require("./routes/register"));
+app.use("/api/logout", require("./routes/logout"));
+app.use("/api/competition", require("./routes/competition"));
+app.use("/api/recordings", require("./routes/recordings"));
 
 app.get("/authenticate", (req, res) => {
     res.send({
