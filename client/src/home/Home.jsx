@@ -7,7 +7,7 @@ import "./Home.scss";
 import background from "../img/bg-1.png";
 import secondBackground from "../img/robocup-1.png";
 
-const BACKEND_URL = "http://localhost:3000"
+const BACKEND_URL = process.env.REACT_APP_SERVER_URL;
 class Home extends React.Component {
     constructor() {
         super();

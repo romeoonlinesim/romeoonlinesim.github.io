@@ -16,7 +16,7 @@ global.status = false;
 global.match = "";
 global.matchCount = 1;
 
-const CLIENT_HOME_PAGE_URL = "http://localhost:5000";
+//const CLIENT_HOME_PAGE_URL = "http://localhost:5000";
 
 //connect to mongodb
 const MONGO_URI = "mongodb://127.0.0.1/romeo";
@@ -36,7 +36,7 @@ app.use(session({
 //set up cors to allow to accept requests from client
 app.use(
     cors({
-        origin: "http://localhost:5000",
+        origin: "*",
         methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
         credentials: true
     })
@@ -55,7 +55,7 @@ app.use(flash());
 //socket.io
 const socketIo = require("socket.io")(server, {
     cors: {
-        origin: "http://localhost:5000",
+        origin: "*",
         methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
         credentials: true
     }

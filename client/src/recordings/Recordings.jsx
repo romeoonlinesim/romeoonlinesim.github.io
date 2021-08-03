@@ -6,7 +6,7 @@ import {NavLink} from "react-router-dom";
 
 import "./Recordings.scss";
 
-const BACKEND_URL = "http://localhost:3000";
+const BACKEND_URL = process.env.REACT_APP_SERVER_URL;
 
 function Recordings() {
     let [open, setOpen] = useState([]);

@@ -7,7 +7,7 @@ import {faDice} from "@fortawesome/free-solid-svg-icons";
 
 import "./Initiate.scss";
 
-const BACKEND_URL = "http://localhost:3000";
+const BACKEND_URL = process.env.REACT_APP_SERVER_URL;
 
 function Initiate(props) {
     const [selectedOptions, setSelectedOptions] = useState(null);

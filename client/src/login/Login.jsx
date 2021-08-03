@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.scss";
 
-const BACKEND_URL = "http://localhost:3000";
+const BACKEND_URL = process.env.REACT_APP_SERVER_URL;
 
 class Login extends React.Component {
     state = {

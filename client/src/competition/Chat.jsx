@@ -4,7 +4,7 @@ import socketIOClient from "socket.io-client";
 import "./Competition.scss";
 
 function Chat(props) {
-    const BACKEND_URL = "http://localhost:3000";
+    const BACKEND_URL = process.env.REACT_APP_SERVER_URL;
     const {authenticated} = props;
 
     const initialMess = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];

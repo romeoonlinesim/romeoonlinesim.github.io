@@ -4,7 +4,7 @@ import "./Register.scss";
 
 const zxcvbn = import("zxcvbn");
 
-const BACKEND_URL = "http://localhost:3000";
+const BACKEND_URL = process.env.REACT_APP_SERVER_URL;
 
 class Register extends React.Component {
     constructor(props) {

@@ -6,7 +6,7 @@ import Bracket from "./Bracket";
 import Initiate from "./Initiate";
 import "./Competition.scss";
 
-const BACKEND_URL = "http://localhost:3000";
+const BACKEND_URL = process.env.REACT_APP_SERVER_URL;
 
 function Competition(props) {
     const [competitionStatus, setCompetitionStatus] = useState(false);

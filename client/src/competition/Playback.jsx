@@ -7,7 +7,7 @@ function Playback() {
     const {folderName} = useParams();
     const {fileName} = useParams();
     const parameter = "/" + folderName + "/" + fileName;
-    const BACKEND_URL = "http://localhost:3000";
+    const BACKEND_URL = process.env.REACT_APP_SERVER_URL;
     const canvasOriginalWidth = 640;
 
     let [currentScore, setCurrentScore] = useState("");
