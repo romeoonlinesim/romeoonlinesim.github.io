@@ -32,7 +32,7 @@ module.exports = async function(ongoingMatch) {
                 console.log("MATCH AVAILABLE RECORDING FALSE");
                 return resolve(false);
             } else {
-                path = "/home/nh16/comp" + competition.index;
+                path = process.env.COMPETITION_FOLDER + competition.index;
                 fileName = `comp${competition.index}-team${recording.leftTeamNumber}-team${recording.rightTeamNumber}.txt`;
     
                 exec(`find ${path} -name ${fileName}`, (err, stdout, stderr) => {

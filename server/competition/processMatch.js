@@ -18,7 +18,7 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
         runServer = () => {
             return new Promise((resolve, reject) => {
                 //run server
-                exec("/home/nh16/rcssserver-16.0.0/src/rcssserver", (err, stdout, stderr) => {
+                exec(process.env.SOCCER_SERVER, (err, stdout, stderr) => {
                     if (err) {
                         console.log(`error: ${err.message}`);
                         return reject(err.message);

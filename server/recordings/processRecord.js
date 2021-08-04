@@ -3,7 +3,7 @@ const Recording = require("../schema/recordingSchema");
 
 module.exports = async function(competition, leftTeam, rightTeam, matchNumber, currentRound) {
     //const path = "/Github Repo/romeoonlinesim.github.io/scripts/main.cpp";
-    const path = "/home/nh16";
+    const path = process.env.HOME_PATH;
     console.log("process record");
 
     getLastFile = () => {

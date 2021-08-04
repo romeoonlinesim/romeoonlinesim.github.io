@@ -4,7 +4,6 @@
 float ball[4]; //0:x 1:y 2:vx 3:vy
 float player[4]; //0:x 1:y 2:vx 3:vy
 int MAX_PLAYER = 11;
-//std::ifstream myfile("/home/nh16/Downloads/drive-download-20210623T030312Z-001/20210516120259-opuCI_2D_0-vs-Romeo_3.rcg");
 std::ifstream myfile("/home/nh16/out.rcg");
 std::ofstream outfile("/home/nh16/out.txt");
 

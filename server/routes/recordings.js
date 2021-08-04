@@ -16,7 +16,7 @@ router.get("/", async function (req, res) {
 });
 
 router.get("/download/:folderPath/:fileName", (req, res) => {
-    const folderPath = "/home/nh16/" + req.params.folderPath +"/";
+    const folderPath = process.env.HOME_PATH + req.params.folderPath +"/";
     const fileName = req.params.fileName;
     const filePath = folderPath + fileName;
     
@@ -28,7 +28,7 @@ router.get("/download/:folderPath/:fileName", (req, res) => {
 });
 
 router.get("/playback/:folderPath/:fileName", (req, res) => {
-    const folderPath = "/home/nh16/" + req.params.folderPath +"/";
+    const folderPath = process.env.HOME_PATH + req.params.folderPath +"/";
     const fileName = req.params.fileName;
     const filePath = folderPath + fileName;
     console.log(filePath);
