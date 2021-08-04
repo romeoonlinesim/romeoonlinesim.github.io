@@ -102,17 +102,21 @@ function Bracket(props) {
                     </tr>
                     <tr>
                         <td colSpan={7}></td>
-                        <td colSpan={16} className="bracket-between"></td>
-                        <td colSpan={7}></td>
+                        <td colSpan={16} className="bracket-between score">
+                            {props.rounds.matches.thirdRound.teams[1].score}
+                        </td>
+                        <td colSpan={7} className="score">
+                            {props.rounds.matches.thirdRound.teams[1].score}
+                        </td>
                     </tr>
                     <tr>
                         <td colSpan={6}></td>
                         <td colSpan={2} className="bracket-team">
-                            {props.rounds.matches.secondRound.teams[0].name}
+                            {props.rounds.matches.thirdRound.teams[0].name}
                         </td>
                         <td colSpan={14}></td>
                         <td colSpan={2} className="bracket-team">
-                            {props.rounds.matches.secondRound.teams[1].name}
+                            {props.rounds.matches.thirdRound.teams[1].name}
                         </td>
                         <td colSpan={6}></td>
                     </tr>
@@ -125,10 +129,18 @@ function Bracket(props) {
                     </tr>
                     <tr>
                         <td colSpan={3}></td>
-                        <td colSpan={8} className="bracket-between"></td>
-                        <td colSpan={8}></td>
-                        <td colSpan={8} className="bracket-between"></td>
-                        <td colSpan={3}></td>
+                        <td colSpan={8} className="bracket-between score">
+                            {props.rounds.matches.secondRound.teams[0].score}
+                        </td>
+                        <td colSpan={8} className="score">
+                            {props.rounds.matches.secondRound.teams[1].score}
+                        </td>
+                        <td colSpan={8} className="bracket-between score">
+                            {props.rounds.matches.secondRound.teams[2].score}
+                        </td>
+                        <td colSpan={3} className="score">
+                            {props.rounds.matches.secondRound.teams[3].score}
+                        </td>
                     </tr>
                     <tr>
                         <td colSpan={2}></td>
@@ -162,14 +174,30 @@ function Bracket(props) {
                     </tr>
                     <tr>
                         <td colSpan={1}></td>
-                        <td colSpan={4} className="bracket-between"></td>
-                        <td colSpan={4}></td>
-                        <td colSpan={4} className="bracket-between"></td>
-                        <td colSpan={4}></td>
-                        <td colSpan={4} className="bracket-between"></td>
-                        <td colSpan={4}></td>
-                        <td colSpan={4} className="bracket-between"></td>
-                        <td colSpan={1}></td>
+                        <td colSpan={4} className="bracket-between score">
+                            {props.rounds.matches.firstRound.teams[0].score}
+                        </td>
+                        <td colSpan={4} className="score">
+                            {props.rounds.matches.firstRound.teams[1].score}
+                        </td>
+                        <td colSpan={4} className="bracket-between score">
+                            {props.rounds.matches.firstRound.teams[2].score}
+                        </td>
+                        <td colSpan={4} className="score">
+                            {props.rounds.matches.firstRound.teams[3].score}
+                        </td>
+                        <td colSpan={4} className="bracket-between score">
+                            {props.rounds.matches.firstRound.teams[4].score}
+                        </td>
+                        <td colSpan={4} className="score">
+                            {props.rounds.matches.firstRound.teams[5].score}
+                        </td>
+                        <td colSpan={4} className="bracket-between score">
+                            {props.rounds.matches.firstRound.teams[6].score}
+                        </td>
+                        <td colSpan={1} className="score">
+                            {props.rounds.matches.firstRound.teams[7].score}
+                        </td>
                     </tr>
                     <tr>
                         <td colSpan={2} className="bracket-team">

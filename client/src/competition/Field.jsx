@@ -149,12 +149,12 @@ function Field() {
             if(count === 0){ 
                 ctx.beginPath();   
                 ctx.strokeStyle ="#ffffff";
-                ctx.arc(a,b,8*scale,0,2*Math.PI);
+                ctx.arc(a,b,6*scale,0,2*Math.PI);
                 ctx.fill();
                 ctx.stroke();
                 ctx.beginPath();  
                 ctx.fillStyle ="#ffffff";
-                ctx.arc(a,b,2*scale,0,2*Math.PI);
+                ctx.arc(a,b,1.5*scale,0,2*Math.PI);
                 ctx.fill();
                 ctx.stroke();         
             } else {
@@ -170,11 +170,11 @@ function Field() {
             }
             ctx.beginPath();   
             ctx.strokeStyle ="#000000";       
-            ctx.arc(a,b,8*scale,0,2*Math.PI);
+            ctx.arc(a,b,7*scale,0,2*Math.PI);
             ctx.fill();
             ctx.stroke(); 
             ctx.beginPath(); 
-            ctx.arc(a,b,3*scale,0,2*Math.PI);
+            ctx.arc(a,b,2.5*scale,0,2*Math.PI);
             ctx.fill();
             ctx.stroke();         
             ctx.fillStyle = "#ffffff";

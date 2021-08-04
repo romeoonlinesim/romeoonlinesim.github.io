@@ -7,7 +7,7 @@ const {exec} = require("child_process");
 
 router.get("/", async function (req, res) {
     const competitionsTemp = await Competition.find({ongoing: false});
-    const teamsTemp = await Team.find({});
+    const teamsTemp = await Team.find({}).sort({"index":1}).exec();
     const result = {
         competitions: competitionsTemp,
         teams: teamsTemp
@@ -16,7 +16,7 @@ router.get("/", async function (req, res) {
 });
 
 router.get("/download/:folderPath/:fileName", (req, res) => {
-    const folderPath = process.env.HOME_PATH + req.params.folderPath +"/";
+    const folderPath = process.env.HOME_PATH + "/" + req.params.folderPath + "/";
     const fileName = req.params.fileName;
     const filePath = folderPath + fileName;
     
@@ -28,7 +28,7 @@ router.get("/download/:folderPath/:fileName", (req, res) => {
 });
 
 router.get("/playback/:folderPath/:fileName", (req, res) => {
-    const folderPath = process.env.HOME_PATH + req.params.folderPath +"/";
+    const folderPath = process.env.HOME_PATH + "/" + req.params.folderPath + "/";
     const fileName = req.params.fileName;
     const filePath = folderPath + fileName;
     console.log(filePath);

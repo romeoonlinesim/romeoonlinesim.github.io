@@ -21,12 +21,12 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
                     if (stdout) {
                         const tempFileName = stdout.split(".")[0];
                         const temp = tempFileName.split("-");
-                        const leftMatches = temp[0].match(/\d+$/);
-                        const rightMatches = temp[2].match(/\d+$/);
-                        const leftResult = leftMatches[0];
-                        const rightResult = rightMatches[0];
-                        const leftPenaltyCheck = leftMatches[1];
-                        const rightPenaltyCheck = rightMatches[1];
+                        const leftMatches = temp[0].split("_");
+                        const rightMatches = temp[temp.length-1].split("_");
+                        const leftResult = leftMatches[leftMatches.length-1];
+                        const rightResult = rightMatches[rightMatches.length-1];
+                        const leftPenaltyCheck = leftMatches[leftMatches.length-2];
+                        const rightPenaltyCheck = rightMatches[rightMatches.length-2];
                         
                         if (leftResult > rightResult) {
                             winner = leftTeam;

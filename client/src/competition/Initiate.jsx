@@ -45,11 +45,18 @@ function Initiate(props) {
     ];
 
     const teamOptions = [
-        { value: 1, label: "HELIOS_2010" },
-        { value: 2, label: "OPUCI_2D" },
-        { value: 3, label: "Agent2D" },
-        { value: 4, label: "Axiom" },
-        { value: 5, label: "Test" },
+        { value: 1, label: "CYRUS" },
+        { value: 2, label: "FC_Portugal" },
+        { value: 3, label: "MT" },
+        { value: 4, label: "Namira" },
+        { value: 5, label: "HELIOS" },
+        { value: 6, label: "HfutEngine" },
+        { value: 7, label: "HillStone" },
+        { value: 8, label: "ITAndroids" },
+        { value: 9, label: "Razi" },
+        { value: 10, label: "Receptivity" },
+        { value: 11, label: "RoboCIn" },
+        { value: 12, label: "Titans_of_Robotics" },
     ]
 
     const handleChangeNumber = (numberOfTeams) => {

@@ -149,8 +149,6 @@ module.exports = async function(teams) {
                         currentCompetition.secondRound = remainingTeams;
                     } else if (remainingTeams.length === teams.length/4) {
                         currentCompetition.thirdRound = remainingTeams;
-                    } else if (remainingTeams.length === 1) {
-                        currentCompetition.thirdRoundResult = results;
                     }
 
                     //if last match, save the winner

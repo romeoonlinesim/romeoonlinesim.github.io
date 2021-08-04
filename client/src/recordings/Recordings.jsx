@@ -138,7 +138,7 @@ function Recordings() {
                 
                 let thirdRoundTemp = competition.thirdRound.slice(0, competition.thirdRound.length);
                 let thirdRoundResultTemp = competition.thirdRoundResult.slice(0, competition.thirdRoundResult.length);
-                if (secondRoundTemp.length !== 0 && secondRoundTemp.length%2 !== 1) {
+                if (thirdRoundTemp.length !== 0 && thirdRoundTemp.length%2 !== 1) {
                     counter = 1;
                     while (thirdRoundTemp.length !== 0) {
                         const leftTeamIndex =  thirdRoundTemp[0];

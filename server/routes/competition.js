@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Competition = require("../schema/competitionSchema");
+const Team = require("../schema/teamSchema");
 const processCompetition = require("../competition/processCompetition");
 const matchAvailable = require("../competition/matchAvailable");
 
@@ -63,6 +64,16 @@ router.get("/live", function(req, res) {
         
     })
 });
+
+router.get("/brackets", async function(req, res) {
+    const competitionTemp = await Competition.findOne({ongoing: true});
+    const teamsTemp = await Team.find({}).sort({"index":1}).exec();
+    const result = {
+        competition: competitionTemp,
+        teams: teamsTemp
+    }
+    res.send(JSON.stringify(result));
+})
 
 router.get("/liveMatch", function(req, res) {
     try {

@@ -9,6 +9,8 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
     const right = await Team.findOne({index: rightTeam});
     const leftTeamPath = left.path;
     const rightTeamPath = right.path;
+    const leftTeamScript = left.script;
+    const rightTeamScript = right.script;
     //return new Promise(async function(resolve, reject) {
         
         /*console.log("processMatch competition" + competition + "\n" + leftTeam + " " + rightTeam);
@@ -36,7 +38,7 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
         runLeftTeam = () => {
             //run left team
             setTimeout(function() {
-                exec(leftTeamPath, {maxBuffer: 1024*200000}, (err, stdout, stderr) => {
+                exec(leftTeamScript, {cwd: leftTeamPath, maxBuffer: 1024*200000}, (err, stdout, stderr) => {
                     if (err) {
                         //console.log(`error: ${err.message}`);
                         return;
@@ -53,7 +55,7 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
         runRightTeam = () => {
             //run right team
             setTimeout(function() {
-                exec(rightTeamPath, {maxBuffer: 1024*200000}, (err, stdout, stderr) => {
+                exec(rightTeamScript, {cwd: rightTeamPath, maxBuffer: 1024*200000}, (err, stdout, stderr) => {
                     if (err) {
                         //console.log(`error: ${err.message}`);
                         return;
@@ -64,7 +66,7 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
                     }
                     //console.log(`stdout: ${stdout}`);
                 });
-            }, 2000);
+            }, 3000);
         }
 
         
