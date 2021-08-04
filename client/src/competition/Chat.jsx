@@ -17,7 +17,8 @@ function Chat(props) {
     const messagesEnd = useRef();
 
     useEffect(() => {
-        socketRef.current = socketIOClient.connect(BACKEND_URL);
+        console.log(BACKEND_URL);
+        socketRef.current = socketIOClient.connect(BACKEND_URL.slice(0, -4));
     
         socketRef.current.on("getId", data => {
           setId(data);
