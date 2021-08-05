@@ -59,8 +59,8 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 First, install node:
 ```
-# To install a specific version (6.16.0) of node:
-nvm install 6.16.0
+# To install a specific version (16.6.0) of node:
+nvm install 16.6.0
 # To install the latest release version of node:
 nvm install node
 ```
