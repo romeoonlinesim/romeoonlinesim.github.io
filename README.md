@@ -7,8 +7,7 @@ First, you need to install Soccerserver (version 16.0.1) by following the README
 
 https://github.com/rcsoccersim/rcssserver
 
-### Installing the teams needed for Soccerserver (for Moodle submission version only):
-
+### Installing the teams needed for Soccerserver (for Moodle submission version only)
 We will attach a zip folder calls soccer-file that contains the 12 teams necessary for the simulation.
 
 In your computer, extract that zip file into your default Downloads folder, i.e. the path is 
@@ -17,6 +16,13 @@ In your computer, extract that zip file into your default Downloads folder, i.e.
 ```
 After extracting the zip file, you should see there are 12 teams folders in your Downloads folder.
 
+### Installing the teams needed for Soccerserver (for team members)
+Clone the repository soccer-file.
+
+In your computer, copy the contents of folder soccer-file into you default Downloads folder, i.e. the path is
+```
+/home/<your-username>/Downloads
+```
 
 ### Installing MongoDB
 Then, you need to install MongoDB on your computer or server. If you already have it on your system, you can skip this step. For Linux system, it can be installed by following this guide:
