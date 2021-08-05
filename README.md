@@ -3,7 +3,7 @@
 ## How to install and run
 
 ### Installing Soccerserver 
-First, you need to install Soccerserver (version 16.0.1) by following the README.md file from this repository:
+First, you need to install Soccerserver (version 16.0.1) by following the README.md file from this repository. Remember to extract the downloaded zipped folder to the path /home/<your-username> before running any commands:
 
 https://github.com/rcsoccersim/rcssserver
 
