@@ -18,7 +18,9 @@ function Chat(props) {
 
     useEffect(() => {
         console.log(BACKEND_URL);
-        socketRef.current = socketIOClient.connect(BACKEND_URL.slice(0, -4));
+        socketRef.current = socketIOClient.connect(BACKEND_URL.slice(0,-4), {
+            path: "/api/socket"
+        });
     
         socketRef.current.on("getId", data => {
           setId(data);

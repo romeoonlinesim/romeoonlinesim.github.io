@@ -57,6 +57,7 @@ app.use(flash());
 
 //socket.io
 const socketIo = require("socket.io")(server, {
+    path:"/api/socket",
     cors: {
         origin: process.env.NODE_ENV === "production" 
                 ? process.env.CLIENT_HOMEPAGE
