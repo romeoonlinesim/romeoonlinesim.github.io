@@ -57,7 +57,15 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 ```
 
-Install npm:
+First, install node:
+```
+# To install a specific version (6.16.0) of node:
+nvm install 6.16.0
+# To install the latest release version of node:
+nvm install node
+```
+  
+Then, install npm:
 ```
 # To install a specific version (7.20.3) of npm:
 npm install npm@7.20.3 -g
@@ -65,13 +73,7 @@ npm install npm@7.20.3 -g
 nvm install-latest-npm
 ```
 
-Install node:
-```
-# To install a specific version (6.16.0) of node:
-nvm install 6.16.0
-# To install the latest release version of node:
-nvm install node
-```
+
 
 After finishing the above steps, you can check the version of npm and node in your computer:
 ```
