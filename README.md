@@ -99,6 +99,7 @@ Open a new terminal from the root of this folder, then run:
 ```
 npm install
 npm start
+# If there are any errors caused by the difference of version, try again
 ```
 
 To start frontend app:
@@ -107,6 +108,8 @@ Open a new terminal from the root of this folder, then run:
 cd client
 npm install
 npm start
+# If there are any errors caused by the difference of version, try again
+# If there are any high vulnerability, try to run npm audit fix
 ```
 
 If you do the above commands without any errors, the frontend interface could be accessed at http://localhost:5000 from your computer.
