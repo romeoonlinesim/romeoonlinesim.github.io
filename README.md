@@ -52,21 +52,24 @@ The following steps will help you to install these specific versions of npm and 
 Install nvm:
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 ```
 
 Install npm:
 ```
-To install a specific version (7.20.3) of npm:
+# To install a specific version (7.20.3) of npm:
 npm install npm@7.20.3 -g
-To install latest version of npm:
+# To install latest version of npm:
 nvm install-latest-npm
 ```
 
 Install node:
 ```
-To install a specific version (6.16.0) of node:
+# To install a specific version (6.16.0) of node:
 nvm install 6.16.0
-To install the latest release version of node:
+# To install the latest release version of node:
 nvm install node
 ```
 
