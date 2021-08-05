@@ -22,26 +22,19 @@ In addition, you will need to compile a C++ file in order to process the record 
 ```
 cp ./scripts/main.cpp ~/
 cd ~
+nano main.cpp   # Find all "nh16" and replace it with <your-username> then save it
 g++ -o main main.cpp
 ```
 If there is no error displayed then the compilation should be successful.
 
-### Installing the teams needed for Soccerserver (for Moodle submission version only)
-We will attach a zip folder calls soccer-file that contains the 12 teams necessary for the simulation.
-
-In your computer, extract that zip file into your default Downloads folder, i.e. the path is 
-```
-/home/<your-username>/Downloads
-```
-After extracting the zip file, you should see there are 12 teams folders in your Downloads folder.
-
-### Installing the teams needed for Soccerserver (for team members)
-Clone the repository soccer-file.
+### Installing the teams needed for Soccerserver
+Clone the repository soccer-file from link: https://github.com/romeoonlinesim/soccer-file.git
 
 In your computer, copy the contents of folder soccer-file into you default Downloads folder, i.e. the path is
 ```
 /home/<your-username>/Downloads
 ```
+After doing it properly, you should see in your Downloads folder that there are 12 zipped files in form of tar.gz or tgz file as well as 12 team folders.
 
 ### Installing MongoDB
 Then, you need to install MongoDB on your computer or server. If you already have it on your system, you can skip this step. For Linux system, it can be installed by following this guide:
