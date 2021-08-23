@@ -170,7 +170,7 @@ module.exports = async function(teams) {
                                         currentCompetition.ongoing = false;
                                         currentCompetition.save();
                                         global.matchCount = 0;
-                                    }, global.remainingTime*1000 + 60000);
+                                    }, global.remainingTime*200 + 60000);
                                 }
                             }
                         } catch (err) {
