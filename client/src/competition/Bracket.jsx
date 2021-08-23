@@ -1,5 +1,4 @@
 import React from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import "./Bracket.scss";
 
@@ -103,7 +102,7 @@ function Bracket(props) {
                     <tr>
                         <td colSpan={7}></td>
                         <td colSpan={16} className="bracket-between score">
-                            {props.rounds.matches.thirdRound.teams[1].score}
+                            {props.rounds.matches.thirdRound.teams[0].score}
                         </td>
                         <td colSpan={7} className="score">
                             {props.rounds.matches.thirdRound.teams[1].score}

@@ -8,12 +8,17 @@ const readMatch = require("./readMatch");
 
 
 function  setCycle(matchTime, match) {
+    console.log("remaining time before " + global.remainingTime)
+    global.remainingTime += matchTime;
+    console.log("remaining time after " + global.remainingTime)
     global.matchCount++;
     global.cycle = 0;
     global.status = true;
     global.match = match;
     const interval = setInterval(async function() {
         global.cycle++;
+        if (global.remainingTime > 0) 
+            global.remainingTime--;
         if (global.cycle > matchTime) {
             //clear cycle and set live match status to false
             clearInterval(interval);
@@ -21,13 +26,13 @@ function  setCycle(matchTime, match) {
 
             //try to start new cycle if there is an available match
             try {
-                const temp = await Promise.all([matchAvailable(global.matchNumber)]);
+                const temp = await Promise.all([matchAvailable(global.matchCount+1)]);
                 console.log("process competition " + temp[0]);
                 if (temp[0] !== false) {
                     setCycle(readMatch(temp[0]), temp[0]);
                 } else {
                     global.cycle = 0;
-                    global.matchCount = 1;
+                    //global.matchCount = 0;
                 }
             } catch (err) {
                 console.log(err);
@@ -164,7 +169,8 @@ module.exports = async function(teams) {
                                     setTimeout(function() {
                                         currentCompetition.ongoing = false;
                                         currentCompetition.save();
-                                    }, waitTime*100 + 5000);
+                                        global.matchCount = 0;
+                                    }, global.remainingTime*1000 + 60000);
                                 }
                             }
                         } catch (err) {

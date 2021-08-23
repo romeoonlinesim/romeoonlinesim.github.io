@@ -22,7 +22,12 @@ router.get("/",
 router.post("/", passport.authenticate("localLogin", {
     successRedirect: CLIENT_HOME_PAGE_URL,
     failureRedirect: CLIENT_HOME_PAGE_URL + "/login",
+    //failureRedirect: "verifyLogin/failure",
     failureFlash: true
 }));
+
+/*router.get("/failure", function(req, res) {
+    res.redirect(CLIENT_HOME_PAGE_URL + "/login#error");
+});*/
 
 module.exports = router;

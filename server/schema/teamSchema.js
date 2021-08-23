@@ -6,6 +6,7 @@ const teamSchema = new Schema({
     index: Number, 
     name: String,
     path: String,
+    sourcePath: String,
     script: String
 });
 

@@ -29,7 +29,6 @@ module.exports = async function(ongoingMatch) {
     checkRecording = () => {
         return new Promise((resolve, reject) => {
             if (recording === null) {
-                console.log("MATCH AVAILABLE RECORDING FALSE");
                 return resolve(false);
             } else {
                 path = process.env.COMPETITION_FOLDER + competition.index;
@@ -46,7 +45,7 @@ module.exports = async function(ongoingMatch) {
                     }
                     if (stdout) {
                         //return file name
-                        console.log("MATCH AVAILABLE STDOUT: " + stdout);   
+                        //console.log("MATCH AVAILABLE STDOUT: " + stdout);   
                         return resolve(path + "/" + fileName);
                     }
                 });

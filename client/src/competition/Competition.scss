@@ -27,19 +27,12 @@
 }
 
 .chat-header {
-    text-indent: 3%;
+    font-size: 120%;
+    align-items: center;
+    padding-bottom: 0;
     height: 5%;
     border-bottom: 1px solid #e5e5e5ad;
 }
-
-/*.chat {
-    background: #faf9f9;
-    height: 80%;
-    text-indent: 3%;
-    display: block;
-    border-bottom: 1px solid #e5e5e5ad;
-    overflow-y: scroll;
-}*/
 
 .chat {
     min-height: 0;

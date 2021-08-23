@@ -11,19 +11,6 @@ const BACKEND_URL = process.env.REACT_APP_SERVER_URL;
 class Home extends React.Component {
     constructor() {
         super();
-        this.startCompetition = this.startCompetition.bind(this);
-    }
-
-    startCompetition() {
-        fetch(BACKEND_URL + "/competition/start", {credentials: "include"})
-        .then(res => res.json())
-        .then(returnMsg => {
-            if (returnMsg.success === false) {
-                console.log("There is an ongoing competition");
-            } else {
-                console.log("Successfully started a new competition. Please wait for it to initialize.");
-            }
-        });
     }
 
     render() {

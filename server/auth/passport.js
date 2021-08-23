@@ -61,8 +61,9 @@ passport.use('localLogin', new LocalStrategy({
             if (err)
                 return done(err);
 
-            if (!user)
+            if (!user) 
                 return done(null, false, req.flash('email', 'Email or username doesn\'t exist.'));
+                
 
             if (!user.validPassword(password))
                 return done(null, false, req.flash('password', 'Oops! Wrong password.'));

@@ -1,6 +1,5 @@
 import React, {useState, useRef} from "react";
 import Select from "react-select";
-import chroma from "chroma-js";
 import ToolTip from "@material-ui/core/Tooltip";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faDice} from "@fortawesome/free-solid-svg-icons";
@@ -10,34 +9,13 @@ import "./Initiate.scss";
 const BACKEND_URL = process.env.REACT_APP_SERVER_URL;
 
 function Initiate(props) {
+    const {authenticated} = props;
+
     const [selectedOptions, setSelectedOptions] = useState(null);
     const [numberOfTeams, setNumberOfTeams] = useState({value:4, label:4});
     const [competitionStatus, setCompetitionStatus] = useState(false);
 
     const messageRef = useRef();
-
-    const colourStyles = {
-        control: styles => ({ ...styles, backgroundColor: 'white' }),
-        multiValue: (styles, { data }) => {
-          const color = "#4f9cff";
-          return {
-            ...styles,
-            backgroundColor: color,
-          };
-        },
-        multiValueLabel: (styles, { data }) => ({
-          ...styles,
-          color: data.color,
-        }),
-        multiValueRemove: (styles, { data }) => ({
-          ...styles,
-          color: data.color,
-          ':hover': {
-            backgroundColor: data.color,
-            color: 'white',
-          },
-        }),
-      };
 
     const numberOptions = [
         { value: 4, label: 4 },
@@ -100,6 +78,7 @@ function Initiate(props) {
                 setErrorMessage("There is an ongoing competition");
             } else {
                 setCompetitionStatus(true);
+                window.location.reload();
             }
         })
     }
@@ -141,7 +120,6 @@ function Initiate(props) {
                                 onChange={handleChangeTeams}
                                 options={teamOptions}
                                 isMulti={true}
-                                //styles={colourStyles}
                             />
                         </td>
                     </tr>
@@ -149,10 +127,13 @@ function Initiate(props) {
             </table>
             <div className="pb-3 mr-0 row">
                 <div ref={messageRef} className="error-message">
+                    {{authenticated}.authenticated === false 
+                        ? "You need to log in to start a new competition"
+                        : ""}
                 </div>
             </div>
             <div className="col-lg-9"></div>
-            <input className="btn btn-primary col-lg-3" type="button" value="Start the competition" onClick={handleStart} />
+            <input className="btn btn-primary col-lg-3" type="button" value="Start the competition" onClick={handleStart} disabled={!{authenticated}.authenticated}/>
         </div>
     );
 }

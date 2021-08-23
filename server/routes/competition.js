@@ -41,8 +41,7 @@ router.get("/live", function(req, res) {
                     competitionStart: false,
                     message: "There is no ongoing competition. If you want, you can start a new one."
                 });
-            } //else if (currentCompetition.ongoing === true && match === false) {
-                else if (currentCompetition.ongoing === true && global.status === false) {
+            } else if (currentCompetition.ongoing === true && global.status === false) {
                 res.send({
                     cycle: global.cycle,
                     ongoing: false,
@@ -60,9 +59,7 @@ router.get("/live", function(req, res) {
         } catch (err) {
             console.log(err);
         }
-
-        
-    })
+    });
 });
 
 router.get("/brackets", async function(req, res) {
@@ -77,6 +74,8 @@ router.get("/brackets", async function(req, res) {
 
 router.get("/liveMatch", function(req, res) {
     try {
+        console.log("global match" + global.match);
+        console.log("global match count " + global.matchCount);
         console.log("success");
         res.sendFile(global.match);        
     }

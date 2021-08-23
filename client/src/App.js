@@ -32,8 +32,6 @@ class App extends React.Component {
         });
       },
       (error) => {
-        console.log(error);
-        console.log("error fetching");
       }
     );
   }
@@ -49,7 +47,6 @@ class App extends React.Component {
               });
               },
               (error) => {
-                console.log("error fetching");
               }
         );
   }

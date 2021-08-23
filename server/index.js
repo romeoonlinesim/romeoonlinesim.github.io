@@ -11,11 +11,14 @@ const config = require("./config/keys");
 const app = express();
 const server = http.createServer(app);
 const addTeam = require("./start/addTeam");
+const Competition = require("./schema/competitionSchema");
+const matchAvailable = require("./competition/matchAvailable");
 require('dotenv').config();
+global.remainingTime = 0; //remaining time of current competition
 global.cycle = 0;
 global.status = false;
 global.match = "";
-global.matchCount = 1;
+global.matchCount = 0;
 
 //const CLIENT_HOME_PAGE_URL = "http://localhost:5000";
 
@@ -76,6 +79,32 @@ socketIo.on("connection", (socket) => {
         socketIo.emit("sendDataServer", {data});
     });
 
+    // check available match every second
+    var interval = setInterval(function() {
+        
+
+        Competition.findOne().sort({_id: -1})
+        .then(async function(currentCompetition) {
+            try {
+                let liveCheck = false;
+                const temp = await Promise.all([matchAvailable(currentCompetition.ongoingMatch-1)]);
+                const match = temp[0];
+
+                if (currentCompetition.ongoing === false) {
+                    liveCheck = false;
+                } else if (currentCompetition.ongoing === true && global.status === false) {
+                    liveCheck = false;
+                } else {
+                    liveCheck = true;
+                }
+
+                socket.emit("liveCheckSocket", liveCheck);
+            } catch (err) {
+                console.log(err);
+            }
+        });
+    }, 1000);
+
     socket.on("disconnect", () => {
         console.log("Client disconnected");
     })
@@ -87,6 +116,7 @@ app.use("/api/verifyRegister", require("./routes/register"));
 app.use("/api/logout", require("./routes/logout"));
 app.use("/api/competition", require("./routes/competition"));
 app.use("/api/recordings", require("./routes/recordings"));
+app.use("/api/teams", require("./routes/teams"));
 
 app.get("/api/authenticate", (req, res) => {
     res.send({

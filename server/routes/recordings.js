@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Competition = require("../schema/competitionSchema");
 const Team = require("../schema/teamSchema");
-const {exec} = require("child_process");
 
 
 router.get("/", async function (req, res) {

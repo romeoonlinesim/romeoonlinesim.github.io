@@ -1,15 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {NavLink} from "react-router-dom";
 import 'font-awesome/css/font-awesome.min.css';
 import "./navbar.scss";
 import logo from "../img/logo-romeo-header.png";
-
-const propTypes = {
-    authenticated: PropTypes.bool.isRequired,
-    user: PropTypes.object.isRequired
-};
-
 class Navbar extends React.Component {
     constructor(props) {
         super(props);

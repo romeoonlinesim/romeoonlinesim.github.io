@@ -12,42 +12,19 @@ function Competition(props) {
     const [competitionStatus, setCompetitionStatus] = useState(false);
     let [rounds, setRounds] = useState({});
 
-    /*const rounds = {
-        numberOfTeams: 4,
-        matches: {
-            firstRound: {
-                teams: [{name: "TeamA", score: 1}, {name: "TeamB", score: 0}, {name: "TeamC", score: 3}, {name:"TeamD", score: 2}],
-            },
-            secondRound: {
-                teams: [{name: "TeamA", score: 3}, {name: "TeamC", score: 0}],
-            },
-            thirdRound: {
-                teams: [],
-            },
-            winner: {
-                name: "TeamA",
-            },
-        }
-    }*/
-
     const check = () => {
-        console.log("check");
         fetch(`${BACKEND_URL}/competition/live`, {credentials: "include"})
             .then(res => res.json())
             .then(resBody => {
                 if (resBody.competitionStart === false) {
                     setCompetitionStatus(false);
-                    console.log(competitionStatus);
                 } else {
-                    console.log("do something");
                     fetch(`${BACKEND_URL}/competition/brackets`, {credentials: "include"})
                     .then(res => res.json())
                     .then((resBody) => {
                         const teams = resBody.teams;
                         const competition = resBody.competition;
-                        console.log(competition);
                         const firstRound = [];
-                        console.log(firstRound);
                         for (let i = 0; i < competition.firstRound.length; i++) {
                             const tmp = {
                                 name: teams[competition.firstRound[i]-1].name,
@@ -57,7 +34,6 @@ function Competition(props) {
                             }
                             firstRound.push(tmp);
                         }
-                        console.log(firstRound);
 
                         const secondRound = [];
                         if (competition.secondRound.length !== 0) {
@@ -104,11 +80,6 @@ function Competition(props) {
                             
                         }
 
-                        console.log(firstRound);
-                        console.log(secondRound);
-                        console.log(thirdRound);
-                        
-
                         const temp = {
                             numberOfTeams: competition.numberOfTeams,
                             matches: {
@@ -128,12 +99,13 @@ function Competition(props) {
                         }
                         setRounds(temp);
                         setCompetitionStatus(true);
-                        console.log(competitionStatus);
                     });
                 }
             });
     }
 
+    
+   
     useEffect(() => {
         check();
     }, []);
@@ -147,7 +119,7 @@ function Competition(props) {
                 ? (
                 <div>
                     <div className="row">
-                        <Field />
+                        <Field updateBrackets={check}/>
                         <div className="col-lg-1" />
                         <Chat authenticated={authenticated} user={user}/>
                     </div>
@@ -155,7 +127,7 @@ function Competition(props) {
                         <Bracket rounds={rounds}/>
                     </div>
                 </div>)
-                : (<Initiate/>)
+                : (<Initiate authenticated={authenticated}/>)
             }
             
         </div>

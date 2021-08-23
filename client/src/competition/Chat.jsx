@@ -3,8 +3,9 @@ import socketIOClient from "socket.io-client";
 
 import "./Competition.scss";
 
+const BACKEND_URL = process.env.REACT_APP_SERVER_URL;
+
 function Chat(props) {
-    const BACKEND_URL = process.env.REACT_APP_SERVER_URL;
     const {authenticated} = props;
 
     const initialMess = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""];
@@ -17,7 +18,6 @@ function Chat(props) {
     const messagesEnd = useRef();
 
     useEffect(() => {
-        console.log(BACKEND_URL);
         socketRef.current = socketIOClient.connect(BACKEND_URL.slice(0,-4), {
             path: "/api/socket"
         });
@@ -78,14 +78,13 @@ function Chat(props) {
     }
     
     const scrollToBottom = () => {
-        console.log(mess);
-        messagesEnd.current.scrollIntoView({behavior: "auto", block:"end"});
+        //messagesEnd.current.scrollIntoView({behavior: "auto", block:"end"});
     }  
     
     return (
         <div className="col-lg-3 chat-box">
-            <div className="row chat-header">
-                <h5 className="pt-1">Live Chat</h5>
+            <div className="chat-header row">
+                <div className="col-lg-12">Live Chat</div>
             </div>
             <div className="row chat">
                 {renderMess}
