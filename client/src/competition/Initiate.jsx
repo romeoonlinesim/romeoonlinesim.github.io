@@ -55,6 +55,12 @@ function Initiate(props) {
         setSelectedOptions(teamOptions.sort(() => Math.random() - 0.5).slice(0, numberOfTeams.value));
     }
 
+    const displayWarning = () => {
+        if (!{authenticated}.authenticated) {
+            alert("You need to log in to start a new competition");
+        }
+    }
+
     const handleStart = () => {
         if (selectedOptions === null || selectedOptions.length !== numberOfTeams.value) {
             setErrorMessage("You haven't selected enough participants. Try to select more participants or use randomize function.");
@@ -133,7 +139,9 @@ function Initiate(props) {
                 </div>
             </div>
             <div className="col-lg-9"></div>
-            <input className="btn btn-primary col-lg-3" type="button" value="Start the competition" onClick={handleStart} disabled={!{authenticated}.authenticated}/>
+            <div className="col-lg-3" onClick={displayWarning}>
+                <input className="btn btn-primary col-lg-12" type="button" value="Start the competition" onClick={handleStart} disabled={!{authenticated}.authenticated}/>
+            </div>
         </div>
     );
 }
