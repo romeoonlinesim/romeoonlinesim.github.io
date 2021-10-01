@@ -12,36 +12,38 @@ class Footer extends React.Component {
 
     render() {
         return (
-            <div>
+            
+                <footer className="footer-basic">
+                    <ul className="list-inline">
+                        <li className="list-inline-item">
+                            <NavLink exact activeClassName="active" to="/" className="nav-link">
+                                Home
+                            </NavLink>
+                        </li>
+                        <li className="list-inline-item">
+                            <NavLink exact activeClassName="active" to="/competition" className="nav-link">
+                                Live Competition
+                            </NavLink>
+                        </li>
+                        <li className="list-inline-item">
+                            <NavLink exact activeClassName="active" to="/recordings" className="nav-link">
+                                Past Recordings
+                            </NavLink>
+                        </li>
+                        <li className="list-inline-item">
+                            <NavLink exact activeClassName="active" to="/teams" className="nav-link">
+                                Support Teams
+                            </NavLink>
+                        </li>
+                    </ul>
+                    <p className="copyright">Support: mh487@uowmail.edu.au</p>
+                </footer>
+            
+
+            /*<div>
                 <div style={this.phantomStyle}></div>
-                <div className="footer-basic">
-                    <footer>
-                        <ul className="list-inline">
-                            <li className="list-inline-item">
-                                <NavLink exact activeClassName="active" to="/" className="nav-link">
-                                    Home
-                                </NavLink>
-                            </li>
-                            <li className="list-inline-item">
-                                <NavLink exact activeClassName="active" to="/competition" className="nav-link">
-                                    Live Competition
-                                </NavLink>
-                            </li>
-                            <li className="list-inline-item">
-                                <NavLink exact activeClassName="active" to="/recordings" className="nav-link">
-                                    Past Recordings
-                                </NavLink>
-                            </li>
-                            <li className="list-inline-item">
-                                <NavLink exact activeClassName="active" to="/teams" className="nav-link">
-                                    Support Teams
-                                </NavLink>
-                            </li>
-                        </ul>
-                        <p className="copyright">Support: mh487@uowmail.edu.au</p>
-                    </footer>
-                </div>
-            </div>
+                
+            </div>*/
         );
     }
 }

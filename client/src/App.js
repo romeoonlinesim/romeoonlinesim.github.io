@@ -61,9 +61,12 @@ class App extends React.Component {
 
     return (
       <div>
+        <main id="main">
         <Navbar authenticated={authenticated} user={user} handleLogout={this.handleLogout} />
         <Main authenticated={authenticated} user={user} />
-        <Footer />
+        </main>
+        
+        <Footer/>
       </div>
     );
   }
