@@ -19,7 +19,7 @@ function Register() {
     const [emailValidation, setEmailValidation] = useState(true);
     const [confirmValidation, setConfirmValidation] = useState(true);
 
-    const [validation, setValidation] = useState(false);
+    const [validation, setValidation] = useState(true);
 
     const validEmail = new RegExp(
         '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
