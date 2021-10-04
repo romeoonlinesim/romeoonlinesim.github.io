@@ -140,7 +140,7 @@ function Initiate(props) {
             </div>
             <div className="col-lg-9"></div>
             <div className="col-lg-3" onClick={displayWarning}>
-                <input className="btn btn-primary col-lg-12" type="button" value="Start the competition" onClick={handleStart} disabled={!{authenticated}.authenticated}/>
+                <input className="btn btn-primary col-lg-12" name = "startComp" type="button" value="Start the competition" onClick={handleStart} disabled={!{authenticated}.authenticated}/>
             </div>
         </div>
     );
