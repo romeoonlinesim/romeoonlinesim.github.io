@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 70%;
+}
+
+.right {
+  width: 30%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+table, th, td {
+  border: 1px solid black;
+   border-collapse: collapse;
+}
+a:link {
+  text-decoration: none;
+}
+body{
+	font-size: 20px;
+}
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+a {
+  color: black;
+}
+</style>
+</head>
+<body>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script>
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+<h1>User Manual</h1>
+
+<div class="row">
+  <div class="column left" >
+  <table style="width:100%">
+	<tr>
+     <td>
+    <h2 id="homepage">Homepage</h2>
+	<img src="HomePage.jpg"  >
+	<ul>
+	<li>
+    <p>  The homepage of Romeo online simulator consists of various components. There are two buttons sign in and register on the top right corner. 
+	Every new user needs to register a new account then sign in to start using our system. </p>
+	</li>
+	<li>
+	<p>Additionally, there are two buttons join today and contact us at the bottom of the homepage. 
+	The join today button is prompt user to register and sign in to start using our online simulator. 
+	The contact us button is offering user the chance to contact us privately for any suggestions or help. </p>
+	</li>
+	</ul>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	<h2 id="register">Register</h2>
+	<img src="Register.jpg"  >
+	<ul>
+	<li>
+	<p>When user clicks register, it will show the user such interface. Users need to enter the username, email address and password to create a new account. 
+	Once the user enters all required information, he can click register button to finish it. </p>
+	</li>
+	</ul>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	<h2 id="SignIn">Sign in</h2>
+	<img src="SignIn.jpg"  >
+	<ul>
+	<li>
+	<p>Similar with the register interface. After user registers successfully, he can click the sign in button to jump to a new page which will ask user to enter such information.
+	After the user enters all information, he can click the log in button to finish it. </p>
+	</li>
+	</ul>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	<h2 id="navigation">Navigation bar</h2>
+	<img src="NavigationBar.jpg"  >
+	<ul>
+	<li>
+	<p>On the top left corner and the bottom of the home page, there are four options for user which are Home, Live Competition, Past Recordings, and Support Teams. </p>
+	</li>
+	<li>
+	<p>By clicking the home button, the user will jump to the home page. By clicking the Live Competition button, the user will be redirected to the competition page. If there is no ongoing competition, the user can choose the number of participants and the specific participant teams to start a new competition. 
+	Otherwise, if there is an ongoing live competition, the user will be able to watch the current ongoing match in the competition. </p>
+	</li>
+	<li>
+	<p>By clicking the Past Recordings button, the user can watch the past competition’s matches and download the recording.</p>
+	</li>
+	<li>
+	<p>By clicking the Support Teams button, the user can find the information like the background of each team and download the relative resources from each team. </p>
+	</li>
+	</ul>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	<h2 id="liveCompetition">Live Competition</h2>
+	<img src="Competition1.jpg" >
+	<img src="Competition2.jpg" >
+	<ul>
+	<li>
+	<p>When user clicks Live Competition button, if there is no ongoing competition, the webpage will show the above interface (Figure 14). Firstly, it will ask user to enter the number of participants and choose any teams that they prefer. 
+	</p>
+	</li>
+	<li>
+	<p>In addition, the user can choose random teams by pressing the dice icon next to “Participants:” label. After that, the user can click Start the competition button. If there are any errors related to the number of participants chosen, that error will be displayed above the button. </p>
+	</li>
+	<li>
+	<p>And the webpage will be reloaded for live competition stream. However, due to time constraint, the code is not fully implemented, therefore, currently the user will have to manually refresh the page. </p>
+	</li>
+	</ul>
+    <img src="Competition3.jpg" >
+	<ul>
+	<li>
+	<p>Figure III shows the live competition wait for match. When the users wait for the match, they can send message and interact with other users in the public live chat by entering text in the text field and click send button to send the message. </p>
+	</li>
+	<li>
+	<p>Due to time constraint for code implementation, the user will have to refresh the page manually to load the match when it’s done. It will be fixed in the next update. </p>
+	</li>
+	</ul>
+    <img src="Competition4.jpg" >
+	<ul>
+	<li>
+	<p>Right below the live competition stream, there is a leader board that shows the result of each match as well as the bracket as the competition progress.</p>
+	</li>
+	</ul>
+	<img src="Competition5.jpg" >
+	<ul>
+	<li>
+	<p>Figure 18 is the current match running after the match loads successfully. There are 11 players in each team. The two-team player is presented by different colour (yellow and blue). 
+	</li>
+	<li>
+	<p>In addition, the goalkeeper has different colour in order to help user to easier identify them. </p>
+	</li>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	<h2 id="PastRecording">Past Recordings</h2>
+	<img src="Recording1.jpg" >
+	<ul>
+	<li>
+	<p>When user clicks past recordings button, the system will show the above interface (figure 19). Each competition contains two rounds or three rounds depends on the number of participants in each competition.</p>
+	</li>
+	<li>
+	<p>The user can play the recording of each round by clicking the arrow icon or click the download icon to download the log file of any competition they are interested in. </p>
+	</li>
+	</ul>
+	<img src="Recording2.jpg" >
+	<ul>
+	<li>
+	<p>Figure 20 is the interface when user clicks the play recording icon. The same virtual court as the live competition will be called. </p>
+	</li>
+	</ul>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	<h2 id="SupportTeam">Support Teams</h2>
+	<img src="SupportTeam.jpg" >
+	<ul>
+	<li>
+	<p>Figure 21 shows up when user clicks the support teams’ button. The webpage shows the user all teams’ details like the background and the logo of each team.</p>
+	</li>
+	<li>
+	<p>At the bottom of each team description, there is a link that user can click to download the related resources for each team.</p>
+	</li>
+	<li>
+	<p>There are 12 teams available but their resources are not available to download in this release yet.</p>
+	</li>
+	</ul>
+	</tr>
+	</td>
+	</table>
+  </div>
+  <div class="column right" >
+    <h2>Help</h2>
+	<i class="fa fa-home" style="font-size:24px;color:blue"></i>
+	<a href="#homepage">HomePage</a><br /><br />
+	<i class="fa fa-registered" style="font-size:24px;color:blue"></i>
+	<a href="#register">Register</a><br /><br />
+	<i class="fa fa-signing" style="font-size:24px;color:blue"></i>
+	<a href="#SignIn">SignIn</a><br /><br />
+	<i class="fa fa-question-circle" style="font-size:24px;color:blue"></i>
+	<a href="#navigation">Navigation Bar</a><br /><br />
+	<i class="fa fa-soccer-ball-o" style="font-size:24px;color:blue"></i>
+	<a href="#liveCompetition">Live Competition</a><br /><br />
+	<i class="fa fa-file-video-o" style="font-size:24px;color:blue"></i>
+	<a href="#PastRecording">PastRecording</a><br /><br />
+	<i class="fa fa-group" style="font-size:24px;color:blue"></i>
+    <a href="#SupportTeam">Support Team</a><br /><br />
+  </div>
+</div>
+
+</body>
+</html>
