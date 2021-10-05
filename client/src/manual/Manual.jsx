@@ -1,10 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 
 import "./Manual.scss";
-
-import background from "../img/bg-1.png";
-import secondBackground from "../img/robocup-1.png";
 
 import homepageImg from "../img/HomePage.jpg";
 import registerImg from "../img/Register.jpg";
@@ -18,13 +14,7 @@ import competition5Img from "../img/Competition5.jpg";
 import recording1Img from "../img/Recording1.jpg";
 import recording2Img from "../img/Recording2.jpg";
 import supportTeamImg from "../img/SupportTeam.jpg";
-
-const BACKEND_URL = process.env.REACT_APP_SERVER_URL;
 class Manual extends React.Component {
-    constructor() {
-        super();
-    }
-
     render() {
         return (
             <div className=" container-90 container pt-4">
@@ -71,7 +61,7 @@ class Manual extends React.Component {
 
                         <div className="row">
                             <h2 className="manual-header" id="homepage">Homepage</h2>
-                            <img className="manual-img" src={homepageImg} />
+                            <img className="manual-img" src={homepageImg} alt="" />
                             <ul className="manual-list">
                                 <li>
                                     <p>
@@ -91,7 +81,7 @@ class Manual extends React.Component {
                         </div>
                         <div className="row">
                             <h2 className="manual-header" id="register">Register</h2>
-                            <img className="manual-img" src={registerImg} />
+                            <img className="manual-img" src={registerImg} alt="" />
                             <ul className="manual-list">
                                 <li>
                                     <p>
@@ -104,7 +94,7 @@ class Manual extends React.Component {
                         </div>
                         <div className="row">
                             <h2 className="manual-header" id="SignIn">Sign in</h2>
-                            <img className="manual-img" src={signInImg} />
+                            <img className="manual-img" src={signInImg} alt="" />
                             <ul className="manual-list">
                                 <li>
                                     <p>
@@ -119,7 +109,7 @@ class Manual extends React.Component {
                         </div>
                         <div className="row">
                             <h2 className="manual-header" id="navigation">Navigation bar</h2>
-                            <img className="manual-img" src={navigationBarImg} />
+                            <img className="manual-img" src={navigationBarImg} alt="" />
                             <ul className="manual-list">
                                 <li>
                                     <p>
@@ -167,8 +157,8 @@ class Manual extends React.Component {
                         </div>
                         <div className="row">
                             <h2 className="manual-header" id="liveCompetition">Live Competition</h2>
-                            <img className="manual-img" src={competition1Img} />
-                            <img className="manual-img" src={competition2Img} />
+                            <img className="manual-img" src={competition1Img} alt="" />
+                            <img className="manual-img" src={competition2Img} alt="" />
                             <ul className="manual-list">
                                 <li>
                                     <p>
@@ -196,7 +186,7 @@ class Manual extends React.Component {
                                     </p>
                                 </li>
                             </ul>
-                            <img className="manual-img" src={competition3Img} />
+                            <img className="manual-img" src={competition3Img} alt="" />
                             <ul className="manual-list">
                                 <li>
                                     <p>
@@ -208,7 +198,7 @@ class Manual extends React.Component {
                                     </p>
                                 </li>
                             </ul>
-                            <img className="manual-img" src={competition4Img}/>
+                            <img className="manual-img" src={competition4Img} alt="" />
                             <ul className="manual-list">
                                 <li>
                                     <p>
@@ -218,7 +208,7 @@ class Manual extends React.Component {
                                     </p>
                                 </li>
                             </ul>
-                            <img className="manual-img" src={competition5Img} />
+                            <img className="manual-img" src={competition5Img} alt="" />
                             <ul>
                                 <li>
                                     <p>
@@ -238,7 +228,7 @@ class Manual extends React.Component {
                         </div>
                         <div className="row">
                             <h2 className="manual-header" id="PastRecording">Past Recordings</h2>
-                            <img className="manual-img" src={recording1Img} />
+                            <img className="manual-img" src={recording1Img} alt="" />
                             <ul className="manual-list">
                                 <li>
                                     <p>
@@ -256,7 +246,7 @@ class Manual extends React.Component {
                                     </p>
                                 </li>
                             </ul>
-                            <img className="manual-img" src={recording2Img} />
+                            <img className="manual-img" src={recording2Img} alt="" />
                             <ul className="manual-list">
                                 <li>
                                 <p>
@@ -269,7 +259,7 @@ class Manual extends React.Component {
                         </div>
                         <div className="row">
                             <h2 className="manual-header" id="SupportTeam">Support Teams</h2>
-                            <img className="manual-img" src={supportTeamImg} />
+                            <img className="manual-img" src={supportTeamImg} alt="" />
                             <ul className="manual-list">
                                 <li>
                                     <p>

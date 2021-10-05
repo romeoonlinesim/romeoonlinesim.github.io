@@ -94,6 +94,12 @@ class Navbar extends React.Component {
                             User Manual
                         </NavLink>
                     </li>
+                    <li className="nav-item">
+                        <NavLink exact activeClassName="active" to="/quickstart" className="nav-link">
+                            <i className="fa fa-book"></i>
+                            Quick Start
+                        </NavLink>
+                    </li>
                 </ul>
                 </div>
                 {{authenticated}.authenticated === true 
