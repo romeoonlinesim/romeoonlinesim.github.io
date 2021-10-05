@@ -70,127 +70,120 @@ class Manual extends React.Component {
                         
 
                         <div className="row">
-                            <h2 id="homepage">Homepage</h2>
+                            <h2 className="manual-header" id="homepage">Homepage</h2>
                             <img className="manual-img" src={homepageImg} />
                             <ul className="manual-list">
                                 <li>
-                                <p>
-                                    {" "}
-                                    The homepage of Romeo online simulator consists of various
-                                    components. There are two buttons sign in and register on
-                                    the top right corner. Every new user needs to register a new
-                                    account then sign in to start using our system.{" "}
-                                </p>
+                                    <p>
+                                        The homepage of Romeo online simulator consists of various components. 
+                                        There are two buttons sign in and register on the top right corner. 
+                                        You need to register a new account then sign in to start using our system.
+                                    </p>
                                 </li>
                                 <li>
-                                <p>
-                                    Additionally, there are two buttons join today and contact
-                                    us at the bottom of the homepage. The join today button is
-                                    prompt user to register and sign in to start using our
-                                    online simulator. The contact us button is offering user the
-                                    chance to contact us privately for any suggestions or help.{" "}
-                                </p>
+                                    <p>
+                                        Additionally, there are two buttons join today and contact us at the bottom of the homepage. 
+                                        The join today button is prompt you to register and sign in to start using our online simulator. 
+                                        The contact us button is offering you the chance to contact us privately for any suggestions or help.
+                                    </p>
                                 </li>
                             </ul>
                         </div>
                         <div className="row">
-                            <h2 id="register">Register</h2>
+                            <h2 className="manual-header" id="register">Register</h2>
                             <img className="manual-img" src={registerImg} />
                             <ul className="manual-list">
                                 <li>
-                                <p>
-                                    When user clicks register, it will show the user such
-                                    interface. Users need to enter the username, email address
-                                    and password to create a new account. Once the user enters
-                                    all required information, they can click register button to
-                                    finish it.{" "}
-                                </p>
+                                    <p>
+                                        When you click register, it will show you such interface. 
+                                        You need to enter the username, email address and password to create a new account. 
+                                        Once you enter all required information, you can click register button to finish it.
+                                    </p>
                                 </li>
                             </ul>
                         </div>
                         <div className="row">
-                            <h2 id="SignIn">Sign in</h2>
+                            <h2 className="manual-header" id="SignIn">Sign in</h2>
                             <img className="manual-img" src={signInImg} />
                             <ul className="manual-list">
                                 <li>
-                                <p>
-                                    After user already registers an account successfully,
-                                    they can click the sign in button to jump to a
-                                    new page which will ask user to enter such information.
-                                    After the user enters all information, they can click the log
-                                    in button to finish it.{" "}
-                                </p>
+                                    <p>
+                                        If you already have an account,
+                                        you can click the sign in button to jump to a
+                                        new page which will ask to enter such information.
+                                        After you enter all information, you can click the log
+                                        in button to finish it.{" "}
+                                    </p>
                                 </li>
                             </ul>
                         </div>
                         <div className="row">
-                            <h2 id="navigation">Navigation bar</h2>
+                            <h2 className="manual-header" id="navigation">Navigation bar</h2>
                             <img className="manual-img" src={navigationBarImg} />
                             <ul className="manual-list">
                                 <li>
                                     <p>
                                         On the top left corner and the bottom of the home page,
                                         there are five options for user which are Home, Live
-                                        Competition, Past Recordings, Support Teams and User Manual.{" "}
+                                        Competition, Past Recordings, Support Teams and User Manual.
                                     </p>
                                 </li>
                                 <li>
                                     <p>
-                                        By clicking the home button, the user will jump to the home
-                                        page. 
+                                        By clicking the home button, you will jump to the home page. 
                                     </p>
                                 </li>
                                 <li>
                                     <p>
-                                        By clicking the Live Competition button, the user will
+                                        By clicking the Live Competition button, you will
                                         be redirected to the competition page. If there is no
-                                        ongoing competition, the user can choose the number of
+                                        ongoing competition, you can choose the number of
                                         participants and the specific participant teams to start a
                                         new competition. Otherwise, if there is an ongoing live
-                                        competition, the user will be able to watch the current
+                                        competition, you will be able to watch the current
                                         ongoing match in the competition.{" "}
                                     </p>
                                 </li>
                                 <li>
                                     <p>
-                                        By clicking the Past Recordings button, the user can watch
+                                        By clicking the Past Recordings button, you can watch
                                         the past competition’s matches and download the recording.
                                     </p>
                                 </li>
                                 <li>
                                     <p>
-                                        By clicking the Support Teams button, the user can find the
+                                        By clicking the Support Teams button, you can find the
                                         information like the background of each team and download
                                         the relative resources from each team.{" "}
                                     </p>
                                 </li>
                                 <li>
                                     <p>
-                                        By clicking the User Manual button, the user can find the
+                                        By clicking you Manual button, you can find the
                                         instructions given in User Manual page.
                                     </p>
                                 </li>
                             </ul>
                         </div>
                         <div className="row">
-                            <h2 id="liveCompetition">Live Competition</h2>
+                            <h2 className="manual-header" id="liveCompetition">Live Competition</h2>
                             <img className="manual-img" src={competition1Img} />
                             <img className="manual-img" src={competition2Img} />
                             <ul className="manual-list">
                                 <li>
                                     <p>
-                                        When user clicks Live Competition button, if there is no
+                                        When you click Live Competition button, if there is no
                                         ongoing competition, the webpage will show the above
-                                        interface. It will ask user to enter
+                                        interface. It will ask you to enter
                                         the number of participants and choose any teams that they
                                         prefer.
                                     </p>
                                 </li>
                                 <li>
                                     <p>
-                                        In addition, the user can choose random teams by pressing
-                                        the dice icon next to “Participants:” label. After that, the
-                                        user can click Start the competition button. If there are
+                                        In addition, you can choose random teams by pressing
+                                        the dice icon next to “Participants:” label. After that,
+                                        you can click Start the competition button. If there are
                                         any errors related to the number of participants chosen,
                                         that error will be displayed above the button and a warning
                                         will be displayed by the browser.{" "}
@@ -207,8 +200,8 @@ class Manual extends React.Component {
                             <ul className="manual-list">
                                 <li>
                                     <p>
-                                        The above image shows the live competition wait for match. When
-                                        the users wait for the match, they can send message and
+                                        The above image shows the live competition wait for match. While
+                                        waiting for the match, you can send message and
                                         interact with other users in the public live chat by
                                         entering text in the text field and click send button to
                                         send the message.{" "}
@@ -244,12 +237,12 @@ class Manual extends React.Component {
                             </ul>
                         </div>
                         <div className="row">
-                            <h2 id="PastRecording">Past Recordings</h2>
+                            <h2 className="manual-header" id="PastRecording">Past Recordings</h2>
                             <img className="manual-img" src={recording1Img} />
                             <ul className="manual-list">
                                 <li>
                                     <p>
-                                        When user clicks Past Recordings button, the system will
+                                        When you click Past Recordings button, the system will
                                         show the above interface. Each competition
                                         contains two rounds or three rounds depends on the number of
                                         participants in each competition.
@@ -257,7 +250,7 @@ class Manual extends React.Component {
                                 </li>
                                 <li>
                                     <p>
-                                        The user can play the recording of each round by clicking
+                                        You can play the recording of each round by clicking
                                         the arrow icon or click the download icon to download the
                                         log file of any competition they are interested in.{" "}
                                     </p>
@@ -267,7 +260,7 @@ class Manual extends React.Component {
                             <ul className="manual-list">
                                 <li>
                                 <p>
-                                    The above image shows the playback interface after user clicks the play
+                                    The above image shows the playback interface after you click the play
                                     recording icon. The same virtual field as the live
                                     competition will be called.{" "}
                                 </p>
@@ -275,13 +268,13 @@ class Manual extends React.Component {
                             </ul>
                         </div>
                         <div className="row">
-                            <h2 id="SupportTeam">Support Teams</h2>
+                            <h2 className="manual-header" id="SupportTeam">Support Teams</h2>
                             <img className="manual-img" src={supportTeamImg} />
                             <ul className="manual-list">
                                 <li>
                                     <p>
                                         The above interface shows up after user clicks the support teams’
-                                        button. The webpage shows the user all teams’ details like
+                                        button. The webpage shows all teams’ details like
                                         the background and the logo of each team. However, due to some teams
                                         do not have a logo attached with their package, their logos will be
                                         changed to a placeholder image.
