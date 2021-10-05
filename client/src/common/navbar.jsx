@@ -40,8 +40,8 @@ class Navbar extends React.Component {
                 Welcome,  {obj.user.username}
             </a>
             <div className={"dropdown-menu dropdown-menu-right " + show}>
-                <NavLink exact to="/" className="dropdown-item" activeClassName="" onClick={this.toggleMenu}>Profile</NavLink>
-                <NavLink exact to="/" className="dropdown-item" activeClassName="" onClick={this.toggleMenu}>Help and Support</NavLink>
+                {/*<NavLink exact to="/" className="dropdown-item" activeClassName="" onClick={this.toggleMenu}>Profile</NavLink>*/}
+                <NavLink exact to="/manual" className="dropdown-item" activeClassName="" onClick={this.toggleMenu}>Help and Support</NavLink>
                 <div className="dropdown-divider" />
                 <a id="logoutButton" className="dropdown-item" onClick={this.props.handleLogout}>
                     Log Out
@@ -89,15 +89,15 @@ class Navbar extends React.Component {
                         </NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink exact activeClassName="active" to="/manual" className="nav-link">
-                            <i className="fa fa-book"></i>
-                            User Manual
+                        <NavLink exact activeClassName="active" to="/quickstart" className="nav-link">
+                            <i className="fa fa-question-circle"></i>
+                            Quick Start
                         </NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink exact activeClassName="active" to="/quickstart" className="nav-link">
+                        <NavLink exact activeClassName="active" to="/manual" className="nav-link">
                             <i className="fa fa-book"></i>
-                            Quick Start
+                            User Manual
                         </NavLink>
                     </li>
                 </ul>
