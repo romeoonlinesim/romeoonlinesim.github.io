@@ -84,8 +84,14 @@ class Navbar extends React.Component {
                     </li>
                     <li className="nav-item">
                         <NavLink exact activeClassName="active" to="/teams" className="nav-link">
-                            <i className="fa fa-steam"></i>
+                            <i className="fa fa-group"></i>
                             Support Teams
+                        </NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink exact activeClassName="active" to="/manual" className="nav-link">
+                            <i className="fa fa-book"></i>
+                            User Manual
                         </NavLink>
                     </li>
                 </ul>

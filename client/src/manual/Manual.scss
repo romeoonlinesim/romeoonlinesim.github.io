@@ -1,0 +1,43 @@
+.container-90 {
+    max-width: 80% !important;
+}
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.manual-left {
+    height: 50%;
+    width: 20%;
+    //padding-top: 6%;
+    top: 4%;
+    position: -webkit-sticky;
+    position: sticky;
+}
+
+.manual-right {
+    width: 75%;
+}
+
+.manual-a:link {
+    text-decoration: none;
+}
+
+.manual-sidebar {
+    font-size: 1.5rem;
+    padding-right: 0.5rem;
+}
+
+
+.manual-img {
+    width: inherit;
+    height: auto;
+}
+
+.manual-list {
+    list-style-type: none; 
+}
+
+.manual-i {
+    width: 2rem;
+}
