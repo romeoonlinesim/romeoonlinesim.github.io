@@ -17,7 +17,7 @@ import supportTeamImg from "../img/SupportTeam.jpg";
 class Manual extends React.Component {
     render() {
         return (
-            <div className=" container-90 container pt-4">
+            <div className="container-90 container pt-4">
                 <div className="wrapper">
                     <div className="manual-left">
                         <div className="pb-3">
@@ -54,11 +54,9 @@ class Manual extends React.Component {
                             <i className="fa fa-group text-primary manual-sidebar manual-i" />
                             <a className="manual-a" href="#SupportTeam">Support Teams</a>
                         </div>
-
                     </div>
+                    
                     <div className="manual-right">
-                        
-
                         <div className="row">
                             <h2 className="manual-header" id="homepage">Homepage</h2>
                             <img className="manual-img" src={homepageImg} alt="" />
