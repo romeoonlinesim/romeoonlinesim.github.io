@@ -1,7 +1,7 @@
 .footer-basic {
   padding: 1rem 0;
-  background-color: #707070;
-  color: #ffffff;
+  background-color: #353535;
+  color: #d0d0d0;
   left: 0;
   bottom: 0;
   height: 6rem;
@@ -60,4 +60,8 @@
   font-size: 13px;
   color: #aaa;
   margin-bottom: 0;
+}
+
+.footer-hover:focus, .footer-hover:hover {
+  color: #ffffff !important;
 }

@@ -130,13 +130,6 @@ function Teams() {
             <div className="row">
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card">
-                        <a href="#" rel="noreferrer">
-                            <img
-                                className="card-img-top"
-                                src={CYRUS.logo}
-                                alt="Team Logo"
-                            />
-                        </a>
                         <div className="card-body">
                             <h5 className="text-bold">{CYRUS.teamName}</h5>
                             <p>{CYRUS.description}</p>
@@ -154,13 +147,6 @@ function Teams() {
                 </div>
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card">
-                        <a href="#" rel="noreferrer">
-                            <img
-                                className="card-img-top"
-                                src={FCP_GPR.logo}
-                                alt="Team Logo"
-                            />
-                        </a>
                         <div className="card-body">
                             <h5 className="text-bold">{FCP_GPR.teamName}</h5>
                             <p>{FCP_GPR.description}</p>
@@ -178,13 +164,6 @@ function Teams() {
                 </div>
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card">
-                        <a href="#" rel="noreferrer">
-                            <img
-                                className="card-img-top"
-                                src={MT.logo}
-                                alt="Team Logo"
-                            />
-                        </a>
                         <div className="card-body">
                             <h5 className="text-bold">{MT.teamName}</h5>
                             <p>{MT.description}</p>
@@ -202,13 +181,6 @@ function Teams() {
                 </div>
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card">
-                        <a href="#" rel="noreferrer">
-                            <img
-                                className="card-img-top"
-                                src={Namira.logo}
-                                alt="Team Logo"
-                            />
-                        </a>
                         <div className="card-body">
                             <h5 className="text-bold">{Namira.teamName}</h5>
                             <p>{Namira.description}</p>
@@ -226,13 +198,6 @@ function Teams() {
                 </div>
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card">
-                        <a href="#" rel="noreferrer">
-                            <img
-                                className="card-img-top"
-                                src={HELIOS.logo}
-                                alt="Team Logo"
-                            />
-                        </a>
                         <div className="card-body">
                             <h5 className="text-bold">{HELIOS.teamName}</h5>
                             <p>{HELIOS.description}</p>
@@ -250,13 +215,6 @@ function Teams() {
                 </div>
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card">
-                        <a href="#" rel="noreferrer">
-                            <img
-                                className="card-img-top"
-                                src={HfutEngine.logo}
-                                alt="Team Logo"
-                            />
-                        </a>
                         <div className="card-body">
                             <h5 className="text-bold">{HfutEngine.teamName}</h5>
                             <p>{HfutEngine.description}</p>
@@ -274,13 +232,6 @@ function Teams() {
                 </div>
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card">
-                        <a href="#" rel="noreferrer">
-                            <img
-                                className="card-img-top"
-                                src={HillStone.logo}
-                                alt="Team Logo"
-                            />
-                        </a>
                         <div className="card-body">
                             <h5 className="text-bold">{HillStone.teamName}</h5>
                             <p>{HillStone.description}</p>
@@ -298,13 +249,6 @@ function Teams() {
                 </div>
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card">
-                        <a href="#" rel="noreferrer">
-                            <img
-                                className="card-img-top"
-                                src={ITAndroids.logo}
-                                alt="Team Logo"
-                            />
-                        </a>
                         <div className="card-body">
                             <h5 className="text-bold">{ITAndroids.teamName}</h5>
                             <p>{ITAndroids.description}</p>
@@ -322,13 +266,6 @@ function Teams() {
                 </div>
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card">
-                        <a href="#" rel="noreferrer">
-                            <img
-                                className="card-img-top"
-                                src={Razi.logo}
-                                alt="Team Logo"
-                            />
-                        </a>
                         <div className="card-body">
                             <h5 className="text-bold">{Razi.teamName}</h5>
                             <p>{Razi.description}</p>
@@ -346,13 +283,6 @@ function Teams() {
                 </div>
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card">
-                        <a href="#" rel="noreferrer">
-                            <img
-                                className="card-img-top"
-                                src={Receptivity.logo}
-                                alt="Team Logo"
-                            />
-                        </a>
                         <div className="card-body">
                             <h5 className="text-bold">{Receptivity.teamName}</h5>
                             <p>{Receptivity.description}</p>
@@ -370,13 +300,6 @@ function Teams() {
                 </div>
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card">
-                        <a href="#" rel="noreferrer">
-                            <img
-                                className="card-img-top"
-                                src={RoboCIn.logo}
-                                alt="Team Logo"
-                            />
-                        </a>
                         <div className="card-body">
                             <h5 className="text-bold">{RoboCIn.teamName}</h5>
                             <p>{RoboCIn.description}</p>
@@ -394,13 +317,6 @@ function Teams() {
                 </div>
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card">
-                        <a href="#" rel="noreferrer">
-                            <img
-                                className="card-img-top"
-                                src={TitansofRobotics.logo}
-                                alt="Team Logo"
-                            />
-                        </a>
                         <div className="card-body">
                             <h5 className="text-bold">{TitansofRobotics.teamName}</h5>
                             <p>{TitansofRobotics.description}</p>
