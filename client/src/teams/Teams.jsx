@@ -10,20 +10,18 @@ import receptivity_logo from "../img/helios_logo.png";
 import robo_cin_logo from "../img/robo_cin_logo.png";
 import titans_of_robotics_logo from "../img/titans_of_robotics_logo.png";
 
-import img1 from "../img/1.jpg";
-import img2 from "../img/2.jpg";
-import img3 from "../img/3.png";
 import img4 from "../img/4.jpg";
 
 import "./Teams.scss";
 
-const CYRUS = {
-    description: "Cyrus was founded in 2012 and participated the RoboCup 2013 for the first time. This team has managed to achieve 2nd place in RoboCup 2018 and fourth place in RoboCup 2017. Also, it has won the 1st place title for IranOpen twice, once in 2014 and the other time in 2018, followed by its last achievement, being the 1st place in RoboCup AsiaPacific 2018. Cyrus team members have created the starter base by simplifying the agent2D base [1] in cooperation with IranOpen’s technical committee members in order to further improve the soccer simulation 2D league and motivate new teams for participation. Cyrus’s base is agent2d.",
-    teamName: "Cyrus",
-    teamSource: "Cyrus.tar.gz",
-    teamNumber: 1,
-    logo: cyrus_logo
+const Romeo = {
+    description: "Romeo was developed in 2021 by students at University of Wollongong, Australia. This team is developed based on WrightEagle's base team. For demonstration purpose, this team used 'Naive Strategy' where players will chase the ball.",
+    teamName: "Romeo",
+    teamSource: "romeo.tag.xz",
+    teamNumber: 11,
+    logo: img4
 };
+
 const FCP_GPR = {
     description: "FCP_GPR brings together effort of researchers from Brazil and Portugal, in a continuous effort to develop strategies and evolutions for the Simulated Soccer in Robocup. FCPortugal (FCP) have been participating since 1999 in soccer simulation categories, being the 2000 world champion in the 2D simulation category. GPR2D Team is from the Federal University of Technology - UTFPR, and is participating in simulation competitions since 2009, winning Brazilian 2D competition in 2011, and participating actively on Robocup since 2012. Since 2014, both research teams joined forces and formed FCP_GPR, releasing a set of tools to integrate setplays (or setpieces) to soccer playing agents (see SourceForge.net project fcportugalsetplays).This TDP presents a detailed description of the all the steps necessary to install, and execute matches between FCP_GPR, and two other base teams: the well known Agent2D and the also recently released Gliders2D.",
     teamName: "FCP_GPR",
@@ -31,6 +29,7 @@ const FCP_GPR = {
     teamNumber: 2,
     logo: fcpgpr_logo
 };
+
 const MT = {
     description: "MT was founded in 2012, by the Hefei University Department of Computer Science and Technology Innovation Laboratory of a group of robot-loving soccer students. During the seven years, we take an active part in annual competitions of RoboCup. And there are some achievements, in 2012 and 2013 we won the second prize, in 2014 we won the grand prize,in 2016 Portuguese open tournament the champion,third in RoboCup World Cup,we sixth in the 2017 RoboCup2DWorld Cup,third in the2018 RoboCup2DWorld Cup.By the communication with other teams, we found some deficiencies,and then proposed improvement measures. We hope to verify the effect of improved code in this year's competition, and improve the team's level gradually.",
     teamName: "MT",
@@ -38,15 +37,17 @@ const MT = {
     teamNumber: 3,
     logo: img4
 };
-const Namira = {
-    description: "Namira Robotics team has been formed by students of Shiraz University and Qazvin Islamic Azad University (QIAU). This team is a combination of some members of Shiraz [3] and Persian Gulf Soccer 2D Simulation Teams [2] in World Cup 2016 and 2017 and some recently added students who study Software & Hardware Engineering and Information Technology at Shiraz University and QIAU. Some members of the team could achieve 1st place in IranOpen 2016 technical challenge, 2nd place in ShirazOpen 2018, 5th place in IranOpen 2016 and 2017 leagues and 6th place in RoboCup WorldCup Competitions 2016. Some members of Namira have participated in various competitions [4][5][6] since spring 2012. They could achieve 1st place in IranOpen 2014, 5th place in WorldCup Brazil 2014, 8th place in WorldCup Netherlands 2013, 9th place in WorldCup China 2015 and 1st place in Kordestan 2013. Introducing novel approaches in soccer simulation, reducing data noise, declining search space for agents’ decision making and using more artificial intelligent algorithms to make agents more dynamic are the most prominent aims of Namira team members.",
-    teamName: "Namira",
-    teamSource: "Namira.tgz",
+
+const CYRUS = {
+    description: "Cyrus was founded in 2012 and participated the RoboCup 2013 for the first time. This team has managed to achieve 2nd place in RoboCup 2018 and fourth place in RoboCup 2017. Also, it has won the 1st place title for IranOpen twice, once in 2014 and the other time in 2018, followed by its last achievement, being the 1st place in RoboCup AsiaPacific 2018. Cyrus team members have created the starter base by simplifying the agent2D base in cooperation with IranOpen’s technical committee members in order to further improve the soccer simulation 2D league and motivate new teams for participation. Cyrus’s base is agent2d.",
+    teamName: "Cyrus",
+    teamSource: "Cyrus.tar.gz",
     teamNumber: 4,
-    logo: img4
+    logo: cyrus_logo
 };
+
 const HELIOS = {
-    description: "HELIOS2019 is a simulated soccer team for the RoboCup Soccer Simulation 2D League. The team has been participating in the RoboCup competition since 2000, and has won four championships [1].",
+    description: "HELIOS2019 is a simulated soccer team for the RoboCup Soccer Simulation 2D League. The team has been participating in the RoboCup competition since 2000, and has won four championships.",
     teamName: "HELIOS",
     teamSource: "HELIOS.tar.gz",
     teamNumber: 5,
@@ -131,14 +132,14 @@ function Teams() {
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card">
                         <div className="card-body">
-                            <h5 className="text-bold">{CYRUS.teamName}</h5>
-                            <p>{CYRUS.description}</p>
+                            <h5 className="text-bold">{Romeo.teamName}</h5>
+                            <p>{Romeo.description}</p>
                         </div>
                         <div className="card-footer text-center">
                             <small>
-                                <a href="#" onClick={() => handleDownload(CYRUS.teamNumber, CYRUS.teamSource)} rel="noreferrer">
+                                <a href="#" onClick={() => handleDownload(Romeo.teamNumber, Romeo.teamSource)} rel="noreferrer">
                                     <i className="fa fa-download pe-1" />
-                                    {CYRUS.teamSource}
+                                    {Romeo.teamSource}
                                     <br />
                                 </a>
                             </small>
@@ -182,14 +183,14 @@ function Teams() {
                 <div className="card-cover col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div className="card">
                         <div className="card-body">
-                            <h5 className="text-bold">{Namira.teamName}</h5>
-                            <p>{Namira.description}</p>
+                            <h5 className="text-bold">{CYRUS.teamName}</h5>
+                            <p>{CYRUS.description}</p>
                         </div>
                         <div className="card-footer text-center">
                             <small>
-                                <a href="#" onClick={() => handleDownload(Namira.teamNumber, Namira.teamSource)} rel="noreferrer">
+                                <a href="#" onClick={() => handleDownload(CYRUS.teamNumber, CYRUS.teamSource)} rel="noreferrer">
                                     <i className="fa fa-download pe-1" />
-                                    {Namira.teamSource}
+                                    {CYRUS.teamSource}
                                     <br />
                                 </a>
                             </small>

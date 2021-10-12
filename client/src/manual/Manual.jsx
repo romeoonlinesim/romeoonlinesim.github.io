@@ -54,8 +54,12 @@ class Manual extends React.Component {
                             <i className="fa fa-group text-primary manual-sidebar manual-i" />
                             <a className="manual-a" href="#SupportTeam">Support Teams</a>
                         </div>
+                        <div className="pb-3">
+                            <i className="fa fa-play text-primary manual-sidebar manual-i" />
+                            <a className="manual-a" href="#Simulation">Simulation Details</a>
+                        </div>
                     </div>
-                    
+
                     <div className="manual-right">
                         <div className="row">
                             <h2 className="manual-header" id="homepage">Homepage</h2>
@@ -273,6 +277,29 @@ class Manual extends React.Component {
                                         At the bottom of each team description, there is a link that
                                         user can click to download the related resources for each
                                         team.
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="row">
+                            <h2 className="manual-header" id="Simulation">Simulation Details</h2>
+                            <ul className="manual-list">
+                                <li>
+                                    <p>
+                                        Our server uses Robocup Soccer's server version 16.0.1, which is the newest version.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        A match will have 2 halves and 2 extra halves if necessary, each half's length is 60 seconds 
+                                        and each extra's half length is 20 seconds, which are both shorter than a standard match in
+                                        Robocup Soccer Simulation League.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        All of our participants are provided by Robocup Soccer published resources. All the credits goes to
+                                        Robocup Soccer Simulation League and the teams' developers.
                                     </p>
                                 </li>
                             </ul>

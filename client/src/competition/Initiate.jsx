@@ -23,10 +23,10 @@ function Initiate(props) {
     ];
 
     const teamOptions = [
-        { value: 1, label: "CYRUS" },
+        { value: 1, label: "Romeo" },
         { value: 2, label: "FC_Portugal" },
         { value: 3, label: "MT" },
-        { value: 4, label: "Namira" },
+        { value: 4, label: "CYRUS" },
         { value: 5, label: "HELIOS" },
         { value: 6, label: "HfutEngine" },
         { value: 7, label: "HillStone" },

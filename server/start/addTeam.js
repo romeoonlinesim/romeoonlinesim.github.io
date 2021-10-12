@@ -8,10 +8,10 @@ module.exports = function() {
         if (res === false) {
             Team.create({
                 index: 1,
-                name: "CYRUS",
-                path: `${process.env.HOME_PATH}/Downloads/CYRUS_SS2D_RC2019_R3_BIN/cyrus/`,
-                sourcePath: `${process.env.HOME_PATH}/Downloads/CYRUS_SS2D_RC2019_R3_BIN.tar.gz`,
-                script: "./startAll"
+                name: "Romeo",
+                path: `${process.env.HOME_PATH}/Downloads/romeo/`,
+                sourcePath: `${process.env.HOME_PATH}/Downloads/romeo.tar.xz`,
+                script: "./start.sh"
             }, (err, instance ) => {
                 if (err) return handleError(err);
             });
@@ -38,9 +38,9 @@ module.exports = function() {
     
             Team.create({
                 index: 4,
-                name: "Namira",
-                path: `${process.env.HOME_PATH}/Downloads/Namira_SS2D_RC2018_BIN/home/namira/`,
-                sourcePath: `${process.env.HOME_PATH}/Downloads/Namira_SS2D_RC2018_BIN.tgz`,
+                name: "CYRUS",
+                path: `${process.env.HOME_PATH}/Downloads/CYRUS_SS2D_RC2019_R3_BIN/cyrus/`,
+                sourcePath: `${process.env.HOME_PATH}/Downloads/CYRUS_SS2D_RC2019_R3_BIN.tar.gz`,
                 script: "./startAll"
             }, (err, instance ) => {
                 if (err) return handleError(err);
