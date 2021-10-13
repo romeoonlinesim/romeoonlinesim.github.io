@@ -84,7 +84,7 @@ node --version  # expect 6.16.0
 ### Set up the environment variables
 You should modify the .env file in the root of this folder. The content of it should look like this. You should replace "nh16" with your Ubuntu username:
 ```
-CLIENT_HOMEPAGE=http://20.92.81.138
+CLIENT_HOMEPAGE= <your server's ip/domain>
 HOME_PATH=/home/nh16   # replace with /home/<your-username>
 SOCCER_SERVER=/home/nh16/rcssserver-16.0.1/src/rcssserver   # replace with /home/<your-username>/rcssserver-16.0.1/src/rcssserver
 COMPETITION_FOLDER=/home/nh16/comp   # replace with /home/<your-username>/comp

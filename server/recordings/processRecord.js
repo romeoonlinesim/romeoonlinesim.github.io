@@ -6,6 +6,7 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
     const path = process.env.HOME_PATH;
     console.log("process record");
 
+    const newRcgFileName = "comp" + competition.index + "-team" + leftTeam + "-team" + rightTeam + ".rcg";
     getLastFile = () => {
         return new Promise((resolve, reject) => {
             setTimeout(function() {
@@ -64,7 +65,20 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
     
                         //rename to out.rcg file
                         console.log("mv " + path + "/" + stdout + " " + path + "/out.rcg");
-                        exec("mv " + path + "/" + stdout.split("\n")[0] + " " + path + "/out.rcg", (err, stdout, stderr) => {
+                        exec("cp " + path + "/" + stdout.split("\n")[0] + " " + path + "/out.rcg", (err, stdout, stderr) => {
+                            if (err) {
+                                console.log(`error rename file: ${err.message}`);
+                                return;
+                            }
+                            if (stderr) {
+                                console.log(`stderr rename file: ${stderr}`);
+                                return; 
+                            }
+                            console.log(`stdout rename file: ${stdout}`);
+                        });
+
+                        
+                        exec("mv " + path + "/" + stdout.split("\n")[0] + " " + path + "/" + newRcgFileName, (err, stdout, stderr) => {
                             if (err) {
                                 console.log(`error rename file: ${err.message}`);
                                 return;
@@ -175,14 +189,28 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
         setTimeout(function() {
             exec(`mv ${path}/${fileName} ${path}/comp${competition.index}`, (err, stdout, stderr) => {
                 if (err) {
-                    console.log(`error: move file`);
+                    console.log(`error: move txt file`);
                     return;
                 }
                 if (stderr) {
-                    console.log(`stderr: move file`);
+                    console.log(`stderr: move txt file`);
                     return; 
                 }
-                console.log(`stdout: move file`);
+                console.log(`stdout: move txt file`);
+            });
+        }, 6000);
+
+        setTimeout(function() {
+            exec(`mv ${path}/${newRcgFileName} ${path}/comp${competition.index}`, (err, stdout, stderr) => {
+                if (err) {
+                    console.log(`error: move rcg file`);
+                    return;
+                }
+                if (stderr) {
+                    console.log(`stderr: move rcg file`);
+                    return; 
+                }
+                console.log(`stdout: move rcg file`);
             });
         }, 6000);
     }

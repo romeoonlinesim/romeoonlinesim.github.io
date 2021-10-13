@@ -26,7 +26,7 @@ function Recordings() {
     };
 
     const handleDownload = (competitionNumber, leftTeam, rightTeam) => {
-        const fileName = `comp${competitionNumber}/comp${competitionNumber}-team${leftTeam}-team${rightTeam}.txt`;
+        const fileName = `comp${competitionNumber}/comp${competitionNumber}-team${leftTeam}-team${rightTeam}.rcg`;
 
         axios({
             method: "get",
