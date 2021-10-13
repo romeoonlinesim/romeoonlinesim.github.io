@@ -1,6 +1,6 @@
-## This application runs best on Ubuntu 18.04 because of its dependency, "Robocup Soccer Server". Therefore, if there are any problems of running this on other OS, please try to run this on Ubuntu 18.04.
-
 ## How to install and run
+
+## This application runs best on Ubuntu 18.04 because of its dependency, "Robocup Soccer Server". Therefore, if there are any problems of running this on other OS, please try to run this on Ubuntu 18.04.
 
 ### Installing Soccerserver 
 First, you need to install Soccerserver (version 16.0.1) by following the README.md file from this repository. Remember to extract the downloaded zipped folder to the path /home/<your-username> before running any commands:
