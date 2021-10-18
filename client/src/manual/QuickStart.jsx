@@ -120,7 +120,7 @@ class QuickStart extends React.Component {
                         <p className="pb-2">
                             Each team has their own logo and a paragraph to introduce its background.
                         </p>
-                        <img className="pb-4" src={supportTeam2Img} />
+                        <img className="pb-4 manual-img" src={supportTeam2Img} />
                         <p />
                     </div>
                 </div>
