@@ -71,8 +71,6 @@ const socketIo = require("socket.io")(server, {
 });
 
 socketIo.on("connection", (socket) => {
-    console.log("New client connected " + socket.id);
-
     socket.emit("getId", socket.id);
 
     socket.on("sendDataClient", function(data) {
@@ -106,8 +104,8 @@ socketIo.on("connection", (socket) => {
     }, 1000);
 
     socket.on("disconnect", () => {
-        console.log("Client disconnected");
-    })
+        
+    });
 });
 
 //set up routes

@@ -10,7 +10,6 @@ router.post("/start", (req, res) => {
     Competition.findOne().sort({_id: -1})
     .then((currentCompetition) => {
         if (currentCompetition !== null && currentCompetition.ongoing === true) {
-            console.log("There is an ongoing competition");
             res.send({
                 success: false
             });
@@ -26,7 +25,6 @@ router.post("/start", (req, res) => {
 });
 
 router.get("/live", function(req, res) {
-    console.log(global.cycle)
     //check if current competition is running
     Competition.findOne().sort({_id: -1})
     .then(async function(currentCompetition) {
@@ -57,7 +55,7 @@ router.get("/live", function(req, res) {
                 });
             }
         } catch (err) {
-            console.log(err);
+
         }
     });
 });
@@ -74,13 +72,10 @@ router.get("/brackets", async function(req, res) {
 
 router.get("/liveMatch", function(req, res) {
     try {
-        console.log("global match" + global.match);
-        console.log("global match count " + global.matchCount);
-        console.log("success");
         res.sendFile(global.match);        
     }
     catch (err) {
-        console.log(err);
+        
     }
 });
 

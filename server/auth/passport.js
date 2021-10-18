@@ -54,7 +54,6 @@ passport.use('localLogin', new LocalStrategy({
 
         User.find({$or: [{email: email}, {username: email}]}, (err, user) => {
             user.map(user => user.toObject());
-            console.log(user.length);
         });
 
         User.findOne({$or: [{email: email}, {username: email}]}, (err, user) => {

@@ -21,7 +21,7 @@ router.get("/download/:folderPath/:fileName", (req, res) => {
     
     res.download(filePath, fileName, (err) => {
         if (err) {
-            console.log(err);
+
         }
     });
 });
@@ -30,7 +30,6 @@ router.get("/playback/:folderPath/:fileName", (req, res) => {
     const folderPath = process.env.HOME_PATH + "/" + req.params.folderPath + "/";
     const fileName = req.params.fileName;
     const filePath = folderPath + fileName;
-    console.log(filePath);
    
     res.sendFile(filePath);
 });

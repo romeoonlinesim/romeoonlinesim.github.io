@@ -36,7 +36,6 @@ function Playback() {
         ctx.font = fontsize + "px Arial";
         const textWidth = ctx.measureText(message).width;
         ctx.fillText(message, (canvas.width/2) - (textWidth/2), 100);
-        console.log(message);
     }
 
     const draw = (pool, time) => {
@@ -167,7 +166,6 @@ function Playback() {
             
             var a = (parseFloat(pos[0])*320/52.5+320)*scale;
             var b = (parseFloat(pos[1])*229/34+229)*scale;
-            //console.log(a + "   " + b + " " );
         
             //ball
             if(count === 0){ 
@@ -222,15 +220,12 @@ function Playback() {
             if(rawFile.readyState === 4) {
                 if(rawFile.status === 200 || rawFile.status === 0) {
                     var allText = rawFile.responseText.split("\n");
-                    console.log(allText.length);
                     if (index >= allText.length) {
-                        console.log("This match has finished. Please wait for next match.");
                     } else {
                         //get current score first
                         var temp = 0;
                         while (temp < index) {
                             var line = allText[temp].split(" ");
-                            console.log(line.length);
                             if (line.length === 6) {
                                 const team1 = line[2];
                                 const team2 = line[3];

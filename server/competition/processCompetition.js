@@ -8,13 +8,12 @@ const readMatch = require("./readMatch");
 
 
 function  setCycle(matchTime, match) {
-    console.log("remaining time before " + global.remainingTime)
     global.remainingTime += matchTime;
-    console.log("remaining time after " + global.remainingTime)
     global.matchCount++;
     global.cycle = 0;
     global.status = true;
     global.match = match;
+
     const interval = setInterval(async function() {
         global.cycle++;
         if (global.remainingTime > 0) 
@@ -27,7 +26,6 @@ function  setCycle(matchTime, match) {
             //try to start new cycle if there is an available match
             try {
                 const temp = await Promise.all([matchAvailable(global.matchCount+1)]);
-                console.log("process competition " + temp[0]);
                 if (temp[0] !== false) {
                     setCycle(readMatch(temp[0]), temp[0]);
                 } else {
@@ -35,7 +33,7 @@ function  setCycle(matchTime, match) {
                     //global.matchCount = 0;
                 }
             } catch (err) {
-                console.log(err);
+
             }
             
         }
@@ -114,8 +112,6 @@ module.exports = async function(teams) {
                     const leftTeam = remainingMatches[0];
                     const rightTeam = remainingMatches[1];
 
-                    console.log("prcessCompatition teams: " + leftTeam + " " + rightTeam);
-
                     //wait for the match to finish
                     const tmp = await Promise.all([processMatch(currentCompetition, leftTeam, rightTeam, ongoingMatch, currentRound)]);
                     const matchLoser = tmp[0].loser;
@@ -123,13 +119,11 @@ module.exports = async function(teams) {
                     //start counting cycles if match available and no cycle is being counted
                     try {
                         const temp = await Promise.all([matchAvailable(ongoingMatch)]);
-                        console.log("process competition " + temp[0]);
                         //if there is an available match and live match status is false, set cycle to run
                         if (temp[0] !== false && global.status === false) {
                             setCycle(readMatch(temp[0]), temp[0]);
                         }
                     } catch (err) {
-                        console.log(err);
                     }
 
                     //remove the teams that just finish the match
@@ -138,14 +132,10 @@ module.exports = async function(teams) {
                     //update current competition data
                     //remove loser from remaining teams
                     let remainingTeams = currentCompetition.remainingTeams;
-                    console.log("REMAINING TEAMS: " + remainingTeams);
                     const loserIndex = remainingTeams.indexOf(matchLoser);
-                    console.log("LOSER INDEX: " + matchLoser);
                     if (loserIndex !== -1) {
-                        console.log("LOSER INDEX: " + loserIndex);
                         remainingTeams.splice(loserIndex, 1);
                     }
-                    console.log("ONGOING MATCH " + ongoingMatch + " " + "REMAINING TEAMS " + remainingTeams);
 
                     //update remaining teams
                     currentCompetition.remainingTeams = remainingTeams;
@@ -174,7 +164,7 @@ module.exports = async function(teams) {
                                 }
                             }
                         } catch (err) {
-                            console.log(err);
+                            
                         }
                         currentCompetition.ongoingMatch++; 
                     }

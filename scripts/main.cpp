@@ -118,10 +118,6 @@ bool parseShowLine(const int n_line, const std::string &line ) {
         player[2] = vx;
         player[3] = vy;
         std::cout << "\np" << player[0] << " - " << player[1] << std::endl;
-        //
-        //          << " - " << player[2] << " - " << player[3] << std::endl;
-
-
 
         if ( *buf != '('
                  && std::sscanf( buf,

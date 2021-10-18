@@ -8,7 +8,7 @@ router.get("/download/:teamNumber/:fileName", async function(req, res) {
     
     res.download(filePath, req.params.fileName, (err) => {
         if (err) {
-            console.log(err);
+            
         }
     });
 });

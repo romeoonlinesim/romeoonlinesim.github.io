@@ -318,7 +318,6 @@ function Field(props) {
         ctx.font = fontsize + "px Arial";
         const textWidth = ctx.measureText(message).width;
         ctx.fillText(message, (canvas.width/2) - (textWidth/2), 100);
-        //ctx.fillText(waitTime, (canvas.width/2) - (textWidth/2), 100);
     }
 
     const start = () => {
@@ -342,7 +341,7 @@ function Field(props) {
                 if(rawFile.status === 200 || rawFile.status === 0) {
                     var allText = rawFile.responseText.split("\n");
                     if (index >= allText.length) {
-                        console.log("This match has finished. Please wait for next match.");
+                        
                     } else {
                         //get current score first
                         var temp = 0;

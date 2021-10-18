@@ -36,16 +36,13 @@ module.exports = async function(ongoingMatch) {
     
                 exec(`find ${path} -name ${fileName}`, (err, stdout, stderr) => {
                     if (err) {
-                        console.log("MATCH AVAILABLE ERROR: " + err.message);
                         return resolve(false);
                     }
                     if (stderr) {
-                        console.log("MATCH AVAILABLE STDERR: " + stderr);
                         return resolve(false);
                     }
                     if (stdout) {
                         //return file name
-                        //console.log("MATCH AVAILABLE STDOUT: " + stdout);   
                         return resolve(path + "/" + fileName);
                     }
                 });

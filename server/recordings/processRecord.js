@@ -4,7 +4,6 @@ const Recording = require("../schema/recordingSchema");
 module.exports = async function(competition, leftTeam, rightTeam, matchNumber, currentRound) {
     //const path = "/Github Repo/romeoonlinesim.github.io/scripts/main.cpp";
     const path = process.env.HOME_PATH;
-    console.log("process record");
 
     const newRcgFileName = "comp" + competition.index + "-team" + leftTeam + "-team" + rightTeam + ".rcg";
     getLastFile = () => {
@@ -12,11 +11,9 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
             setTimeout(function() {
                 exec(`ls ${path} -Art | grep '.rcg' | tail -n 1`, (err, stdout, stderr) => {
                     if (err) {
-                        console.log(`error: ${err.message}`);
                         return ;
                     }
                     if (stderr) {
-                        console.log(`stderr: ${stderr}`);
                         return; 
                     }
                     if (stdout) {
@@ -64,30 +61,23 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
                         competition.save();
     
                         //rename to out.rcg file
-                        console.log("mv " + path + "/" + stdout + " " + path + "/out.rcg");
                         exec("cp " + path + "/" + stdout.split("\n")[0] + " " + path + "/out.rcg", (err, stdout, stderr) => {
                             if (err) {
-                                console.log(`error rename file: ${err.message}`);
                                 return;
                             }
                             if (stderr) {
-                                console.log(`stderr rename file: ${stderr}`);
                                 return; 
                             }
-                            console.log(`stdout rename file: ${stdout}`);
                         });
 
                         
                         exec("mv " + path + "/" + stdout.split("\n")[0] + " " + path + "/" + newRcgFileName, (err, stdout, stderr) => {
                             if (err) {
-                                console.log(`error rename file: ${err.message}`);
                                 return;
                             }
                             if (stderr) {
-                                console.log(`stderr rename file: ${stderr}`);
                                 return; 
                             }
-                            console.log(`stdout rename file: ${stdout}`);
                         });
     
                         //add new record to database
@@ -119,14 +109,11 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
         setTimeout(function() {
                 exec(`rm ${path}/*.rcl`, (err, stdout, stderr) => {
                 if (err) {
-                    console.log(`error: ${err.message}`);
                     return;
                 }
                 if (stderr) {
-                    console.log(`stderr: ${stderr}`);
                     return; 
                 }
-                console.log(`stdout: ${stdout}`);
             });
         }, 1000);
     }
@@ -136,14 +123,11 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
         setTimeout(function() {
             exec(`${path}/main`, {maxBuffer: 1024*200000}, (err, stdout, stderr) => {
                 if (err) {
-                    console.log(`error: run main`);
                     return;
                 }
                 if (stderr) {
-                    console.log(`stderr: run main`);
                     return; 
                 }
-                console.log(`stdout: run main`);
             });
         }, 3000);
     }
@@ -154,14 +138,11 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
         setTimeout(function() {
             exec(`mv ${path}/out.txt ${path}/${fileName}`, (err, stdout, stderr) => {
                 if (err) {
-                    console.log(`error: rename file`);
                     return;
                 }
                 if (stderr) {
-                    console.log(`stderr: rename file`);
                     return; 
                 }
-                console.log(`stdout: rename file`);
             });
         }, 4500);
     }
@@ -172,14 +153,11 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
             exec(`mkdir ${path}/comp${competition.index}`, (err, stdout, stderr) => {
                 //if folder not exist
                 if (err) {
-                    console.log(`error: make folder`);
                     return;
                 }
                 if (stderr) {
-                    console.log(`stderr: make folder`);
                     return; 
                 }
-                console.log(`stdout: make folder`);
             });
         }, 5000);
     }
@@ -189,28 +167,22 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
         setTimeout(function() {
             exec(`mv ${path}/${fileName} ${path}/comp${competition.index}`, (err, stdout, stderr) => {
                 if (err) {
-                    console.log(`error: move txt file`);
                     return;
                 }
                 if (stderr) {
-                    console.log(`stderr: move txt file`);
                     return; 
                 }
-                console.log(`stdout: move txt file`);
             });
         }, 6000);
 
         setTimeout(function() {
             exec(`mv ${path}/${newRcgFileName} ${path}/comp${competition.index}`, (err, stdout, stderr) => {
                 if (err) {
-                    console.log(`error: move rcg file`);
                     return;
                 }
                 if (stderr) {
-                    console.log(`stderr: move rcg file`);
                     return; 
                 }
-                console.log(`stdout: move rcg file`);
             });
         }, 6000);
     }
@@ -220,14 +192,14 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
             setTimeout(function() {
                 exec(`rm ${path}/out.rcg`, (err, stdout, stderr) => {
                     if (err) {
-                        resolve(console.log(`error: remove rcg file`));
+                        //resolve(console.log(`error: remove rcg file`));
                         return;
                     }
                     if (stderr) {
-                        resolve(console.log(`stderr: remove rcg file`));
+                        //resolve(console.log(`stderr: remove rcg file`));
                         return resolve(stderr); 
                     }
-                    return resolve(console.log(`stdout: remove rcg file`));
+                    //return resolve(console.log(`stdout: remove rcg file`));
                 })
             }, 7000);
         })
@@ -237,6 +209,5 @@ module.exports = async function(competition, leftTeam, rightTeam, matchNumber, c
     
 
     const result = await Promise.all([getLastFile(), removeRclFile(), processScript(), renameFile(), makeFolder(), moveFile(), removeRcgFile()]);
-    console.log("process record done");
     return result[0];
 }
